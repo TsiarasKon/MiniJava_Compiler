@@ -4,38 +4,31 @@ import visitor.GJDepthFirst;
 public class SemanticVisitor extends GJDepthFirst<String, String>{
 
 	/**
-	 * f0 -> MainClass()
-	 * f1 -> ( TypeDeclaration() )*
-	 * f2 -> <EOF>
+	 * f0 -> Type()
+	 * f1 -> Identifier()
+	 * f2 -> ";"
 	 */
-    public String visit(Goal n, String argu){
-        System.out.println("! Goal");
-        return super.visit(n, argu);
-    }
+	public String visit(VarDeclaration n, String argu) {
+		String _ret=null;
+		String typeStr = n.f0.accept(this, argu);
+		String idStr = n.f1.accept(this, argu);
+		System.out.println(typeStr + " " + idStr);
+		n.f2.accept(this, argu);
+		return _ret;
+	}
 
 	/**
-	 * f0 -> "class"
-	 * f1 -> Identifier()
-	 * f2 -> "{"
-	 * f3 -> "public"
-	 * f4 -> "static"
-	 * f5 -> "void"
-	 * f6 -> "main"
-	 * f7 -> "("
-	 * f8 -> "String"
-	 * f9 -> "["
-	 * f10 -> "]"
-	 * f11 -> Identifier()
-	 * f12 -> ")"
-	 * f13 -> "{"
-	 * f14 -> ( VarDeclaration() )*
-	 * f15 -> ( Statement() )*
-	 * f16 -> "}"
-	 * f17 -> "}"
+	 * f0 -> "int"
 	 */
-	public String visit(MainClass n, String argu) {
-		System.out.println("! Main");
-		return super.visit(n, argu);
+	public String visit(IntegerType n, String argu) {
+		return "int";
+	}
+
+	/**
+	 * f0 -> <IDENTIFIER>
+	 */
+	public String visit(Identifier n, String argu) {
+		return n.f0.toString();
 	}
 
 }
