@@ -15,7 +15,7 @@ class Main {
 	    System.err.println("Program parsed successfully.");
 		FillSTVisitor fSTVisitor = new FillSTVisitor();
 	    Goal root = parser.Goal();
-	    MainST symbolTable = new MainST();
+		SymbolTable symbolTable = new SymbolTable();
 	    root.accept(fSTVisitor, symbolTable);
 		symbolTable.printMainVars();
 	}
