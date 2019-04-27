@@ -37,6 +37,17 @@ public class SymbolTable {
         classes.get(className).addMethodVar(methodName, varType, varName);
     }
 
+    public void printAllOffsets(String lPadding) {
+        boolean mainFlag = true;    // used only to ignore main
+        for (Map.Entry<String, ClassST> entry : classes.entrySet()) {
+            if (mainFlag) {
+                mainFlag = false;
+                continue;
+            }
+            entry.getValue().printClassOffsets(lPadding);
+        }
+    }
+
 
     private class ClassST {
         private String className;
@@ -72,6 +83,17 @@ public class SymbolTable {
 
         void addMethodVar(String methodName, String varType, String varName) throws SemanticException {
             methods.get(methodName).addVar(varType, varName);
+        }
+
+        public void printClassOffsets(String lPadding) {
+            for (Map.Entry<String, String> entry : fields.entrySet()) {
+                System.out.println(lPadding + className + "." + entry.getKey());
+                // TODO: offset
+            }
+            for (Map.Entry<String, MethodST> entry : methods.entrySet()) {
+                System.out.println(lPadding + className + "." + entry.getKey());
+                // TODO: offset
+            }
         }
 
     }

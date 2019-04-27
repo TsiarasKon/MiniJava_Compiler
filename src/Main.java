@@ -14,14 +14,15 @@ class Main {
 			try{
 				fis = new FileInputStream(args[i]);
 				MiniJavaParser parser = new MiniJavaParser(fis);
+				Goal root = parser.Goal();
 				System.out.println(" Parsing completed successfully.");
 				SymbolTable symbolTable = new SymbolTable();
-				Goal root = parser.Goal();
 				FillSTVisitor fSTVisitor = new FillSTVisitor();
 				root.accept(fSTVisitor, symbolTable);
 				// TODO: add second visitor
 				System.out.println(" Semantic analysis completed successfully.");
-				// TODO: print offsets
+				System.out.println(" Offsets:");
+				symbolTable.printAllOffsets("  ");
 			} catch (FileNotFoundException | ParseException | SemanticException ex) {
 				System.err.println(ex.getMessage());
 			} catch (Exception ex) {        // should never get here
