@@ -9,7 +9,7 @@ class Main {
 	    System.exit(1);
 	}
 	FileInputStream fis = null;
-	try{
+	try {
 	    fis = new FileInputStream(args[0]);
 	    MiniJavaParser parser = new MiniJavaParser(fis);
 	    System.err.println("Program parsed successfully.");
@@ -17,19 +17,16 @@ class Main {
 	    Goal root = parser.Goal();
 		SymbolTable symbolTable = new SymbolTable();
 	    root.accept(fSTVisitor, symbolTable);
-		symbolTable.printMainClassVars("HelloWorldErr");
-	}
-	catch(ParseException ex){
+		System.err.println("Completed semantic check successfully.");
+	} catch (ParseException ex) {
 	    System.out.println(ex.getMessage());
-	}
-	catch(FileNotFoundException ex){
+	} catch (FileNotFoundException ex) {
 	    System.err.println(ex.getMessage());
-	}
-	catch(SemanticException ex){
-		System.err.println("Stopped Semantic Analysis of file");
-	}
-	catch(Exception ex){		// shouldn't get here
-		System.err.println(ex.getMessage());
+	} catch (SemanticException ignore) {
+		// TODO?
+	} catch (Exception ex) {		// shouldn't get here
+		System.err.println("Unexpected error while performing semantic analysis; dumping stack trace:");
+		ex.printStackTrace();
 	}
 	finally{
 	    try{
