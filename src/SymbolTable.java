@@ -37,22 +37,12 @@ public class SymbolTable {
         classes.get(className).addMethodVar(methodName, varType, varName);
     }
 
-//    public void printMainClassVars(String mainClassName) {
-//        Map<String, String> mainVars = classes.get(mainClassName).methods.get("main").variables;
-//        System.out.println("Main variables:");
-//        for (Map.Entry<String, String> entry : mainVars.entrySet()) {
-//            String key = entry.getKey();
-//            String value = entry.getValue();
-//            System.out.println("  " + value + " - " + key);
-//        }
-//    }
-
 
     private class ClassST {
-        String className;
-        String extendsClassName;
-        Map<String, String> fields;
-        Map<String, MethodST> methods;
+        private String className;
+        private String extendsClassName;
+        private Map<String, String> fields;
+        private Map<String, MethodST> methods;
 
         ClassST(String _className, String _extendsClassName) {
             className = _className;
@@ -87,10 +77,10 @@ public class SymbolTable {
     }
 
     private class MethodST {
-        String methodName;
-        String returnType;
-        LinkedHashMap<String, String> parameters;
-        Map<String, String> variables;
+        private String methodName;
+        private String returnType;
+        private LinkedHashMap<String, String> parameters;
+        private Map<String, String> variables;
 
         MethodST(String _returnType, String _methodName) {
             methodName = _methodName;

@@ -53,8 +53,7 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 		try {
 			symbolTable.addClass(className);
 		} catch (SemanticException se) {
-			System.out.println(se.getMessage() + "class '" + className + "' is already defined");
-			throw se;
+			throw new SemanticException("class '" + className + "' is already defined");
 		}
 		currentClassName = className;
 		n.f3.accept(this, symbolTable);
@@ -79,8 +78,7 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 		try {
 			symbolTable.addClass(className, extendsClassName);
 		} catch (SemanticException se) {
-			System.out.println(se.getMessage() + "class '" + className + "' is already defined");
-			throw se;
+			throw new SemanticException("class '" + className + "' is already defined");
 		}
 		currentClassName = className;
 		n.f5.accept(this, symbolTable);
@@ -101,15 +99,13 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 			try {
 				symbolTable.addClassField(currentClassName, varType, varName);
 			} catch (SemanticException se) {
-				System.out.println(se.getMessage() + "duplicate field named '" + varName + "' in class '" + currentClassName + "'");
-				throw se;
+				throw new SemanticException("duplicate field named '" + varName + "' in class '" + currentClassName + "'");
 			}
         } else {        // adding method variable
 		    try {
                 symbolTable.addMethodVar(currentClassName, currentMethodName, varType, varName);
             } catch (SemanticException se) {
-                System.out.println(se.getMessage() + "duplicate variable named '" + varName + "' in '" + currentClassName + "." + currentMethodName + "()'");
-                throw se;
+				throw new SemanticException("duplicate variable named '" + varName + "' in '" + currentClassName + "." + currentMethodName + "()'");
             }
         }
 		return null;
@@ -136,8 +132,7 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 		try {
 			symbolTable.addClassMethod(currentClassName, methodType, methodName);
 		} catch (SemanticException se) {
-			System.out.println(se.getMessage() + "method '" + methodName + "()' is already defined in class '" + currentClassName + "'");
-			throw se;
+			throw new SemanticException("method '" + methodName + "()' is already defined in class '" + currentClassName + "'");
 		}
 		currentMethodName = methodName;
 		n.f4.accept(this, symbolTable);
@@ -156,8 +151,7 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 		try {
 			symbolTable.addClassMethodParam(currentClassName, currentMethodName, varType, varName);
 		} catch (SemanticException se) {
-			System.out.println(se.getMessage() + "duplicate parameter named '" + varName + "' in '" + currentClassName + "." + currentMethodName + "()'");
-			throw se;
+			throw new SemanticException("duplicate parameter named '" + varName + "' in '" + currentClassName + "." + currentMethodName + "()'");
 		}
 		return null;
 	}
