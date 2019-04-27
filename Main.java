@@ -13,9 +13,11 @@ class Main {
 	    fis = new FileInputStream(args[0]);
 	    MiniJavaParser parser = new MiniJavaParser(fis);
 	    System.err.println("Program parsed successfully.");
-		SemanticVisitor eval = new SemanticVisitor();
+		FillSTVisitor fSTVisitor = new FillSTVisitor();
 	    Goal root = parser.Goal();
-	    System.out.println(root.accept(eval, null));
+	    MainST symbolTable = new MainST();
+	    root.accept(fSTVisitor, symbolTable);
+		symbolTable.printMainVars();
 	}
 	catch(ParseException ex){
 	    System.out.println(ex.getMessage());
