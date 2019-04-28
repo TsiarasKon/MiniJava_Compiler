@@ -74,11 +74,15 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(ClassExtendsDeclaration n, SymbolTable symbolTable) throws Exception {
 		String className = n.f1.accept(this, symbolTable);
-		String extendsClassName = n.f3.accept(this, symbolTable);
+		String parentClassName = n.f3.accept(this, symbolTable);
 		try {
-			symbolTable.addClass(className, extendsClassName);
+			symbolTable.addClass(className, parentClassName);
 		} catch (SemanticException se) {
-			throw new SemanticException("class '" + className + "' is already defined");
+			if (se.getMessage().endsWith("extends")) {
+				throw new SemanticException("class '" + className + "' extends '" + parentClassName + "' but the latter has not been defined");
+			} else {
+				throw new SemanticException("class '" + className + "' is already defined");
+			}
 		}
 		currentClassName = className;
 		n.f5.accept(this, symbolTable);

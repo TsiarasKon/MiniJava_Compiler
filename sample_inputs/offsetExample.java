@@ -13,6 +13,6 @@ class A {
 class B extends A {
     A type;
     int k;
-    public boolean bla() { x=true; return x; }
     public int foo() { return k; }
+    public boolean bla() { x=true; return x; }
 }

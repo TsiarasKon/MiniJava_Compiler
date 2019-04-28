@@ -9,16 +9,23 @@ public class SymbolTable {
         classes = new LinkedHashMap<>();
     }
 
-    public void addClass(String className, String extendsClassName) throws SemanticException {
+    public void addClass(String className, String parentClassName) throws SemanticException {
         if (classes.containsKey(className)) {
-            throw new SemanticException("");
+            throw new SemanticException("exists");
         }
-        ClassST classST = new ClassST(className, extendsClassName);
+        if (!classes.containsKey(parentClassName)) {
+            throw new SemanticException("extends");
+        }
+        ClassST classST = new ClassST(className, classes.get(parentClassName));
         classes.put(className, classST);
     }
 
     public void addClass(String className) throws SemanticException {
-        addClass(className, null);
+        if (classes.containsKey(className)) {
+            throw new SemanticException("");
+        }
+        ClassST classST = new ClassST(className, null);
+        classes.put(className, classST);
     }
 
     public void addClassField(String className, String varType, String varName) throws SemanticException {
@@ -37,6 +44,16 @@ public class SymbolTable {
         classes.get(className).addMethodVar(methodName, varType, varName);
     }
 
+    /* Offset calculating functions: */
+
+    private int getClassFieldOffset(String className) {
+        return classes.get(className).getFieldOffset();
+    }
+
+    private int getClassMethodOffset(String className) {
+        return classes.get(className).getMethodOffset();
+    }
+
     public void printAllOffsets(String lPadding) {
         boolean mainFlag = true;    // used only to ignore main
         for (Map.Entry<String, ClassST> entry : classes.entrySet()) {
@@ -51,15 +68,30 @@ public class SymbolTable {
 
     private class ClassST {
         private String className;
-        private String extendsClassName;
+        private ClassST parentClass;
         private Map<String, String> fields;
         private Map<String, MethodST> methods;
+        private int fieldOffset;
+        private int methodOffset;
 
-        ClassST(String _className, String _extendsClassName) {
+        ClassST(String _className, ClassST _parentClass) {
             className = _className;
-            extendsClassName = _extendsClassName;
+            parentClass = _parentClass;
             fields = new LinkedHashMap<>();
             methods = new LinkedHashMap<>();
+            fieldOffset = methodOffset = -1;
+        }
+
+        ClassST getParentClass() {
+            return parentClass;
+        }
+
+        int getFieldOffset() {
+            return fieldOffset;
+        }
+
+        int getMethodOffset() {
+            return methodOffset;
         }
 
         void addField(String varType, String varName) throws SemanticException {
@@ -85,14 +117,47 @@ public class SymbolTable {
             methods.get(methodName).addVar(varType, varName);
         }
 
-        public void printClassOffsets(String lPadding) {
-            for (Map.Entry<String, String> entry : fields.entrySet()) {
-                System.out.println(lPadding + className + "." + entry.getKey());
-                // TODO: offset
+        private void calculateStartingFieldOffset() {
+            fieldOffset = 0;
+            ClassST currParentClass = parentClass;
+            while (currParentClass != null) {
+                fieldOffset += parentClass.getFieldOffset();
+                currParentClass = currParentClass.getParentClass();
             }
+        }
+
+        private void calculateStartingMethodOffset() {
+            methodOffset = 0;
+            ClassST currParentClass = parentClass;
+            while (currParentClass != null) {
+                fieldOffset += parentClass.getMethodOffset();
+                currParentClass = currParentClass.getParentClass();
+            }
+        }
+
+        public void printClassOffsets(String lPadding) {
+            calculateStartingFieldOffset();
+            for (Map.Entry<String, String> entry : fields.entrySet()) {
+                System.out.println(lPadding + className + "." + entry.getKey() + " : " + fieldOffset);
+                String fieldType = entry.getValue();
+                switch (fieldType) {
+                    case "int":
+                        fieldOffset += 4;
+                        break;
+                    case "boolean":
+                        fieldOffset++;
+                        break;
+                    case "int[]":
+                        fieldOffset += 8;
+                        break;
+                    default:
+                        fieldOffset += getClassFieldOffset(fieldType);
+                }
+            }
+            calculateStartingMethodOffset();
             for (Map.Entry<String, MethodST> entry : methods.entrySet()) {
-                System.out.println(lPadding + className + "." + entry.getKey());
-                // TODO: offset
+                System.out.println(lPadding + className + "." + entry.getKey() + " : " + methodOffset);
+                methodOffset += 8;      // TODO: check overrides
             }
         }
 
