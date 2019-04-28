@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -42,6 +43,17 @@ public class SymbolTable {
 
     public void addMethodVar(String className, String methodName, String varType, String varName) throws SemanticException {
         classes.get(className).addMethodVar(methodName, varType, varName);
+    }
+
+    private boolean isTypeValid(String type) {
+        return (type.equals("int") || type.equals("boolean") || type.equals("int[]") || classes.containsKey(type));
+    }
+
+    // Performs type checking and catches invalid method parameters in declarations
+    public void validateST() throws SemanticException {
+        for (Map.Entry<String, ClassST> entry : classes.entrySet()) {
+            entry.getValue().validateClassST();
+        }
     }
 
     /* Offset calculating functions: */
@@ -109,6 +121,19 @@ public class SymbolTable {
             methods.get(methodName).addVar(varType, varName);
         }
 
+        void validateClassST() throws SemanticException {
+            for (Map.Entry<String, String> entry : fields.entrySet()) {
+                String fieldType = entry.getValue();
+                if (!isTypeValid(fieldType)) {
+                    throw new SemanticException("'" + className + "." + entry.getKey() + "' has type '" + fieldType +
+                            "' which is never defined in the file");
+                }
+            }
+            for (Map.Entry<String, MethodST> entry : methods.entrySet()) {
+                entry.getValue().validateMethodST();
+            }
+        }
+
         /* Offset calculating functions: */
 
         private void calculateStartingFieldOffset() {
@@ -127,18 +152,18 @@ public class SymbolTable {
             }
         }
 
-        private boolean methodExistsInParent(String methodName) {
+        private MethodST getOverriddenMethod(String methodName) {
             ClassST currParentClass = parentClass;
             while (currParentClass != null) {
                 if (parentClass.methods.containsKey(methodName)) {
-                    return true;
+                    return parentClass.methods.get(methodName);
                 }
                 currParentClass = currParentClass.getParentClass();
             }
-            return false;
+            return null;
         }
 
-        public void printClassOffsets(String lPadding) {
+        void printClassOffsets(String lPadding) {
             calculateStartingFieldOffset();
             for (Map.Entry<String, String> entry : fields.entrySet()) {
                 System.out.println(lPadding + className + "." + entry.getKey() + " : " + fieldOffset);
@@ -157,7 +182,7 @@ public class SymbolTable {
             calculateStartingMethodOffset();
             for (Map.Entry<String, MethodST> entry : methods.entrySet()) {
                 String methodName = entry.getKey();
-                if (!methodExistsInParent(methodName)) {
+                if (getOverriddenMethod(methodName) == null) {
                     System.out.println(lPadding + className + "." + methodName + " : " + methodOffset);
                     methodOffset += 8;
                 }
@@ -190,6 +215,47 @@ public class SymbolTable {
                     throw new SemanticException("");
                 }
                 variables.put(varName, varType);
+            }
+
+            void validateMethodST() throws SemanticException {
+                if (!methodName.equals("main")) {
+                    if (!isTypeValid(returnType)) {
+                        throw new SemanticException("'" + className + "." + methodName + "()' has return type '" +
+                                returnType + "' which is never defined in the file");
+                    }
+                    // check if function parameters are same when the method is overridden:
+                    MethodST parentMethod = getOverriddenMethod(methodName);
+                    if (parentMethod != null) {
+                        Iterator currIt = parameters.entrySet().iterator();
+                        Iterator parentIt = parentMethod.parameters.entrySet().iterator();
+                        while (currIt.hasNext() && parentIt.hasNext()) {
+                            Map.Entry currEntry = (Map.Entry) currIt.next();
+                            Map.Entry parentEntry = (Map.Entry) parentIt.next();
+                            String currParamType = (String) currEntry.getValue();
+                            String parentParamType = (String) parentEntry.getValue();
+                            if (!currParamType.equals(parentParamType)) {
+                                throw new SemanticException("parameter '" + currEntry.getKey() + "' of '" + className +
+                                        "." + methodName + "()' has type '" + currParamType + "' while the same parameter " +
+                                        "from overridden method has type '" + parentParamType + "'");
+                            }
+                        }
+                        if (currIt.hasNext()) {
+                            throw new SemanticException("'" + className + "." + methodName + "()' overrides a " +
+                                    "method that has the same name but lesser number of arguments");
+                        }
+                        if (parentIt.hasNext()) {
+                            throw new SemanticException("'" + className + "." + methodName + "()' overrides a " +
+                                    "method that has the same name but greater number of arguments");
+                        }
+                    }
+                }
+                for (Map.Entry<String, String> entry : variables.entrySet()) {
+                    String varType = entry.getValue();
+                    if (!isTypeValid(varType)) {
+                        throw new SemanticException("variable '" + entry.getKey() + "' of class '" + className + "." +
+                                methodName + "()' has type '" + varType + "' which is never defined in the file");
+                    }
+                }
             }
 
         }

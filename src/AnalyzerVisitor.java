@@ -1,7 +1,7 @@
 import syntaxtree.*;
 import visitor.GJDepthFirst;
 
-public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
+public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 
 	private String currentClassName;
 	private String currentMethodName;
@@ -79,7 +79,7 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 			symbolTable.addClass(className, parentClassName);
 		} catch (SemanticException se) {
 			if (se.getMessage().endsWith("extends")) {
-				throw new SemanticException("class '" + className + "' extends '" + parentClassName + "' which has not been defined");
+				throw new SemanticException("class '" + className + "' extends '" + parentClassName + "' but the latter has not been defined");
 			} else {
 				throw new SemanticException("class '" + className + "' is already defined");
 			}

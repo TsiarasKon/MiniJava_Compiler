@@ -1,9 +1,13 @@
 class HelloWorld {
     public static void main(String[] args) {
-        int x;
-        boolean x;
+        derp x;
         int z;
         x = 5;
         System.out.println(x);
     }
+}
+
+class A {
+    derp x;
+    int[] y;
 }
