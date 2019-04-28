@@ -16,3 +16,8 @@ class B extends A {
     public int foo() { return k; }
     public boolean bla() { x=true; return x; }
 }
+
+class C extends B {
+    boolean k;
+    A next;
+}

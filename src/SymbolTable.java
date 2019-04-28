@@ -46,14 +46,6 @@ public class SymbolTable {
 
     /* Offset calculating functions: */
 
-    private int getClassFieldOffset(String className) {
-        return classes.get(className).getFieldOffset();
-    }
-
-    private int getClassMethodOffset(String className) {
-        return classes.get(className).getMethodOffset();
-    }
-
     public void printAllOffsets(String lPadding) {
         boolean mainFlag = true;    // used only to ignore main
         for (Map.Entry<String, ClassST> entry : classes.entrySet()) {
@@ -117,22 +109,33 @@ public class SymbolTable {
             methods.get(methodName).addVar(varType, varName);
         }
 
+        /* Offset calculating functions: */
+
         private void calculateStartingFieldOffset() {
-            fieldOffset = 0;
-            ClassST currParentClass = parentClass;
-            while (currParentClass != null) {
-                fieldOffset += parentClass.getFieldOffset();
-                currParentClass = currParentClass.getParentClass();
+            if (parentClass == null) {
+                fieldOffset = 0;
+            } else {
+                fieldOffset = parentClass.getFieldOffset();
             }
         }
 
         private void calculateStartingMethodOffset() {
-            methodOffset = 0;
+            if (parentClass == null) {
+                methodOffset = 0;
+            } else {
+                methodOffset = parentClass.getMethodOffset();
+            }
+        }
+
+        private boolean methodExistsInParent(String methodName) {
             ClassST currParentClass = parentClass;
             while (currParentClass != null) {
-                fieldOffset += parentClass.getMethodOffset();
+                if (parentClass.methods.containsKey(methodName)) {
+                    return true;
+                }
                 currParentClass = currParentClass.getParentClass();
             }
+            return false;
         }
 
         public void printClassOffsets(String lPadding) {
@@ -145,51 +148,52 @@ public class SymbolTable {
                         fieldOffset += 4;
                         break;
                     case "boolean":
-                        fieldOffset++;
+                        fieldOffset += 1;
                         break;
-                    case "int[]":
+                    default:        // "int[]" and class pointers
                         fieldOffset += 8;
-                        break;
-                    default:
-                        fieldOffset += getClassFieldOffset(fieldType);
                 }
             }
             calculateStartingMethodOffset();
             for (Map.Entry<String, MethodST> entry : methods.entrySet()) {
-                System.out.println(lPadding + className + "." + entry.getKey() + " : " + methodOffset);
-                methodOffset += 8;      // TODO: check overrides
+                String methodName = entry.getKey();
+                if (!methodExistsInParent(methodName)) {
+                    System.out.println(lPadding + className + "." + methodName + " : " + methodOffset);
+                    methodOffset += 8;
+                }
             }
         }
 
-    }
 
-    private class MethodST {
-        private String methodName;
-        private String returnType;
-        private LinkedHashMap<String, String> parameters;
-        private Map<String, String> variables;
+        private class MethodST {
+            private String methodName;
+            private String returnType;
+            private LinkedHashMap<String, String> parameters;
+            private Map<String, String> variables;
 
-        MethodST(String _returnType, String _methodName) {
-            methodName = _methodName;
-            returnType = _returnType;
-            parameters = new LinkedHashMap<>();
-            variables = new LinkedHashMap<>();
-        }
-
-        void addParam(String paramType, String paramName) throws SemanticException {
-            if (parameters.containsKey(paramName)) {
-                throw new SemanticException("");
+            MethodST(String _returnType, String _methodName) {
+                methodName = _methodName;
+                returnType = _returnType;
+                parameters = new LinkedHashMap<>();
+                variables = new LinkedHashMap<>();
             }
-            parameters.put(paramName, paramType);
+
+            void addParam(String paramType, String paramName) throws SemanticException {
+                if (parameters.containsKey(paramName)) {
+                    throw new SemanticException("");
+                }
+                parameters.put(paramName, paramType);
+            }
+
+            void addVar(String varType, String varName) throws SemanticException {
+                if (parameters.containsKey(varName) || variables.containsKey(varName)) {
+                    throw new SemanticException("");
+                }
+                variables.put(varName, varType);
+            }
+
         }
 
-        void addVar(String varType, String varName) throws SemanticException {
-            if (parameters.containsKey(varName) || variables.containsKey(varName)) {
-                throw new SemanticException("");
-            }
-            variables.put(varName, varType);
-        }
-        
     }
 
 }
