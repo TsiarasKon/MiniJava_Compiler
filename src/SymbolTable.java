@@ -49,6 +49,18 @@ public class SymbolTable {
         return classes.containsKey(className);
     }
 
+    public String getClassFieldType(String className, String varName) {
+        return (classes.containsKey(className)) ? classes.get(className).getFieldType(varName) : null;
+    }
+
+    public String getClassMethodReturnType(String className, String methodName) {
+        return (classes.containsKey(className)) ? classes.get(className).getMethodReturnType(methodName) : null;
+    }
+
+    public String getClassMethodVarType(String className, String methodName, String varName) {
+        return (classes.containsKey(className)) ? classes.get(className).getMethodVarType(methodName, varName) : null;
+    }
+
     private boolean isTypeValid(String type) {
         return (type.equals("int") || type.equals("boolean") || type.equals("int[]") || classes.containsKey(type));
     }
@@ -138,6 +150,26 @@ public class SymbolTable {
             }
         }
 
+        String getFieldType(String varName) {
+            ClassST currClass = this;
+            while (currClass != null) {
+                if (currClass.fields.containsKey(varName)) {
+                    return currClass.fields.get(varName);
+                }
+                // field might exist in paren class
+                currClass = currClass.getParentClass();
+            }
+            return null;
+        }
+
+        String getMethodReturnType(String methodName) {
+            return (methods.containsKey(methodName)) ? methods.get(methodName).getReturnType() : null;
+        }
+
+        String getMethodVarType(String methodName, String varName) {
+            return (methods.containsKey(methodName)) ? methods.get(methodName).getVarType(varName) : null;
+        }
+
         /* Offset calculating functions: */
 
         private void calculateStartingFieldOffset() {
@@ -159,8 +191,8 @@ public class SymbolTable {
         private MethodST getOverriddenMethod(String methodName) {
             ClassST currParentClass = parentClass;
             while (currParentClass != null) {
-                if (parentClass.methods.containsKey(methodName)) {
-                    return parentClass.methods.get(methodName);
+                if (currParentClass.methods.containsKey(methodName)) {
+                    return currParentClass.methods.get(methodName);
                 }
                 currParentClass = currParentClass.getParentClass();
             }
@@ -205,6 +237,10 @@ public class SymbolTable {
                 returnType = _returnType;
                 parameters = new LinkedHashMap<>();
                 variables = new LinkedHashMap<>();
+            }
+
+            String getReturnType() {
+                return returnType;
             }
 
             void addParam(String paramType, String paramName) throws SemanticException {
@@ -260,6 +296,10 @@ public class SymbolTable {
                                 methodName + "()' has type '" + varType + "' which is never defined in the file");
                     }
                 }
+            }
+
+            String getVarType(String varName) {
+                return variables.getOrDefault(varName, parameters.getOrDefault(varName, null));
             }
 
         }

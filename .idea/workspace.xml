@@ -4,6 +4,8 @@
     <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnalyzerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnalyzerVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +29,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5640798">
+    <splitter split-orientation="horizontal" split-proportion="0.63503325">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -46,7 +48,7 @@
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="2020">
-                  <caret line="115" column="69" selection-start-line="115" selection-start-column="69" selection-end-line="115" selection-end-column="69" />
+                  <caret line="127" column="69" selection-start-line="127" selection-start-column="69" selection-end-line="127" selection-end-column="69" />
                 </state>
               </provider>
             </entry>
@@ -66,14 +68,21 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="580">
-                  <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
+                <state relative-caret-position="704">
+                  <caret line="157" column="32" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
                   <folding>
-                    <element signature="e#3823#3824#0" expanded="true" />
-                    <element signature="e#3945#3946#0" expanded="true" />
-                    <element signature="e#4069#4070#0" expanded="true" />
-                    <element signature="e#4194#4195#0" expanded="true" />
-                    <element signature="e#4308#4309#0" expanded="true" />
+                    <element signature="method#visit#0;class#AnalyzerVisitor#0" />
+                    <element signature="method#visit#1;class#AnalyzerVisitor#0" />
+                    <element signature="method#visit#2;class#AnalyzerVisitor#0" />
+                    <element signature="method#visit#3;class#AnalyzerVisitor#0" />
+                    <element signature="method#visit#4;class#AnalyzerVisitor#0" />
+                    <element signature="method#visit#5;class#AnalyzerVisitor#0" />
+                    <element signature="method#visit#6;class#AnalyzerVisitor#0" />
+                    <element signature="e#6576#6577#0" expanded="true" />
+                    <element signature="e#6698#6699#0" expanded="true" />
+                    <element signature="e#6822#6823#0" expanded="true" />
+                    <element signature="e#6947#6948#0" expanded="true" />
+                    <element signature="e#7061#7062#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -83,23 +92,25 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="574">
-                  <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+                <state relative-caret-position="3760">
+                  <caret line="198" column="24" lean-forward="true" selection-start-line="198" selection-start-column="24" selection-end-line="198" selection-end-column="24" />
                   <folding>
                     <element signature="e#1781#1782#0" expanded="true" />
                     <element signature="e#1829#1830#0" expanded="true" />
+                    <element signature="e#8236#8237#0" expanded="true" />
+                    <element signature="e#8285#8286#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="261">
+                <state relative-caret-position="-951">
                   <caret line="94" column="17" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="17" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -111,8 +122,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="134">
-                  <caret line="644" selection-start-line="644" selection-end-line="657" selection-end-column="4" />
+                <state relative-caret-position="-566">
+                  <caret line="531" column="18" lean-forward="true" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -143,6 +154,7 @@
       <find>Type</find>
       <find>R</find>
       <find>A argu</find>
+      <find>currParentClass</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -293,7 +305,7 @@
       <workItem from="1556383052130" duration="19991000" />
       <workItem from="1556451808953" duration="14000" />
       <workItem from="1556453691928" duration="12393000" />
-      <workItem from="1556548070153" duration="6220000" />
+      <workItem from="1556548070153" duration="11886000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -379,11 +391,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556478064583</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Expression type checking logic">
+      <created>1556561829331</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1556561829331</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74224000" />
+    <option name="totallyTimeSpent" value="79890000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -435,7 +454,8 @@
     <MESSAGE value="More offset work&#10;+ needs care for method overrides" />
     <MESSAGE value="Completed offsets" />
     <MESSAGE value="Symbol Table validation&#10;in-between visitors, for type checking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Symbol Table validation&#10;in-between visitors, for type checking" />
+    <MESSAGE value="Expression type checking logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Expression type checking logic" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CHANGE - makefile" />
@@ -618,6 +638,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-566">
+          <caret line="531" column="18" lean-forward="true" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2020">
+          <caret line="127" column="69" selection-start-line="127" selection-start-column="69" selection-end-line="127" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-400">
@@ -628,33 +665,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="644" selection-start-line="644" selection-end-line="657" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2020">
-          <caret line="115" column="69" selection-start-line="115" selection-start-column="69" selection-end-line="115" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
+        <state relative-caret-position="704">
+          <caret line="157" column="32" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
           <folding>
-            <element signature="e#3823#3824#0" expanded="true" />
-            <element signature="e#3945#3946#0" expanded="true" />
-            <element signature="e#4069#4070#0" expanded="true" />
-            <element signature="e#4194#4195#0" expanded="true" />
-            <element signature="e#4308#4309#0" expanded="true" />
+            <element signature="method#visit#0;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#1;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#2;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#3;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#4;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#5;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#6;class#AnalyzerVisitor#0" />
+            <element signature="e#6576#6577#0" expanded="true" />
+            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="e#6822#6823#0" expanded="true" />
+            <element signature="e#6947#6948#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
           </folding>
         </state>
       </provider>
