@@ -45,6 +45,10 @@ public class SymbolTable {
         classes.get(className).addMethodVar(methodName, varType, varName);
     }
 
+    public boolean classExists(String className) {
+        return classes.containsKey(className);
+    }
+
     private boolean isTypeValid(String type) {
         return (type.equals("int") || type.equals("boolean") || type.equals("int[]") || classes.containsKey(type));
     }
