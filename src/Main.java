@@ -23,11 +23,16 @@ class Main {
 				AnalyzerVisitor analyzerVisitor = new AnalyzerVisitor();
 				root.accept(analyzerVisitor, symbolTable);
 				System.out.println(" Semantic analysis completed successfully.");
-				System.out.println(" Offsets:");
-				symbolTable.printAllOffsets("  ");
+				if (symbolTable.offsetsAvailable()) {
+					System.out.println(" Offsets:");
+					symbolTable.printAllOffsets("  ");
+				} else {
+					System.out.println(" (Only Main was provided - there are no offsets to be printed)");
+				}
 			} catch (FileNotFoundException | ParseException | SemanticException ex) {
 				System.err.println(ex.getMessage());
 			} catch (Exception ex) {        // should never get here
+				System.err.println(ex.getMessage());
 				System.err.println(" Encountered unexpected error while performing semantic analysis; dumping stack trace:");
 				ex.printStackTrace();
 			} finally {

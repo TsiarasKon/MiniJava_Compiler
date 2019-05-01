@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/myErr.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/myErr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/right/myCompilation.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/right/myCompilation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnalyzerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnalyzerVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,17 +32,26 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.51486903">
+    <splitter split-orientation="horizontal" split-proportion="0.4687084">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+                <state relative-caret-position="460">
+                  <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/inputs/right/myCompilation.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="480">
+                  <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -45,29 +59,21 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="20">
-                  <caret line="132" column="69" selection-start-line="132" selection-start-column="69" selection-end-line="132" selection-end-column="69" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="80">
-                  <caret line="81" column="120" selection-start-line="81" selection-start-column="120" selection-end-line="81" selection-end-column="120" />
+                <state relative-caret-position="537">
+                  <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
                   <folding>
-                    <element signature="imports" expanded="true" />
+                    <element signature="e#3756#3757#0" expanded="true" />
+                    <element signature="e#3797#3798#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="620">
-                  <caret line="100" column="35" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+                <state relative-caret-position="461">
+                  <caret line="350" column="24" lean-forward="true" selection-start-line="350" selection-start-column="24" selection-end-line="350" selection-end-column="24" />
                   <folding>
                     <element signature="method#visit#0;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#1;class#AnalyzerVisitor#0" />
@@ -75,26 +81,34 @@
                     <element signature="method#visit#3;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#4;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#5;class#AnalyzerVisitor#0" />
-                    <element signature="method#visit#6;class#AnalyzerVisitor#0" />
-                    <element signature="e#12830#12831#0" expanded="true" />
-                    <element signature="e#12952#12953#0" expanded="true" />
-                    <element signature="e#13076#13077#0" expanded="true" />
-                    <element signature="e#13201#13202#0" expanded="true" />
-                    <element signature="e#13315#13316#0" expanded="true" />
+                    <element signature="e#13642#13643#0" expanded="true" />
+                    <element signature="e#13764#13765#0" expanded="true" />
+                    <element signature="e#13888#13889#0" expanded="true" />
+                    <element signature="e#14013#14014#0" expanded="true" />
+                    <element signature="e#14127#14128#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/inputs/right/BinaryTree.java">
+              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="100">
-                  <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
+                <state relative-caret-position="1800">
+                  <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#3756#3757#0" expanded="true" />
+                    <element signature="e#3796#3797#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -123,11 +137,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="40">
-                  <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="20" />
+                <state relative-caret-position="220">
+                  <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -157,6 +171,8 @@
       <find>Type</find>
       <find>R</find>
       <find>argu</find>
+      <find>validateClassName</find>
+      <find>tried to</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -196,11 +212,12 @@
         <option value="$PROJECT_DIR$/inputs/HelloWorldErr.java" />
         <option value="$PROJECT_DIR$/src/FillSTVisitor.java" />
         <option value="$PROJECT_DIR$/inputs/offsetExample.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/SymbolTable.java" />
         <option value="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" />
         <option value="$PROJECT_DIR$/inputs/myErr.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/AnalyzerVisitor.java" />
+        <option value="$PROJECT_DIR$/inputs/right/myCompilation.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -234,6 +251,12 @@
               <item name="jtb-minijava" type="b2602c69:ProjectViewProjectNode" />
               <item name="jtb-minijava" type="462c0819:PsiDirectoryNode" />
               <item name="inputs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jtb-minijava" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jtb-minijava" type="462c0819:PsiDirectoryNode" />
+              <item name="inputs" type="462c0819:PsiDirectoryNode" />
+              <item name="right" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jtb-minijava" type="b2602c69:ProjectViewProjectNode" />
@@ -319,7 +342,7 @@
       <workItem from="1556451808953" duration="14000" />
       <workItem from="1556453691928" duration="12393000" />
       <workItem from="1556548070153" duration="13977000" />
-      <workItem from="1556721194185" duration="5754000" />
+      <workItem from="1556721194185" duration="11221000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -426,11 +449,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556727931537</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="If, while and print statements">
+      <created>1556729720169</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1556729720169</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87735000" />
+    <option name="totallyTimeSpent" value="93202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -453,7 +483,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3281372" />
+      <window_info active="true" anchor="bottom" x="3840" y="134" width="1080" height="1857" id="Terminal" order="10" type="WINDOWED" visible="true" weight="0.3281372" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -485,7 +515,8 @@
     <MESSAGE value="Expression type checking logic" />
     <MESSAGE value="MessageSend visit() and fixed important omission" />
     <MESSAGE value="Added parameter check of method calls" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added parameter check of method calls" />
+    <MESSAGE value="If, while and print statements" />
+    <option name="LAST_COMMIT_MESSAGE" value="If, while and print statements" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CHANGE - makefile" />
@@ -648,16 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs/offsetExample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -682,10 +703,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+    <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
+        <state relative-caret-position="220">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -699,10 +720,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/BinaryTree.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/myCompilation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
+          <folding>
+            <element signature="e#3756#3757#0" expanded="true" />
+            <element signature="e#3797#3798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="100" column="35" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+        <state relative-caret-position="461">
+          <caret line="350" column="24" lean-forward="true" selection-start-line="350" selection-start-column="24" selection-end-line="350" selection-end-column="24" />
           <folding>
             <element signature="method#visit#0;class#AnalyzerVisitor#0" />
             <element signature="method#visit#1;class#AnalyzerVisitor#0" />
@@ -710,20 +752,22 @@
             <element signature="method#visit#3;class#AnalyzerVisitor#0" />
             <element signature="method#visit#4;class#AnalyzerVisitor#0" />
             <element signature="method#visit#5;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#6;class#AnalyzerVisitor#0" />
-            <element signature="e#12830#12831#0" expanded="true" />
-            <element signature="e#12952#12953#0" expanded="true" />
-            <element signature="e#13076#13077#0" expanded="true" />
-            <element signature="e#13201#13202#0" expanded="true" />
-            <element signature="e#13315#13316#0" expanded="true" />
+            <element signature="e#13642#13643#0" expanded="true" />
+            <element signature="e#13764#13765#0" expanded="true" />
+            <element signature="e#13888#13889#0" expanded="true" />
+            <element signature="e#14013#14014#0" expanded="true" />
+            <element signature="e#14127#14128#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="20" />
+        <state relative-caret-position="460">
+          <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

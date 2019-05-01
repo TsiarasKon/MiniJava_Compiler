@@ -1,5 +1,5 @@
 class Main {
-	public static void main(String[] a) {
+	public static void main(String[] aaa) {
 		A a;
 		B b;
 		boolean bool;

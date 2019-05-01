@@ -72,6 +72,16 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		}
 	}
 
+	private void validateAssignment(SymbolTable symbolTable, String leftType, String rightType) throws SemanticException {
+	    if (leftType.equals(rightType) || rightType.equals("int") && !leftType.equals("INTEGER_LITERAL") || (rightType.equals("boolean") && !leftType.equals("BOOLEAN_LITERAL"))) {
+	        return;
+        }
+        if (!symbolTable.isClassOrSubclass(leftType, rightType)) {
+            throw new SemanticException("cannot assign a class of type '" + rightType + "' to a variable of type '" + leftType +
+                    "' because the former is not identical to or a subclass of the latter");
+        }
+    }
+
 	/* Overridden visit() methods: */
 
     /**
@@ -98,6 +108,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
         currentClassName = n.f1.accept(this, symbolTable);
         currentMethodName = "main";
         n.f15.accept(this, symbolTable);
+        currentMethodName = null;
+        currentClassName = null;
         return null;
     }
 
@@ -112,6 +124,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
     public String visit(ClassDeclaration n, SymbolTable symbolTable) throws Exception {
         currentClassName = n.f1.accept(this, symbolTable);
         n.f4.accept(this, symbolTable);
+        currentClassName = null;
         return null;
     }
 
@@ -128,6 +141,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
     public String visit(ClassExtendsDeclaration n, SymbolTable symbolTable) throws Exception {
         currentClassName = n.f1.accept(this, symbolTable);
         n.f6.accept(this, symbolTable);
+        currentClassName = null;
         return null;
     }
 
@@ -150,10 +164,39 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
         currentMethodName = n.f2.accept(this, symbolTable);
         n.f8.accept(this, symbolTable);
         n.f10.accept(this, symbolTable);
+        currentMethodName = null;
         return null;
     }
 
+//    /**
+//     * f0 -> Identifier()
+//     * f1 -> "="
+//     * f2 -> Expression()
+//     * f3 -> ";"
+//     */
+//    public String visit(AssignmentStatement n, SymbolTable symbolTable) throws Exception {
+//        String idType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, n.f0.accept(this, symbolTable));
+//        String f2str = n.f2.accept(this, symbolTable);
+//        validateAssignment(symbolTable, idType, f2str);
+//        return f2str;
+//    }
 
+    /**
+     * f0 -> Identifier()
+     * f1 -> "["
+     * f2 -> Expression()
+     * f3 -> "]"
+     * f4 -> "="
+     * f5 -> Expression()
+     * f6 -> ";"
+     */
+    public String visit(ArrayAssignmentStatement n, SymbolTable symbolTable) throws Exception {
+        // TODO: messages
+        validateType(n.f0.accept(this, symbolTable), symbolTable, "int[]", "type");
+        validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+        validateType2(n.f5.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+        return null;
+    }
 
     /**
      * f0 -> "if"
@@ -304,6 +347,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		} else {
 			validateClassName(f0str, symbolTable, "tried to call a method of class '" + f0str + "' but a class with that name has not been defined");
 		}
+//		String f0Type =
 		String f2str = n.f2.accept(this, symbolTable);
 		String methodReturnType = symbolTable.getClassMethodReturnType(f0str, f2str);
 		if (methodReturnType == null) {

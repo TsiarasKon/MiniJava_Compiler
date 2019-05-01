@@ -66,6 +66,10 @@ public class SymbolTable {
         classes.get(className).validateMethodParameters(methodName, methodParameters);
     }
 
+    public boolean isClassOrSubclass(String parentClassName, String inputClassName) {
+        return classes.get(parentClassName).isSelfOrSubclass(inputClassName);
+    }
+
     private boolean isTypeValid(String type) {
         return (type.equals("int") || type.equals("boolean") || type.equals("int[]") || classes.containsKey(type));
     }
@@ -88,6 +92,10 @@ public class SymbolTable {
             }
             entry.getValue().printClassOffsets(lPadding);
         }
+    }
+
+    public boolean offsetsAvailable() {
+        return classes.size() > 1;
     }
 
 
@@ -142,6 +150,17 @@ public class SymbolTable {
             methods.get(methodName).addVar(varType, varName);
         }
 
+        boolean isSelfOrSubclass(String inputClassName) {
+            ClassST currClass = this;
+            while (currClass != null) {
+                if (currClass.className.equals(inputClassName)) {
+                    return true;
+                }
+                currClass = currClass.getParentClass();
+            }
+            return false;
+        }
+
         void validateClassST() throws SemanticException {
             for (Map.Entry<String, String> entry : fields.entrySet()) {
                 String fieldType = entry.getValue();
@@ -161,7 +180,7 @@ public class SymbolTable {
                 if (currClass.fields.containsKey(varName)) {
                     return currClass.fields.get(varName);
                 }
-                // field might exist in paren class
+                // field might exist in parent class
                 currClass = currClass.getParentClass();
             }
             return null;
