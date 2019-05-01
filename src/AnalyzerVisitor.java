@@ -63,7 +63,11 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 			methodParameters.add("int");
 		} else if (type.equals("BOOLEAN_LITERAL")) {
 			methodParameters.add("boolean");
-		} else {
+		} else if (type.equals("this")) {
+            methodParameters.add(currentClassName);
+        } else if (type.equals("int") || type.equals("boolean") || type.equals("int[]") || symbolTable.classExists(type)) {
+            methodParameters.add(type);
+        } else {
 			String actualType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type);
 			if (actualType == null) {
 				throw new SemanticException("variable '" + type + "' has not been defined");
@@ -342,20 +346,21 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	    newlyCreatedClass = null;
 		// expected f0 type: class
 		String f0str = n.f0.accept(this, symbolTable);
+        String f0Type;
 		if (f0str.equals("this")) {
-			f0str = currentClassName;
+			f0str = f0Type = currentClassName;
 		} else {
 			validateClassName(f0str, symbolTable, "tried to call a method of class '" + f0str + "' but a class with that name has not been defined");
-		}
-//		String f0Type =
+            f0Type = (newlyCreatedClass == null) ? symbolTable.getClassMethodVarType(currentClassName, currentMethodName, f0str) : newlyCreatedClass;
+        }
 		String f2str = n.f2.accept(this, symbolTable);
-		String methodReturnType = symbolTable.getClassMethodReturnType(f0str, f2str);
+		String methodReturnType = symbolTable.getClassMethodReturnType(f0Type, f2str);
 		if (methodReturnType == null) {
 			throw new SemanticException("tried to call '" + f0str + "." + f2str + "()' but class '" + f0str + "' has no method named '" + f2str + "'");
 		}
 		methodParameters = new ArrayList<>();
         n.f4.accept(this, symbolTable);
-		symbolTable.validateClassMethodParameters(f0str, f2str, methodParameters);
+		symbolTable.validateClassMethodParameters(f0Type, f2str, methodParameters);
 		return methodReturnType;
 	}
 
@@ -450,5 +455,14 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		validateType2(n.f1.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
 		return "boolean";
 	}
+
+    /**
+     * f0 -> "("
+     * f1 -> Expression()
+     * f2 -> ")"
+     */
+    public String visit(BracketExpression n, SymbolTable symbolTable) throws Exception {
+        return n.f1.accept(this, symbolTable);
+    }
 
 }

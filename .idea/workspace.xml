@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/right/myCompilation.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/right/myCompilation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/right/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/right/LinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnalyzerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnalyzerVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,10 +30,10 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4687084">
+    <splitter split-orientation="horizontal" split-proportion="0.50865513">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="460">
@@ -47,33 +45,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/inputs/right/myCompilation.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="537">
-                  <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
-                  <folding>
-                    <element signature="e#3756#3757#0" expanded="true" />
-                    <element signature="e#3797#3798#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="461">
-                  <caret line="350" column="24" lean-forward="true" selection-start-line="350" selection-start-column="24" selection-end-line="350" selection-end-column="24" />
+                <state relative-caret-position="581">
+                  <caret line="69" column="16" lean-forward="true" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
                   <folding>
                     <element signature="method#visit#0;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#1;class#AnalyzerVisitor#0" />
@@ -81,19 +57,45 @@
                     <element signature="method#visit#3;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#4;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#5;class#AnalyzerVisitor#0" />
-                    <element signature="e#13642#13643#0" expanded="true" />
-                    <element signature="e#13764#13765#0" expanded="true" />
-                    <element signature="e#13888#13889#0" expanded="true" />
-                    <element signature="e#14013#14014#0" expanded="true" />
-                    <element signature="e#14127#14128#0" expanded="true" />
+                    <element signature="e#14070#14071#0" expanded="true" />
+                    <element signature="e#14192#14193#0" expanded="true" />
+                    <element signature="e#14316#14317#0" expanded="true" />
+                    <element signature="e#14441#14442#0" expanded="true" />
+                    <element signature="e#14555#14556#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/inputs/right/Factorial.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+                  <folding>
+                    <element signature="e#56#57#0" expanded="true" />
+                    <element signature="e#116#117#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/inputs/right/LinkedList.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="101">
+                  <caret line="129" column="32" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="32" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/inputs/right/BinaryTree.java">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
+                </state>
+              </provider>
             </entry>
           </file>
         </leaf>
@@ -103,11 +105,13 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1800">
-                  <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+                <state relative-caret-position="595">
+                  <caret line="311" column="121" selection-start-line="311" selection-start-column="121" selection-end-line="311" selection-end-column="121" />
                   <folding>
                     <element signature="e#3756#3757#0" expanded="true" />
                     <element signature="e#3796#3797#0" expanded="true" />
+                    <element signature="e#8985#8986#0" expanded="true" />
+                    <element signature="e#9034#9035#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -116,7 +120,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1180">
+                <state relative-caret-position="-839">
                   <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -128,8 +132,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="140">
-                  <caret line="69" selection-start-line="69" selection-end-line="219" selection-end-column="4" />
+                <state relative-caret-position="755">
+                  <caret line="666" column="30" lean-forward="true" selection-start-line="666" selection-start-column="30" selection-end-line="666" selection-end-column="30" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -173,6 +177,11 @@
       <find>argu</find>
       <find>validateClassName</find>
       <find>tried to</find>
+      <find>this</find>
+      <find>validateClassMet</find>
+      <find>variable</find>
+      <find>List</find>
+      <find>parameterListTypeAdd</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -214,10 +223,13 @@
         <option value="$PROJECT_DIR$/inputs/offsetExample.java" />
         <option value="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" />
         <option value="$PROJECT_DIR$/inputs/myErr.java" />
-        <option value="$PROJECT_DIR$/src/SymbolTable.java" />
-        <option value="$PROJECT_DIR$/src/AnalyzerVisitor.java" />
         <option value="$PROJECT_DIR$/inputs/right/myCompilation.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/inputs/right/ArrayTest.java" />
+        <option value="$PROJECT_DIR$/inputs/right/BubbleSort.java" />
+        <option value="$PROJECT_DIR$/inputs/right/LinkedList.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/AnalyzerVisitor.java" />
       </list>
     </option>
   </component>
@@ -342,7 +354,7 @@
       <workItem from="1556451808953" duration="14000" />
       <workItem from="1556453691928" duration="12393000" />
       <workItem from="1556548070153" duration="13977000" />
-      <workItem from="1556721194185" duration="11221000" />
+      <workItem from="1556721194185" duration="18056000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -456,11 +468,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556729720169</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Checkpoint&#10;&#10;Most is seemingly complete (except for initialization checks)&#10;but errors have been found">
+      <created>1556736107512</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1556736107512</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93202000" />
+    <option name="totallyTimeSpent" value="100037000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -516,7 +535,8 @@
     <MESSAGE value="MessageSend visit() and fixed important omission" />
     <MESSAGE value="Added parameter check of method calls" />
     <MESSAGE value="If, while and print statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="If, while and print statements" />
+    <MESSAGE value="Checkpoint&#10;&#10;Most is seemingly complete (except for initialization checks)&#10;but errors have been found" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checkpoint&#10;&#10;Most is seemingly complete (except for initialization checks)&#10;but errors have been found" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CHANGE - makefile" />
@@ -590,17 +610,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inputs/right/test17.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/Factorial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding>
-            <element signature="e#56#57#0" expanded="true" />
-            <element signature="e#116#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inputs/wrong/DoubleDeclaration4.java">
       <provider selected="true" editor-type-id="text-editor" />
@@ -686,16 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="69" selection-start-line="69" selection-end-line="219" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -710,19 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1180">
-          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/BinaryTree.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs/right/myCompilation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -730,33 +716,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+    <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
+        <state relative-caret-position="-839">
+          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
           <folding>
-            <element signature="e#3756#3757#0" expanded="true" />
-            <element signature="e#3797#3798#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="350" column="24" lean-forward="true" selection-start-line="350" selection-start-column="24" selection-end-line="350" selection-end-column="24" />
+        <state relative-caret-position="755">
+          <caret line="666" column="30" lean-forward="true" selection-start-line="666" selection-start-column="30" selection-end-line="666" selection-end-column="30" />
           <folding>
-            <element signature="method#visit#0;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#1;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#2;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#3;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#4;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#5;class#AnalyzerVisitor#0" />
-            <element signature="e#13642#13643#0" expanded="true" />
-            <element signature="e#13764#13765#0" expanded="true" />
-            <element signature="e#13888#13889#0" expanded="true" />
-            <element signature="e#14013#14014#0" expanded="true" />
-            <element signature="e#14127#14128#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,6 +742,91 @@
           <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/ArrayTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/CallFromSuper.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/BubbleSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/syntaxtree/ClassDeclaration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/FieldAndClassConflict.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="311" column="121" selection-start-line="311" selection-start-column="121" selection-end-line="311" selection-end-column="121" />
+          <folding>
+            <element signature="e#3756#3757#0" expanded="true" />
+            <element signature="e#3796#3797#0" expanded="true" />
+            <element signature="e#8985#8986#0" expanded="true" />
+            <element signature="e#9034#9035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="129" column="32" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/BinaryTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/Factorial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#56#57#0" expanded="true" />
+            <element signature="e#116#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="69" column="16" lean-forward="true" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding>
+            <element signature="method#visit#0;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#1;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#2;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#3;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#4;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#5;class#AnalyzerVisitor#0" />
+            <element signature="e#14070#14071#0" expanded="true" />
+            <element signature="e#14192#14193#0" expanded="true" />
+            <element signature="e#14316#14317#0" expanded="true" />
+            <element signature="e#14441#14442#0" expanded="true" />
+            <element signature="e#14555#14556#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -187,15 +187,38 @@ public class SymbolTable {
         }
 
         String getMethodReturnType(String methodName) {
-            return (methods.containsKey(methodName)) ? methods.get(methodName).getReturnType() : null;
+            ClassST currClass = this;
+            while (currClass != null) {
+                if (currClass.methods.containsKey(methodName)) {
+                    return currClass.methods.get(methodName).returnType;
+                }
+                currClass = currClass.getParentClass();
+            }
+            return null;
         }
 
         String getMethodVarType(String methodName, String varName) {
-            return (methods.containsKey(methodName)) ? methods.get(methodName).getVarType(varName) : null;
+            ClassST currClass = this;
+            while (currClass != null) {
+                if (currClass.methods.containsKey(methodName)) {
+                    return currClass.methods.get(methodName).getVarType(varName);
+                }
+                currClass = currClass.getParentClass();
+            }
+            return null;
         }
 
         void validateMethodParameters(String methodName, List<String> methodParameters) throws SemanticException {
-            methods.get(methodName).validateParameters(methodParameters);
+            ClassST currClass = this;
+            while (currClass != null) {
+                if (currClass.methods.containsKey(methodName)) {
+                    currClass.methods.get(methodName).validateParameters(methodParameters);
+                    return;
+                }
+                currClass = currClass.getParentClass();
+            }
+            // should never get here; method will always exist or would have been caught by FillSTVisitor
+            System.err.println("(!) Method '" + methodName + "' was not found during validation!");
         }
 
         /* Offset calculating functions: */
@@ -286,7 +309,7 @@ public class SymbolTable {
             }
 
             String getVarType(String varName) {
-                return variables.getOrDefault(varName, parameters.getOrDefault(varName, null));
+                return variables.getOrDefault(varName, parameters.getOrDefault(varName, fields.getOrDefault(varName, null)));
             }
 
             void validateParameters(List<String> methodParameters) throws SemanticException {
