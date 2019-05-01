@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
+    <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="MessageSend visit() and fixed important omission">
+      <change afterPath="$PROJECT_DIR$/inputs/myErr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnalyzerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnalyzerVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.java" afterDir="false" />
@@ -29,14 +33,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.63503325">
+    <splitter split-orientation="horizontal" split-proportion="0.51486903">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="400">
-                  <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+                <state relative-caret-position="420">
+                  <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -47,8 +51,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2020">
-                  <caret line="127" column="69" selection-start-line="127" selection-start-column="69" selection-end-line="127" selection-end-column="69" />
+                <state relative-caret-position="2300">
+                  <caret line="132" column="69" selection-start-line="132" selection-start-column="69" selection-end-line="132" selection-end-column="69" />
                 </state>
               </provider>
             </entry>
@@ -56,7 +60,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-400">
+                <state relative-caret-position="1600">
                   <caret line="81" column="120" selection-start-line="81" selection-start-column="120" selection-end-line="81" selection-end-column="120" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -68,8 +72,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="704">
-                  <caret line="157" column="32" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
+                <state relative-caret-position="-1480">
+                  <caret line="56" column="79" selection-start-line="56" selection-start-column="79" selection-end-line="56" selection-end-column="79" />
                   <folding>
                     <element signature="method#visit#0;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#1;class#AnalyzerVisitor#0" />
@@ -78,11 +82,11 @@
                     <element signature="method#visit#4;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#5;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#6;class#AnalyzerVisitor#0" />
-                    <element signature="e#6576#6577#0" expanded="true" />
-                    <element signature="e#6698#6699#0" expanded="true" />
-                    <element signature="e#6822#6823#0" expanded="true" />
-                    <element signature="e#6947#6948#0" expanded="true" />
-                    <element signature="e#7061#7062#0" expanded="true" />
+                    <element signature="e#7518#7519#0" expanded="true" />
+                    <element signature="e#7640#7641#0" expanded="true" />
+                    <element signature="e#7764#7765#0" expanded="true" />
+                    <element signature="e#7889#7890#0" expanded="true" />
+                    <element signature="e#8003#8004#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -95,22 +99,25 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3760">
-                  <caret line="198" column="24" lean-forward="true" selection-start-line="198" selection-start-column="24" selection-end-line="198" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#1781#1782#0" expanded="true" />
-                    <element signature="e#1829#1830#0" expanded="true" />
-                    <element signature="e#8236#8237#0" expanded="true" />
-                    <element signature="e#8285#8286#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="100">
+                  <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="260">
+                  <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-951">
+                <state relative-caret-position="-580">
                   <caret line="94" column="17" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="17" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -122,8 +129,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-566">
-                  <caret line="531" column="18" lean-forward="true" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
+                <state relative-caret-position="20">
+                  <caret line="531" column="18" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -151,10 +158,10 @@
       <find>throws</find>
       <find>Addin</find>
       <find>extend</find>
-      <find>Type</find>
       <find>R</find>
       <find>A argu</find>
       <find>currParentClass</find>
+      <find>Type</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -189,12 +196,14 @@
         <option value="$PROJECT_DIR$/sample_inputs/right/test15.java" />
         <option value="$PROJECT_DIR$/sample_inputs/right/Factorial.java" />
         <option value="$PROJECT_DIR$/sample_inputs/offsetExample.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/inputs/HelloWorldErr.java" />
         <option value="$PROJECT_DIR$/src/FillSTVisitor.java" />
         <option value="$PROJECT_DIR$/inputs/offsetExample.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/inputs/myErr.java" />
         <option value="$PROJECT_DIR$/src/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/AnalyzerVisitor.java" />
+        <option value="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" />
       </list>
     </option>
   </component>
@@ -210,6 +219,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,14 +241,18 @@
             <path>
               <item name="jtb-minijava" type="b2602c69:ProjectViewProjectNode" />
               <item name="jtb-minijava" type="462c0819:PsiDirectoryNode" />
+              <item name="inputs" type="462c0819:PsiDirectoryNode" />
+              <item name="wrong" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jtb-minijava" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jtb-minijava" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -250,17 +265,18 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="K:\Documents\GitHub\jtb-minijava\inputs" />
+      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\sample_inputs" />
       <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava" />
-      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\visitor" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\sample_inputs" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\src" />
       <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava" />
+      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\visitor" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -305,7 +321,8 @@
       <workItem from="1556383052130" duration="19991000" />
       <workItem from="1556451808953" duration="14000" />
       <workItem from="1556453691928" duration="12393000" />
-      <workItem from="1556548070153" duration="11886000" />
+      <workItem from="1556548070153" duration="13977000" />
+      <workItem from="1556721194185" duration="3909000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -398,17 +415,24 @@
       <option name="project" value="LOCAL" />
       <updated>1556561829331</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="MessageSend visit() and fixed important omission">
+      <created>1556567836939</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556567836939</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79890000" />
+    <option name="totallyTimeSpent" value="85890000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10337972" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10417495" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -455,7 +479,8 @@
     <MESSAGE value="Completed offsets" />
     <MESSAGE value="Symbol Table validation&#10;in-between visitors, for type checking" />
     <MESSAGE value="Expression type checking logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Expression type checking logic" />
+    <MESSAGE value="MessageSend visit() and fixed important omission" />
+    <option name="LAST_COMMIT_MESSAGE" value="MessageSend visit() and fixed important omission" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CHANGE - makefile" />
@@ -557,9 +582,6 @@
     <entry file="file://$PROJECT_DIR$/inputs/wrong/Factorial-error.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs/wrong/test21.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -621,44 +643,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/offsetExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+        <state relative-caret-position="420">
+          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/offsetExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-566">
-          <caret line="531" column="18" lean-forward="true" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2020">
-          <caret line="127" column="69" selection-start-line="127" selection-start-column="69" selection-end-line="127" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-400">
-          <caret line="81" column="120" selection-start-line="81" selection-start-column="120" selection-end-line="81" selection-end-column="120" />
+        <state relative-caret-position="20">
+          <caret line="531" column="18" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -667,8 +679,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="157" column="32" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="32" />
+        <state relative-caret-position="-1480">
+          <caret line="56" column="79" selection-start-line="56" selection-start-column="79" selection-end-line="56" selection-end-column="79" />
           <folding>
             <element signature="method#visit#0;class#AnalyzerVisitor#0" />
             <element signature="method#visit#1;class#AnalyzerVisitor#0" />
@@ -677,12 +689,36 @@
             <element signature="method#visit#4;class#AnalyzerVisitor#0" />
             <element signature="method#visit#5;class#AnalyzerVisitor#0" />
             <element signature="method#visit#6;class#AnalyzerVisitor#0" />
-            <element signature="e#6576#6577#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
-            <element signature="e#6822#6823#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#7061#7062#0" expanded="true" />
+            <element signature="e#7518#7519#0" expanded="true" />
+            <element signature="e#7640#7641#0" expanded="true" />
+            <element signature="e#7764#7765#0" expanded="true" />
+            <element signature="e#7889#7890#0" expanded="true" />
+            <element signature="e#8003#8004#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-580">
+          <caret line="94" column="17" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
         </state>
       </provider>
     </entry>

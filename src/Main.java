@@ -20,7 +20,8 @@ class Main {
 				FillSTVisitor fSTVisitor = new FillSTVisitor();
 				root.accept(fSTVisitor, symbolTable);
 				symbolTable.validateST();
-				// TODO: add second visitor
+				AnalyzerVisitor analyzerVisitor = new AnalyzerVisitor();
+				root.accept(analyzerVisitor, symbolTable);
 				System.out.println(" Semantic analysis completed successfully.");
 				System.out.println(" Offsets:");
 				symbolTable.printAllOffsets("  ");

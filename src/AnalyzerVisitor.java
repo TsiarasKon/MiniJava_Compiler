@@ -8,7 +8,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 
 	private String currentClassName;
 	private String currentMethodName;
-	private String expressionType;
+	private String newlyCreatedClass;
 	private ArrayList<String> methodParameters;
 
 	private void validateType(String type, SymbolTable symbolTable, String validType, String exceptionMsg) throws SemanticException {
@@ -36,9 +36,29 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	}
 
 	private void validateClassName(String className, SymbolTable symbolTable, String exceptionMsg) throws SemanticException {
-		String classType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, className);
-		if (classType == null || classType.equals("int") || classType.equals("boolean") || classType.equals("int[]")) {		// TODO: second exception message
-			throw new SemanticException(exceptionMsg);
+	    if (newlyCreatedClass != null) {
+	        if (!symbolTable.classExists(newlyCreatedClass)) {
+                throw new SemanticException(exceptionMsg);      // TODO other msg
+            }
+        } else {
+            String classType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, className);
+            if (classType == null || classType.equals("int") || classType.equals("boolean") || classType.equals("int[]")) {        // TODO: second exception message
+                throw new SemanticException(exceptionMsg);
+            }
+        }
+	}
+
+	private void parameterListTypeAdd(String type, SymbolTable symbolTable) throws SemanticException {
+		if (type.equals("INTEGER_LITERAL")) {
+			methodParameters.add("int");
+		} else if (type.equals("BOOLEAN_LITERAL")) {
+			methodParameters.add("boolean");
+		} else {
+			String actualType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type);
+			if (actualType == null) {
+				throw new SemanticException("variable '" + type + "' has not been defined");
+			}
+			methodParameters.add(actualType);
 		}
 	}
 
@@ -143,6 +163,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f5 -> ")"
 	 */
 	public String visit(MessageSend n, SymbolTable symbolTable) throws Exception {
+	    newlyCreatedClass = null;
 		// expected f0 type: class
 		String f0str = n.f0.accept(this, symbolTable);
 		if (f0str.equals("this")) {
@@ -150,11 +171,14 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		} else {
 			validateClassName(f0str, symbolTable, "tried to call a method of class '" + f0str + "' but a class with that name has not been defined");
 		}
-		String f2str = n.f0.accept(this, symbolTable);
+		String f2str = n.f2.accept(this, symbolTable);
 		String methodReturnType = symbolTable.getClassMethodReturnType(f0str, f2str);
 		if (methodReturnType == null) {
 			throw new SemanticException("tried to call '" + f0str + "." + f2str + "()' but class '" + f0str + "' has no method named '" + f2str + "'");
 		}
+		methodParameters = new ArrayList<>();
+        n.f4.accept(this, symbolTable);
+		symbolTable.validateClassMethodParameters(f0str, f2str, methodParameters);
 		return methodReturnType;
 	}
 
@@ -163,8 +187,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f1 -> ExpressionTail()
 	 */
 	public String visit(ExpressionList n, SymbolTable symbolTable) throws Exception {
-		methodParameters = new ArrayList<>();
-		methodParameters.add(n.f0.accept(this, symbolTable));
+		parameterListTypeAdd(n.f0.accept(this, symbolTable), symbolTable);
 		n.f1.accept(this, symbolTable);
 		return null;
 	}
@@ -174,7 +197,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f1 -> Expression()
 	 */
 	public String visit(ExpressionTerm n, SymbolTable symbolTable) throws Exception {
-		methodParameters.add(n.f1.accept(this, symbolTable));
+		parameterListTypeAdd(n.f1.accept(this, symbolTable), symbolTable);
 		return null;
 	}
 	
@@ -237,6 +260,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		if (!symbolTable.classExists(newClassName)) {
 			throw new SemanticException("trying to create a new instance of class '" + newClassName + "' but that class has not been defined");
 		}
+		newlyCreatedClass = newClassName;
 		return newClassName;
 	}
 

@@ -1,5 +1,6 @@
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SymbolTable {
@@ -59,6 +60,10 @@ public class SymbolTable {
 
     public String getClassMethodVarType(String className, String methodName, String varName) {
         return (classes.containsKey(className)) ? classes.get(className).getMethodVarType(methodName, varName) : null;
+    }
+
+    public void validateClassMethodParameters(String className, String methodName, List<String> methodParameters) throws SemanticException {
+        classes.get(className).validateMethodParameters(methodName, methodParameters);
     }
 
     private boolean isTypeValid(String type) {
@@ -170,6 +175,10 @@ public class SymbolTable {
             return (methods.containsKey(methodName)) ? methods.get(methodName).getVarType(varName) : null;
         }
 
+        void validateMethodParameters(String methodName, List<String> methodParameters) throws SemanticException {
+            methods.get(methodName).validateParameters(methodParameters);
+        }
+
         /* Offset calculating functions: */
 
         private void calculateStartingFieldOffset() {
@@ -257,6 +266,28 @@ public class SymbolTable {
                 variables.put(varName, varType);
             }
 
+            String getVarType(String varName) {
+                return variables.getOrDefault(varName, parameters.getOrDefault(varName, null));
+            }
+
+            void validateParameters(List<String> methodParameters) throws SemanticException {
+                Iterator currIt = parameters.entrySet().iterator();
+                for (String currParam : methodParameters) {
+                    if (!currIt.hasNext()) {
+                        throw new SemanticException("tried to call '" + className + "." + methodName + "()' with more parameters than it has been defined");
+                    }
+                    Map.Entry currEntry = (Map.Entry) currIt.next();
+                    String currActualParam = (String) currEntry.getValue();
+                    if (!currParam.equals(currActualParam)) {
+                        throw new SemanticException("tried to call '" + className + "." + methodName + "()' with a " +
+                                "parameter of type '" + currParam + "' where type '" + currActualParam + "' was expected");
+                    }
+                }
+                if (currIt.hasNext()) {
+                    throw new SemanticException("tried to call '" + className + "." + methodName + "()' with fewer parameters than it has been defined");
+                }
+            }
+
             void validateMethodST() throws SemanticException {
                 if (!methodName.equals("main")) {
                     if (!isTypeValid(returnType)) {
@@ -296,10 +327,6 @@ public class SymbolTable {
                                 methodName + "()' has type '" + varType + "' which is never defined in the file");
                     }
                 }
-            }
-
-            String getVarType(String varName) {
-                return variables.getOrDefault(varName, parameters.getOrDefault(varName, null));
             }
 
         }
