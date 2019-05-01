@@ -2,7 +2,6 @@ import syntaxtree.*;
 import visitor.GJDepthFirst;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 
@@ -22,7 +21,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		}
 	}
 
-	private void validateType(String type, SymbolTable symbolTable, String validType1, String validType2, String exceptionMsg) throws SemanticException {
+	private void validateType2(String type, SymbolTable symbolTable, String validType1, String validType2, String exceptionMsg) throws SemanticException {
 		if (!type.equals(validType1) && !type.equals(validType2)) {
 			if (currentMethodName == null && !validType1.equals(symbolTable.getClassFieldType(currentClassName, type)) &&
 					!validType2.equals(symbolTable.getClassFieldType(currentClassName, type))) {
@@ -34,6 +33,17 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 			}
 		}
 	}
+
+    private void validateType4(String type, SymbolTable symbolTable, String validType1, String validType2, String validType3, String validType4, String exceptionMsg) throws SemanticException {
+        if (!type.equals(validType1) && !type.equals(validType2) && !type.equals(validType3) && !type.equals(validType4)) {
+            if (!validType1.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type)) &&
+                    !validType2.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type)) &&
+                    !validType3.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type)) &&
+                    !validType4.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type))) {
+                throw new SemanticException(exceptionMsg);
+            }
+        }
+    }
 
 	private void validateClassName(String className, SymbolTable symbolTable, String exceptionMsg) throws SemanticException {
 	    if (newlyCreatedClass != null) {
@@ -64,6 +74,129 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 
 	/* Overridden visit() methods: */
 
+    /**
+     * f0 -> "class"
+     * f1 -> Identifier()
+     * f2 -> "{"
+     * f3 -> "public"
+     * f4 -> "static"
+     * f5 -> "void"
+     * f6 -> "main"
+     * f7 -> "("
+     * f8 -> "String"
+     * f9 -> "["
+     * f10 -> "]"
+     * f11 -> Identifier()
+     * f12 -> ")"
+     * f13 -> "{"
+     * f14 -> ( VarDeclaration() )*
+     * f15 -> ( Statement() )*
+     * f16 -> "}"
+     * f17 -> "}"
+     */
+    public String visit(MainClass n, SymbolTable symbolTable) throws Exception {
+        currentClassName = n.f1.accept(this, symbolTable);
+        currentMethodName = "main";
+        n.f15.accept(this, symbolTable);
+        return null;
+    }
+
+    /**
+     * f0 -> "class"
+     * f1 -> Identifier()
+     * f2 -> "{"
+     * f3 -> ( VarDeclaration() )*
+     * f4 -> ( MethodDeclaration() )*
+     * f5 -> "}"
+     */
+    public String visit(ClassDeclaration n, SymbolTable symbolTable) throws Exception {
+        currentClassName = n.f1.accept(this, symbolTable);
+        n.f4.accept(this, symbolTable);
+        return null;
+    }
+
+    /**
+     * f0 -> "class"
+     * f1 -> Identifier()
+     * f2 -> "extends"
+     * f3 -> Identifier()
+     * f4 -> "{"
+     * f5 -> ( VarDeclaration() )*
+     * f6 -> ( MethodDeclaration() )*
+     * f7 -> "}"
+     */
+    public String visit(ClassExtendsDeclaration n, SymbolTable symbolTable) throws Exception {
+        currentClassName = n.f1.accept(this, symbolTable);
+        n.f6.accept(this, symbolTable);
+        return null;
+    }
+
+    /**
+     * f0 -> "public"
+     * f1 -> Type()
+     * f2 -> Identifier()
+     * f3 -> "("
+     * f4 -> ( FormalParameterList() )?
+     * f5 -> ")"
+     * f6 -> "{"
+     * f7 -> ( VarDeclaration() )*
+     * f8 -> ( Statement() )*
+     * f9 -> "return"
+     * f10 -> Expression()
+     * f11 -> ";"
+     * f12 -> "}"
+     */
+    public String visit(MethodDeclaration n, SymbolTable symbolTable) throws Exception {
+        currentMethodName = n.f2.accept(this, symbolTable);
+        n.f8.accept(this, symbolTable);
+        n.f10.accept(this, symbolTable);
+        return null;
+    }
+
+
+
+    /**
+     * f0 -> "if"
+     * f1 -> "("
+     * f2 -> Expression()
+     * f3 -> ")"
+     * f4 -> Statement()
+     * f5 -> "else"
+     * f6 -> Statement()
+     */
+    public String visit(IfStatement n, SymbolTable symbolTable) throws Exception {
+        validateType2(n.f2.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+        n.f4.accept(this, symbolTable);
+        n.f6.accept(this, symbolTable);
+        return null;
+    }
+
+    /**
+     * f0 -> "while"
+     * f1 -> "("
+     * f2 -> Expression()
+     * f3 -> ")"
+     * f4 -> Statement()
+     */
+    public String visit(WhileStatement n, SymbolTable symbolTable) throws Exception {
+        validateType2(n.f2.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+        n.f4.accept(this, symbolTable);
+        return null;
+    }
+
+    /**
+     * f0 -> "System.out.println"
+     * f1 -> "("
+     * f2 -> Expression()
+     * f3 -> ")"
+     * f4 -> ";"
+     */
+    public String visit(PrintStatement n, SymbolTable symbolTable) throws Exception {
+        validateType4(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL",
+                "boolean", "BOOLEAN_LITERAL", "attempted to print non-printable type");
+        return null;
+    }
+    
 	/**
 	 * f0 -> Clause()
 	 * f1 -> "&&"
@@ -71,9 +204,9 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(AndExpression n, SymbolTable symbolTable) throws Exception {
 		// expected f0 type: int or INTEGER_LITERAL
-		validateType(n.f0.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+		validateType2(n.f0.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
 		// expected f2 type: int or INTEGER_LITERAL
-		validateType(n.f2.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+		validateType2(n.f2.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
 		return "boolean";
 	}
 
@@ -84,9 +217,9 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(CompareExpression n, SymbolTable symbolTable) throws Exception {
 		// expected f0 type: int or INTEGER_LITERAL
-		validateType(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		// expected f2 type: int or INTEGER_LITERAL
-		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		return "boolean";
 	}
 
@@ -97,9 +230,9 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(PlusExpression n, SymbolTable symbolTable) throws Exception {
 		// expected f0 type: int or INTEGER_LITERAL
-		validateType(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		// expected f2 type: int or INTEGER_LITERAL
-		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		return "int";
 	}
 
@@ -110,9 +243,9 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(MinusExpression n, SymbolTable symbolTable) throws Exception {
 		// expected f0 type: int or INTEGER_LITERAL
-		validateType(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		// expected f2 type: int or INTEGER_LITERAL
-		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		return "int";
 	}
 
@@ -123,9 +256,9 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(TimesExpression n, SymbolTable symbolTable) throws Exception {
 		// expected f0 type: int or INTEGER_LITERAL
-		validateType(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		// expected f2 type: int or INTEGER_LITERAL
-		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		return "int";
 	}
 
@@ -139,7 +272,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		// expected f0 type: int[]
 		validateType(n.f0.accept(this, symbolTable), symbolTable, "int[]", "type");
 		// expected f2 type: int or INTEGER_LITERAL
-		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		return "int";
 	}
 
@@ -245,7 +378,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(ArrayAllocationExpression n, SymbolTable symbolTable) throws Exception {
 		// expected f3 type: int or INTEGER_LITERAL
-		validateType(n.f3.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType2(n.f3.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
 		return "int[]";
 	}
 
@@ -270,7 +403,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(NotExpression n, SymbolTable symbolTable) throws Exception {
 		// expected f1 type: boolean or BOOLEAN_LITERAL
-		validateType(n.f1.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+		validateType2(n.f1.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
 		return "boolean";
 	}
 

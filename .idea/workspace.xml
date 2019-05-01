@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="MessageSend visit() and fixed important omission">
-      <change afterPath="$PROJECT_DIR$/inputs/myErr.java" afterDir="false" />
+    <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/myErr.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/myErr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnalyzerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnalyzerVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +45,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2300">
+                <state relative-caret-position="20">
                   <caret line="132" column="69" selection-start-line="132" selection-start-column="69" selection-end-line="132" selection-end-column="69" />
                 </state>
               </provider>
@@ -60,7 +54,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1600">
+                <state relative-caret-position="80">
                   <caret line="81" column="120" selection-start-line="81" selection-start-column="120" selection-end-line="81" selection-end-column="120" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -72,8 +66,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1480">
-                  <caret line="56" column="79" selection-start-line="56" selection-start-column="79" selection-end-line="56" selection-end-column="79" />
+                <state relative-caret-position="620">
+                  <caret line="100" column="35" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
                   <folding>
                     <element signature="method#visit#0;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#1;class#AnalyzerVisitor#0" />
@@ -82,11 +76,11 @@
                     <element signature="method#visit#4;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#5;class#AnalyzerVisitor#0" />
                     <element signature="method#visit#6;class#AnalyzerVisitor#0" />
-                    <element signature="e#7518#7519#0" expanded="true" />
-                    <element signature="e#7640#7641#0" expanded="true" />
-                    <element signature="e#7764#7765#0" expanded="true" />
-                    <element signature="e#7889#7890#0" expanded="true" />
-                    <element signature="e#8003#8004#0" expanded="true" />
+                    <element signature="e#12830#12831#0" expanded="true" />
+                    <element signature="e#12952#12953#0" expanded="true" />
+                    <element signature="e#13076#13077#0" expanded="true" />
+                    <element signature="e#13201#13202#0" expanded="true" />
+                    <element signature="e#13315#13316#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -105,20 +99,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="260">
-                  <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-580">
-                  <caret line="94" column="17" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="17" />
+                <state relative-caret-position="1180">
+                  <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -129,11 +114,20 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="20">
-                  <caret line="531" column="18" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
+                <state relative-caret-position="140">
+                  <caret line="69" selection-start-line="69" selection-end-line="219" selection-end-column="4" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="40">
+                  <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
@@ -158,15 +152,18 @@
       <find>throws</find>
       <find>Addin</find>
       <find>extend</find>
-      <find>R</find>
       <find>A argu</find>
       <find>currParentClass</find>
       <find>Type</find>
+      <find>R</find>
+      <find>argu</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
       <replace>param</replace>
       <replace>SymbolTable symbolTable</replace>
+      <replace>String</replace>
+      <replace>symbolTable</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -200,10 +197,10 @@
         <option value="$PROJECT_DIR$/src/FillSTVisitor.java" />
         <option value="$PROJECT_DIR$/inputs/offsetExample.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/inputs/myErr.java" />
         <option value="$PROJECT_DIR$/src/SymbolTable.java" />
-        <option value="$PROJECT_DIR$/src/AnalyzerVisitor.java" />
         <option value="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" />
+        <option value="$PROJECT_DIR$/inputs/myErr.java" />
+        <option value="$PROJECT_DIR$/src/AnalyzerVisitor.java" />
       </list>
     </option>
   </component>
@@ -322,7 +319,7 @@
       <workItem from="1556451808953" duration="14000" />
       <workItem from="1556453691928" duration="12393000" />
       <workItem from="1556548070153" duration="13977000" />
-      <workItem from="1556721194185" duration="3909000" />
+      <workItem from="1556721194185" duration="5754000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -422,11 +419,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556567836939</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added parameter check of method calls">
+      <created>1556727931537</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1556727931537</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85890000" />
+    <option name="totallyTimeSpent" value="87735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -480,7 +484,8 @@
     <MESSAGE value="Symbol Table validation&#10;in-between visitors, for type checking" />
     <MESSAGE value="Expression type checking logic" />
     <MESSAGE value="MessageSend visit() and fixed important omission" />
-    <option name="LAST_COMMIT_MESSAGE" value="MessageSend visit() and fixed important omission" />
+    <MESSAGE value="Added parameter check of method calls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added parameter check of method calls" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CHANGE - makefile" />
@@ -660,51 +665,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="531" column="18" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
+        <state relative-caret-position="140">
+          <caret line="69" selection-start-line="69" selection-end-line="219" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1480">
-          <caret line="56" column="79" selection-start-line="56" selection-start-column="79" selection-end-line="56" selection-end-column="79" />
-          <folding>
-            <element signature="method#visit#0;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#1;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#2;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#3;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#4;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#5;class#AnalyzerVisitor#0" />
-            <element signature="method#visit#6;class#AnalyzerVisitor#0" />
-            <element signature="e#7518#7519#0" expanded="true" />
-            <element signature="e#7640#7641#0" expanded="true" />
-            <element signature="e#7764#7765#0" expanded="true" />
-            <element signature="e#7889#7890#0" expanded="true" />
-            <element signature="e#8003#8004#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-580">
-          <caret line="94" column="17" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="260">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -715,10 +689,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
+    <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        <state relative-caret-position="1180">
+          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="100" column="35" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+          <folding>
+            <element signature="method#visit#0;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#1;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#2;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#3;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#4;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#5;class#AnalyzerVisitor#0" />
+            <element signature="method#visit#6;class#AnalyzerVisitor#0" />
+            <element signature="e#12830#12831#0" expanded="true" />
+            <element signature="e#12952#12953#0" expanded="true" />
+            <element signature="e#13076#13077#0" expanded="true" />
+            <element signature="e#13201#13202#0" expanded="true" />
+            <element signature="e#13315#13316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="20" />
         </state>
       </provider>
     </entry>
