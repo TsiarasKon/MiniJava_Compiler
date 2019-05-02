@@ -9,7 +9,7 @@ class Main {
 
 		a = b;
 
-		b = b.complex((a.subtype(b)).only(b));
+		b = b.complex(false);
 		System.out.println(b.getBoolean());
 	}
 }
