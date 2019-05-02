@@ -67,7 +67,7 @@ public class SymbolTable {
     }
 
     public boolean isClassOrSubclass(String parentClassName, String inputClassName) {
-        return classes.get(parentClassName).isSelfOrSubclass(inputClassName);
+        return (classes.containsKey(parentClassName)) ? classes.get(parentClassName).isSelfOrSubclass(inputClassName) : false;
     }
 
     private boolean isTypeValid(String type) {
@@ -198,10 +198,12 @@ public class SymbolTable {
         }
 
         String getMethodVarType(String methodName, String varName) {
+            String varTypeFromParentFields = null;
             ClassST currClass = this;
             while (currClass != null) {
                 if (currClass.methods.containsKey(methodName)) {
-                    return currClass.methods.get(methodName).getVarType(varName);
+                    String varTypeFromMethod = currClass.methods.get(methodName).getVarType(varName);
+                    return (varTypeFromMethod != null) ? varTypeFromMethod : getFieldType(varName);
                 }
                 currClass = currClass.getParentClass();
             }
@@ -320,7 +322,7 @@ public class SymbolTable {
                     }
                     Map.Entry currEntry = (Map.Entry) currIt.next();
                     String currActualParam = (String) currEntry.getValue();
-                    if (!currParam.equals(currActualParam)) {
+                    if (!currParam.equals(currActualParam) && !isClassOrSubclass(currParam, currActualParam)) {
                         throw new SemanticException("tried to call '" + className + "." + methodName + "()' with a " +
                                 "parameter of type '" + currParam + "' where type '" + currActualParam + "' was expected");
                     }
