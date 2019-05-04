@@ -112,7 +112,7 @@ public class SymbolTable {
             parentClass = _parentClass;
             fields = new LinkedHashMap<>();
             methods = new LinkedHashMap<>();
-            fieldOffset = methodOffset = -1;
+            fieldOffset = methodOffset = 0;
         }
 
         ClassST getParentClass() {
@@ -226,17 +226,13 @@ public class SymbolTable {
         /* Offset calculating functions: */
 
         private void calculateStartingFieldOffset() {
-            if (parentClass == null) {
-                fieldOffset = 0;
-            } else {
+            if (parentClass != null) {
                 fieldOffset = parentClass.getFieldOffset();
             }
         }
 
         private void calculateStartingMethodOffset() {
-            if (parentClass == null) {
-                methodOffset = 0;
-            } else {
+            if (parentClass != null) {
                 methodOffset = parentClass.getMethodOffset();
             }
         }
@@ -356,11 +352,11 @@ public class SymbolTable {
                         }
                         if (currIt.hasNext()) {
                             throw new SemanticException("'" + className + "." + methodName + "()' overrides a " +
-                                    "method that has the same name but lesser number of arguments");
+                                    "method of the same name but with lesser number of arguments");
                         }
                         if (parentIt.hasNext()) {
                             throw new SemanticException("'" + className + "." + methodName + "()' overrides a " +
-                                    "method that has the same name but greater number of arguments");
+                                    "method of the same name but with greater number of arguments");
                         }
                     }
                 }

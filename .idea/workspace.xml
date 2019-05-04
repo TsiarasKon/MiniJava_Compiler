@@ -4,8 +4,11 @@
     <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inputs/myErr.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/myErr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/right/myCompilation.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/right/myCompilation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnalyzerVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnalyzerVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable$ClassST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,14 +31,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6041759">
+    <splitter split-orientation="horizontal" split-proportion="0.48065808">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="520">
-                  <caret line="32" selection-start-line="32" selection-end-line="32" />
+                <state relative-caret-position="240">
+                  <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -46,48 +49,27 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="370">
-                  <caret line="94" column="41" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
+                <state relative-caret-position="384">
+                  <caret line="266" column="118" lean-forward="true" selection-start-line="266" selection-start-column="118" selection-end-line="266" selection-end-column="118" />
                   <folding>
-                    <element signature="e#5284#5696#0" />
-                    <element signature="e#5702#6170#0" />
-                    <element signature="e#7878#8333#0" />
-                    <element signature="e#15324#15325#0" expanded="true" />
-                    <element signature="e#15446#15447#0" expanded="true" />
-                    <element signature="e#15570#15571#0" expanded="true" />
-                    <element signature="e#15695#15696#0" expanded="true" />
-                    <element signature="e#15809#15810#0" expanded="true" />
+                    <element signature="e#15608#15609#0" expanded="true" />
+                    <element signature="e#15730#15731#0" expanded="true" />
+                    <element signature="e#15854#15855#0" expanded="true" />
+                    <element signature="e#15979#15980#0" expanded="true" />
+                    <element signature="e#16093#16094#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/inputs/right/myCompilation.java">
+            <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="960">
-                  <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/inputs/wrong/TreeVisitor-error.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="400">
-                  <caret line="338" column="26" lean-forward="true" selection-start-line="338" selection-start-column="26" selection-end-line="338" selection-end-column="26" />
+                <state relative-caret-position="540">
+                  <caret line="30" column="44" lean-forward="true" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
                   <folding>
-                    <element signature="e#0#7159#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="380">
-                  <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -96,27 +78,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="230">
-                  <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#3756#3757#0" expanded="true" />
-                    <element signature="e#3797#3798#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="20">
-                  <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="741">
+                  <caret line="358" column="70" selection-start-line="358" selection-start-column="70" selection-end-line="358" selection-end-column="70" />
                 </state>
               </provider>
             </entry>
@@ -125,26 +91,12 @@
             <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="240">
-                  <caret line="589" selection-start-line="589" selection-end-line="589" />
+                  <caret line="14" column="58" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="58" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/inputs/right/test93.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="460">
-                  <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/inputs/right/test17.java">
-              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
         </leaf>
@@ -153,13 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>IntegerType</find>
-      <find>Ident</find>
-      <find>Identifier</find>
-      <find>MainST</find>
-      <find>Arg</find>
-      <find>arg</find>
-      <find>Main</find>
       <find>methods</find>
       <find>inse</find>
       <find>throws</find>
@@ -177,12 +122,19 @@
       <find>parameterListTypeAdd</find>
       <find>tried</find>
       <find>Alloca</find>
-      <find>isClassOrSubclass</find>
       <find>tried to</find>
       <find>validateClassName</find>
       <find>MethodDe</find>
       <find>complex</find>
+      <find>a(</find>
+      <find>isClassOrSubclass</find>
       <find>Methodre</find>
+      <find>cannot assig</find>
+      <find>sz1</find>
+      <find>overr</find>
+      <find>overrides</find>
+      <find>TE</find>
+      <find>validateType2</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -223,23 +175,24 @@
         <option value="$PROJECT_DIR$/src/FillSTVisitor.java" />
         <option value="$PROJECT_DIR$/inputs/offsetExample.java" />
         <option value="$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/inputs/right/ArrayTest.java" />
         <option value="$PROJECT_DIR$/inputs/right/BubbleSort.java" />
         <option value="$PROJECT_DIR$/inputs/right/LinkedList.java" />
-        <option value="$PROJECT_DIR$/src/SymbolTable.java" />
         <option value="$PROJECT_DIR$/inputs/right/test93.java" />
         <option value="$PROJECT_DIR$/inputs/wrong/TreeVisitor-error.java" />
-        <option value="$PROJECT_DIR$/inputs/myErr.java" />
         <option value="$PROJECT_DIR$/inputs/right/myCompilation.java" />
+        <option value="$PROJECT_DIR$/inputs/myErr.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/inputs/wrong/Factorial-error.java" />
         <option value="$PROJECT_DIR$/src/AnalyzerVisitor.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="width" value="3860" />
-    <option name="height" value="1061" />
+    <option name="x" value="-12" />
+    <option name="width" value="3861" />
+    <option name="height" value="1062" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -247,7 +200,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -286,13 +239,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556830674230" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556831101442" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -302,18 +255,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="K:\Documents\GitHub\jtb-minijava\inputs" />
-      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\sample_inputs" />
+      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\src" />
       <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava" />
+      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\visitor" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="K:\Documents\GitHub\jtb-minijava\inputs" />
+      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\sample_inputs" />
       <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava" />
-      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\visitor" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -361,7 +315,8 @@
       <workItem from="1556453691928" duration="12393000" />
       <workItem from="1556548070153" duration="13977000" />
       <workItem from="1556721194185" duration="18156000" />
-      <workItem from="1556812472121" duration="12190000" />
+      <workItem from="1556812472121" duration="12983000" />
+      <workItem from="1556985510398" duration="9361000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -496,28 +451,34 @@
       <option name="project" value="LOCAL" />
       <updated>1556819722054</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Many bug fixes part 3&#10;&#10;and also some additions">
+      <created>1556830793370</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1556830793370</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112327000" />
+    <option name="totallyTimeSpent" value="122481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10497018" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10576541" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.32969603" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969603" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32969603" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3998441" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3998441" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -526,6 +487,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info active="true" anchor="bottom" x="3840" y="134" width="1080" height="1857" id="Terminal" maximized="true" order="10" type="WINDOWED" visible="true" weight="0.3281372" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32969603" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -560,144 +522,10 @@
     <MESSAGE value="Checkpoint&#10;&#10;Most is seemingly complete (except for initialization checks)&#10;but errors have been found" />
     <MESSAGE value="Many bug fixes" />
     <MESSAGE value="Many bug fixes part 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Many bug fixes part 2" />
+    <MESSAGE value="Many bug fixes part 3&#10;&#10;and also some additions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Many bug fixes part 3&#10;&#10;and also some additions" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/inputs/right/test07.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/test15.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/DoubleDeclaration4.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/DoubleDeclaration6.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/DoubleDeclaration1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/Factorial-error.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test21.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test18.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test35.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test52.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/UseArgs.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/NoMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MiniJavaParserConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParseException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SemanticException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding>
-            <element signature="e#102#103#0" expanded="true" />
-            <element signature="e#159#160#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/HelloWorldErr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/ArrayTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/CallFromSuper.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/syntaxtree/ClassDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/FieldAndClassConflict.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/Factorial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding>
-            <element signature="e#56#57#0" expanded="true" />
-            <element signature="e#116#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2420">
-          <caret line="129" column="32" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/test20.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#1074#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/syntaxtree/PrintStatement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -775,58 +603,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-          <folding>
-            <element signature="e#3756#3757#0" expanded="true" />
-            <element signature="e#3797#3798#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs/right/Classes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test68.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="32" column="27" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="589" selection-start-line="589" selection-end-line="589" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -840,13 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/test93.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs/right/ManyClasses.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -854,52 +627,220 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/NoMatchingMethod.java">
+    <entry file="file://$PROJECT_DIR$/inputs/right/test93.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/test73.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/Overload2.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/LinkedList-error.java">
+    <entry file="file://$PROJECT_DIR$/inputs/right/FieldAndClassConflict.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1760" />
+        <state relative-caret-position="340">
+          <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="178" selection-start-line="178" selection-end-line="178" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/BadAssign.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/BadAssign2.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/BubbleSort-error.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="769">
+          <caret line="75" column="14" selection-start-line="75" selection-start-column="11" selection-end-line="75" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/piazza1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="38" column="121" lean-forward="true" selection-start-line="38" selection-start-column="121" selection-end-line="38" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="14" column="58" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="358" column="70" selection-start-line="358" selection-start-column="70" selection-end-line="358" selection-end-column="70" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inputs/myErr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        <state relative-caret-position="440">
+          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/DoubleDeclaration1.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/DoubleDeclaration4.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/Classes-error.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/DoubleDeclaration6.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/right/Factorial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="19" />
+          <folding>
+            <element signature="e#56#57#0" expanded="true" />
+            <element signature="e#116#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/myCompilation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1100">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/Factorial-error.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <folding>
+            <element signature="e#56#57#0" expanded="true" />
+            <element signature="e#116#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/LinearSearch-error.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/LinkedList-error.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="104" column="13" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/NoMatchingMethod.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/NoMethod.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/Overload1.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/test18.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/QuickSort-error.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/test21.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="266" column="118" lean-forward="true" selection-start-line="266" selection-start-column="118" selection-end-line="266" selection-end-column="118" />
+          <folding>
+            <element signature="e#15608#15609#0" expanded="true" />
+            <element signature="e#15730#15731#0" expanded="true" />
+            <element signature="e#15854#15855#0" expanded="true" />
+            <element signature="e#15979#15980#0" expanded="true" />
+            <element signature="e#16093#16094#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/test35.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/test52.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/test68.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs/wrong/UseArgs.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/inputs/wrong/TreeVisitor-error.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="338" column="26" lean-forward="true" selection-start-line="338" selection-start-column="26" selection-end-line="338" selection-end-column="26" />
+        <state relative-caret-position="355">
+          <caret line="338" column="26" selection-start-line="338" selection-start-column="26" selection-end-line="338" selection-end-column="26" />
           <folding>
             <element signature="e#0#7159#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AnalyzerVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/FillSTVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="94" column="41" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
+        <state relative-caret-position="540">
+          <caret line="30" column="44" lean-forward="true" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
           <folding>
-            <element signature="e#5284#5696#0" />
-            <element signature="e#5702#6170#0" />
-            <element signature="e#7878#8333#0" />
-            <element signature="e#15324#15325#0" expanded="true" />
-            <element signature="e#15446#15447#0" expanded="true" />
-            <element signature="e#15570#15571#0" expanded="true" />
-            <element signature="e#15695#15696#0" expanded="true" />
-            <element signature="e#15809#15810#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs/right/myCompilation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
         </state>
       </provider>
     </entry>

@@ -10,7 +10,7 @@ class Main {
 		}
 		FileInputStream fis = null;
 		for (int i = 0; i < args.length; i++) {
-			System.out.println("\nFile #" + i + " - '" + args[i] + "':");
+			System.out.println("\nFile #" + (i+1) + " - '" + args[i] + "':");
 			try{
 				fis = new FileInputStream(args[i]);
 				MiniJavaParser parser = new MiniJavaParser(fis);

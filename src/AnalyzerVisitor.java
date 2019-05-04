@@ -15,7 +15,11 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 			if (currentMethodName == null && !validType.equals(symbolTable.getClassFieldType(currentClassName, type))) {
 				throw new SemanticException(exceptionMsg);
 			}
-			if (!validType.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type))) {
+			String actualType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type);
+			if (actualType == null && !type.equals("int") && !type.equals("boolean") && !type.equals("int[]")) {
+				throw new SemanticException("unknown identifier '" + type + "'");
+			}
+			if (!validType.equals(actualType)) {
 				throw new SemanticException(exceptionMsg);
 			}
 		}
@@ -27,23 +31,15 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 					!validType2.equals(symbolTable.getClassFieldType(currentClassName, type))) {
 				throw new SemanticException(exceptionMsg);
 			}
-			if (!validType1.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type)) &&
-					!validType2.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type))) {
+			String actualType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type);
+			if (actualType == null && !type.equals("int") && !type.equals("boolean") && !type.equals("int[]")) {
+				throw new SemanticException("unknown identifier '" + type + "'");
+			}
+			if (!validType1.equals(actualType) && !validType2.equals(actualType)) {
 				throw new SemanticException(exceptionMsg);
 			}
 		}
 	}
-
-    private void validateType4(String type, SymbolTable symbolTable, String validType1, String validType2, String validType3, String validType4, String exceptionMsg) throws SemanticException {
-        if (!type.equals(validType1) && !type.equals(validType2) && !type.equals(validType3) && !type.equals(validType4)) {
-            if (!validType1.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type)) &&
-                    !validType2.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type)) &&
-                    !validType3.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type)) &&
-                    !validType4.equals(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type))) {
-                throw new SemanticException(exceptionMsg);
-            }
-        }
-    }
 
 	private void validateClassName(String className, SymbolTable symbolTable, String exceptionMsg) throws SemanticException {
 	    if (newlyCreatedClass != null) {
@@ -84,9 +80,11 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 				rightType.equals("BOOLEAN_LITERAL")) || leftType.equals(possibleRightClassType) || symbolTable.isClassOrSubclass(rightType, leftType)) {
 	    	return;
         }
-	    if (possibleRightClassType == null || !symbolTable.isClassOrSubclass(possibleRightClassType, leftType)) {
-            throw new SemanticException("cannot assign a class of type '" + rightType + "' to a variable of type '" + leftType +
-                    "' because the former is not identical to or a subclass of the latter");
+	    if (possibleRightClassType == null) {
+			throw new SemanticException("unknown identifier '" + rightType + "'");
+		}
+	    if (!symbolTable.isClassOrSubclass(possibleRightClassType, leftType)) {
+            throw new SemanticException("cannot assign an expression of type '" + possibleRightClassType + "' to a variable of type '" + leftType + "'");
         }
     }
 
@@ -221,10 +219,9 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
      * f6 -> ";"
      */
     public String visit(ArrayAssignmentStatement n, SymbolTable symbolTable) throws Exception {
-        // TODO: messages
-        validateType(n.f0.accept(this, symbolTable), symbolTable, "int[]", "type");
-        validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
-        validateType2(n.f5.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+        validateType(n.f0.accept(this, symbolTable), symbolTable, "int[]", "trying to get an element of a non-array type");
+        validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "array index is not an integer");
+        validateType(n.f5.accept(this, symbolTable), symbolTable, "int", "trying to assign a non-integer to an integer array element");
         return null;
     }
 
@@ -238,7 +235,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
      * f6 -> Statement()
      */
     public String visit(IfStatement n, SymbolTable symbolTable) throws Exception {
-        validateType2(n.f2.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+        validateType(n.f2.accept(this, symbolTable), symbolTable, "boolean", "using a non-boolean value for an 'if' condition");
         n.f4.accept(this, symbolTable);
         n.f6.accept(this, symbolTable);
         return null;
@@ -252,7 +249,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
      * f4 -> Statement()
      */
     public String visit(WhileStatement n, SymbolTable symbolTable) throws Exception {
-        validateType2(n.f2.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+        validateType(n.f2.accept(this, symbolTable), symbolTable, "boolean", "using a non-boolean value for a 'while' condition");
         n.f4.accept(this, symbolTable);
         return null;
     }
@@ -265,8 +262,9 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
      * f4 -> ";"
      */
     public String visit(PrintStatement n, SymbolTable symbolTable) throws Exception {
-        validateType4(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL",
-                "boolean", "BOOLEAN_LITERAL", "attempted to print non-printable type");
+    	String f2str = n.f2.accept(this, symbolTable);
+		String f2Type = (f2str.equals("int") || f2str.equals("boolean") || f2str.equals("int[]")) ? f2str : symbolTable.getClassMethodVarType(currentClassName, currentMethodName, f2str);
+        validateType2(f2str, symbolTable, "int", "boolean", "attempted to print non-printable type '" + f2Type + "'");
         return null;
     }
     
@@ -276,10 +274,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f2 -> Clause()
 	 */
 	public String visit(AndExpression n, SymbolTable symbolTable) throws Exception {
-		// expected f0 type: int or INTEGER_LITERAL
-		validateType2(n.f0.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
-		// expected f2 type: int or INTEGER_LITERAL
-		validateType2(n.f2.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+		validateType(n.f0.accept(this, symbolTable), symbolTable, "boolean", "left clause of '&&' operator is not a boolean");
+		validateType(n.f2.accept(this, symbolTable), symbolTable, "boolean", "right clause of '&&' operator is not a boolean");
 		return "boolean";
 	}
 
@@ -289,10 +285,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f2 -> PrimaryExpression()
 	 */
 	public String visit(CompareExpression n, SymbolTable symbolTable) throws Exception {
-		// expected f0 type: int or INTEGER_LITERAL
-		validateType2(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
-		// expected f2 type: int or INTEGER_LITERAL
-		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType(n.f0.accept(this, symbolTable), symbolTable, "int", "left expression of '<' operator is not an integer");
+		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "right expression of '<' operator is not an integer");
 		return "boolean";
 	}
 
@@ -302,10 +296,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f2 -> PrimaryExpression()
 	 */
 	public String visit(PlusExpression n, SymbolTable symbolTable) throws Exception {
-		// expected f0 type: int or INTEGER_LITERAL
-		validateType2(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
-		// expected f2 type: int or INTEGER_LITERAL
-		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType(n.f0.accept(this, symbolTable), symbolTable, "int", "left expression of '+' operator is not a boolean");
+		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "right expression of '+' operator is not an integer");
 		return "int";
 	}
 
@@ -315,10 +307,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f2 -> PrimaryExpression()
 	 */
 	public String visit(MinusExpression n, SymbolTable symbolTable) throws Exception {
-		// expected f0 type: int or INTEGER_LITERAL
-		validateType2(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
-		// expected f2 type: int or INTEGER_LITERAL
-		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType(n.f0.accept(this, symbolTable), symbolTable, "int", "left expression of '-' operator is not a boolean");
+		validateType(n.f2.accept(this, symbolTable), symbolTable, "int",  "right expression of '-' operator is not an integer");
 		return "int";
 	}
 
@@ -328,10 +318,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f2 -> PrimaryExpression()
 	 */
 	public String visit(TimesExpression n, SymbolTable symbolTable) throws Exception {
-		// expected f0 type: int or INTEGER_LITERAL
-		validateType2(n.f0.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
-		// expected f2 type: int or INTEGER_LITERAL
-		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType(n.f0.accept(this, symbolTable), symbolTable, "int", "left expression of '*' operator is not a boolean");
+		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "right expression of '*' operator is not an integer");
 		return "int";
 	}
 
@@ -342,10 +330,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f3 -> "]"
 	 */
 	public String visit(ArrayLookup n, SymbolTable symbolTable) throws Exception {
-		// expected f0 type: int[]
-		validateType(n.f0.accept(this, symbolTable), symbolTable, "int[]", "type");
-		// expected f2 type: int or INTEGER_LITERAL
-		validateType2(n.f2.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType(n.f0.accept(this, symbolTable), symbolTable, "int[]", "trying to get an element of a non-array type");
+		validateType(n.f2.accept(this, symbolTable), symbolTable, "int", "array index is not an integer");
 		return "int";
 	}
 
@@ -355,8 +341,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f2 -> "length"
 	 */
 	public String visit(ArrayLength n, SymbolTable symbolTable) throws Exception {
-		// expected f0 type: int[]
-		validateType(n.f0.accept(this, symbolTable), symbolTable, "int[]", "type");
+		validateType(n.f0.accept(this, symbolTable), symbolTable, "int[]", "trying to get length of a non-array type");
 		return "int";
 	}
 
@@ -371,21 +356,23 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	public String visit(MessageSend n, SymbolTable symbolTable) throws Exception {
 	    newlyCreatedClass = null;
 		String f0str = n.f0.accept(this, symbolTable);
-        String f0Type;
-		if (f0str.equals("this")) {
-			f0str = f0Type = currentClassName;
-		} else {
-			validateClassName(f0str, symbolTable, "tried to call a method of class '" + f0str + "' but a class with that name has not been defined");
-            f0Type = (symbolTable.classExists(f0str)) ? f0str : (newlyCreatedClass == null) ? symbolTable.getClassMethodVarType(currentClassName, currentMethodName, f0str) : newlyCreatedClass;
-        }
+		validateClassName(f0str, symbolTable, "tried to call a method of class '" + f0str + "' but a class with that name has not been defined");
+		String f0Type = (symbolTable.classExists(f0str)) ? f0str : (newlyCreatedClass == null) ? symbolTable.getClassMethodVarType(currentClassName, currentMethodName, f0str) : newlyCreatedClass;
 		String f2str = n.f2.accept(this, symbolTable);
 		String methodReturnType = symbolTable.getClassMethodReturnType(f0Type, f2str);
 		if (methodReturnType == null) {
 			throw new SemanticException("tried to call '" + f0str + "." + f2str + "()' but class '" + f0str + "' has no method named '" + f2str + "'");
 		}
+		ArrayList<String> previousMethodParameters = null;		// needed for nested method calls
+		if (methodParameters != null) {
+			previousMethodParameters = new ArrayList<>(methodParameters);
+		}
 		methodParameters = new ArrayList<>();
         n.f4.accept(this, symbolTable);
 		symbolTable.validateClassMethodParameters(f0Type, f2str, methodParameters);
+		if (previousMethodParameters != null) {
+			methodParameters = previousMethodParameters;
+		}
 		return methodReturnType;
 	}
 
@@ -406,6 +393,30 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	public String visit(ExpressionTerm n, SymbolTable symbolTable) throws Exception {
 		parameterListTypeAdd(n.f1.accept(this, symbolTable), symbolTable);
 		return null;
+	}
+
+	/**
+	 * f0 -> IntegerLiteral()
+	 *       | TrueLiteral()
+	 *       | FalseLiteral()
+	 *       | Identifier()
+	 *       | ThisExpression()
+	 *       | ArrayAllocationExpression()
+	 *       | AllocationExpression()
+	 *       | BracketExpression()
+	 */
+	public String visit(PrimaryExpression n, SymbolTable symbolTable) throws Exception {
+		String exprStr = n.f0.accept(this, symbolTable);
+		switch (exprStr) {
+			case "INTEGER_LITERAL":
+				return "int";
+			case "BOOLEAN_LITERAL":
+				return "boolean";
+			case "this":
+				return currentClassName;
+			default:
+				return exprStr;
+		}
 	}
 	
 	/**
@@ -451,7 +462,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f4 -> "]"
 	 */
 	public String visit(ArrayAllocationExpression n, SymbolTable symbolTable) throws Exception {
-		validateType2(n.f3.accept(this, symbolTable), symbolTable, "int", "INTEGER_LITERAL", "type");
+		validateType(n.f3.accept(this, symbolTable), symbolTable, "int", "trying to allocate array of not integer size");
 		return "int[]";
 	}
 
@@ -475,7 +486,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f1 -> Clause()
 	 */
 	public String visit(NotExpression n, SymbolTable symbolTable) throws Exception {
-		validateType2(n.f1.accept(this, symbolTable), symbolTable, "boolean", "BOOLEAN_LITERAL", "type");
+		validateType(n.f1.accept(this, symbolTable), symbolTable, "boolean", "tried to use operator '!' on non-boolean clause");
 		return "boolean";
 	}
 
