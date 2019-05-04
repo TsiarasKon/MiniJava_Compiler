@@ -24,11 +24,12 @@ class Main {
 				root.accept(analyzerVisitor, symbolTable);
 				System.out.println(" Semantic analysis completed successfully.");
 				if (symbolTable.offsetsAvailable()) {
-					System.out.println(" Offsets:");
-					symbolTable.printAllOffsets("  ");
+					System.out.println(" Class offsets:");
+					symbolTable.printAllOffsets(" ");
 				} else {
-					System.out.println(" (Only Main was provided - there are no offsets to be printed)");
+					System.out.println(" (Only Main Class was provided - there are no offsets to be printed)");
 				}
+				System.out.println();
 			} catch (FileNotFoundException | ParseException | SemanticException ex) {
 				System.err.println(ex.getMessage());
 			} catch (Exception ex) {        // should never get here

@@ -44,12 +44,12 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	private void validateClassName(String className, SymbolTable symbolTable, String exceptionMsg) throws SemanticException {
 	    if (newlyCreatedClass != null) {
 	        if (!symbolTable.classExists(newlyCreatedClass)) {
-                throw new SemanticException(exceptionMsg);      // TODO other msg
-            }
+                throw new SemanticException(exceptionMsg);
+	        }
         } else {
 			if (!symbolTable.classExists(className)) {
 				String classType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, className);
-				if (classType == null || classType.equals("int") || classType.equals("boolean") || classType.equals("int[]")) {        // TODO: second exception message
+				if (classType == null || classType.equals("int") || classType.equals("boolean") || classType.equals("int[]")) {
 					throw new SemanticException(exceptionMsg);
 				}
 			}
@@ -57,13 +57,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	}
 
 	private void parameterListTypeAdd(String type, SymbolTable symbolTable) throws SemanticException {
-		if (type.equals("INTEGER_LITERAL")) {
-			methodParameters.add("int");
-		} else if (type.equals("BOOLEAN_LITERAL")) {
-			methodParameters.add("boolean");
-		} else if (type.equals("this")) {
-            methodParameters.add(currentClassName);
-        } else if (type.equals("int") || type.equals("boolean") || type.equals("int[]") || symbolTable.classExists(type)) {
+		if (type.equals("int") || type.equals("boolean") || type.equals("int[]") || symbolTable.classExists(type)) {
             methodParameters.add(type);
         } else {
 			String actualType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type);
@@ -76,8 +70,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 
 	private void validateAssignment(SymbolTable symbolTable, String leftType, String rightType) throws SemanticException {
 		String possibleRightClassType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, rightType);
-	    if (leftType.equals(rightType) || (leftType.equals("int") && rightType.equals("INTEGER_LITERAL")) || (leftType.equals("boolean") &&
-				rightType.equals("BOOLEAN_LITERAL")) || leftType.equals(possibleRightClassType) || symbolTable.isClassOrSubclass(rightType, leftType)) {
+	    if (leftType.equals(rightType) || leftType.equals(possibleRightClassType) || symbolTable.isClassOrSubclass(rightType, leftType)) {
 	    	return;
         }
 	    if (possibleRightClassType == null) {
@@ -90,13 +83,9 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 
     private void validateMethodReturnType(SymbolTable symbolTable, String returnExprType) throws SemanticException {
 		String methodReturnType = symbolTable.getClassMethodReturnType(currentClassName, currentMethodName);
-		if (returnExprType.equals("this")) {
-			returnExprType = currentClassName;
-		}
 		try {
 			validateAssignment(symbolTable, methodReturnType, returnExprType);
 		} catch (SemanticException se) {
-			// TODO: correct message
 			throw new SemanticException("returning type '" + returnExprType + "' from '" + currentClassName + "." +
 					currentMethodName + "()' which has return type '" + methodReturnType + "'");
 		}
@@ -202,9 +191,6 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
         	throw new SemanticException("trying to assign to a variable named '" + f0str + "' which has not previously been defined");
 		}
         String f2str = n.f2.accept(this, symbolTable);
-        if (f2str.equals("this")) {
-			f2str = currentClassName;
-		}
         validateAssignment(symbolTable, f0Type, f2str);
         return f0Type;
     }
@@ -267,7 +253,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
         validateType2(f2str, symbolTable, "int", "boolean", "attempted to print non-printable type '" + f2Type + "'");
         return null;
     }
-    
+
 	/**
 	 * f0 -> Clause()
 	 * f1 -> "&&"
@@ -418,7 +404,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 				return exprStr;
 		}
 	}
-	
+
 	/**
 	 * f0 -> <INTEGER_LITERAL>
 	 */

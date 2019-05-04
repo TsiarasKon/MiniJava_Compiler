@@ -81,7 +81,11 @@ public class SymbolTable {
         }
     }
 
-    /* Offset calculating functions: */
+    /* Offset-related functions: */
+
+    public boolean offsetsAvailable() {
+        return classes.size() > 1;
+    }
 
     public void printAllOffsets(String lPadding) {
         boolean mainFlag = true;    // used only to ignore main
@@ -90,12 +94,10 @@ public class SymbolTable {
                 mainFlag = false;
                 continue;
             }
-            entry.getValue().printClassOffsets(lPadding);
+            ClassST currClass = entry.getValue();
+            System.out.println('\n' + lPadding + "-----------Class " + currClass.className + "-----------");
+            currClass.printClassOffsets(lPadding);
         }
-    }
-
-    public boolean offsetsAvailable() {
-        return classes.size() > 1;
     }
 
 
@@ -223,7 +225,7 @@ public class SymbolTable {
             System.err.println("(!) Method '" + methodName + "' was not found during validation!");
         }
 
-        /* Offset calculating functions: */
+        /* Offset-related functions: */
 
         private void calculateStartingFieldOffset() {
             if (parentClass != null) {
@@ -250,6 +252,7 @@ public class SymbolTable {
 
         void printClassOffsets(String lPadding) {
             calculateStartingFieldOffset();
+            System.out.println(lPadding + "--Variables---");
             for (Map.Entry<String, String> entry : fields.entrySet()) {
                 System.out.println(lPadding + className + "." + entry.getKey() + " : " + fieldOffset);
                 String fieldType = entry.getValue();
@@ -265,6 +268,7 @@ public class SymbolTable {
                 }
             }
             calculateStartingMethodOffset();
+            System.out.println(lPadding + "---Methods---");
             for (Map.Entry<String, MethodST> entry : methods.entrySet()) {
                 String methodName = entry.getKey();
                 if (getOverriddenMethod(methodName) == null) {
