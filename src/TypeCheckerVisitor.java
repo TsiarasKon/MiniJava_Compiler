@@ -3,24 +3,31 @@ import visitor.GJDepthFirst;
 
 import java.util.ArrayList;
 
-public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
+public class TypeCheckerVisitor extends GJDepthFirst<String, SymbolTable>{
 
 	private String currentClassName;
 	private String currentMethodName;
 	private String newlyCreatedClass;
 	private ArrayList<String> methodParameters;
 
+	private int lineNumber;
+	private int columnNumber;
+
+	public TypeCheckerVisitor() {
+		lineNumber = columnNumber = 1;
+	}
+
 	private void validateType(String type, SymbolTable symbolTable, String validType, String exceptionMsg) throws SemanticException {
 		if (!type.equals(validType)) {
 			if (currentMethodName == null && !validType.equals(symbolTable.getClassFieldType(currentClassName, type))) {
-				throw new SemanticException(exceptionMsg);
+				throw new SemanticException(exceptionMsg, lineNumber, columnNumber);
 			}
 			String actualType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type);
 			if (actualType == null && !type.equals("int") && !type.equals("boolean") && !type.equals("int[]")) {
-				throw new SemanticException("unknown identifier '" + type + "'");
+				throw new SemanticException("unknown identifier '" + type + "'", lineNumber, columnNumber);
 			}
 			if (!validType.equals(actualType)) {
-				throw new SemanticException(exceptionMsg);
+				throw new SemanticException(exceptionMsg, lineNumber, columnNumber);
 			}
 		}
 	}
@@ -29,14 +36,14 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		if (!type.equals(validType1) && !type.equals(validType2)) {
 			if (currentMethodName == null && !validType1.equals(symbolTable.getClassFieldType(currentClassName, type)) &&
 					!validType2.equals(symbolTable.getClassFieldType(currentClassName, type))) {
-				throw new SemanticException(exceptionMsg);
+				throw new SemanticException(exceptionMsg, lineNumber, columnNumber);
 			}
 			String actualType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type);
 			if (actualType == null && !type.equals("int") && !type.equals("boolean") && !type.equals("int[]")) {
-				throw new SemanticException("unknown identifier '" + type + "'");
+				throw new SemanticException("unknown identifier '" + type + "'", lineNumber, columnNumber);
 			}
 			if (!validType1.equals(actualType) && !validType2.equals(actualType)) {
-				throw new SemanticException(exceptionMsg);
+				throw new SemanticException(exceptionMsg, lineNumber, columnNumber);
 			}
 		}
 	}
@@ -44,13 +51,13 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	private void validateClassName(String className, SymbolTable symbolTable, String exceptionMsg) throws SemanticException {
 	    if (newlyCreatedClass != null) {
 	        if (!symbolTable.classExists(newlyCreatedClass)) {
-                throw new SemanticException(exceptionMsg);
+                throw new SemanticException(exceptionMsg, lineNumber, columnNumber);
 	        }
         } else {
 			if (!symbolTable.classExists(className)) {
 				String classType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, className);
 				if (classType == null || classType.equals("int") || classType.equals("boolean") || classType.equals("int[]")) {
-					throw new SemanticException(exceptionMsg);
+					throw new SemanticException(exceptionMsg, lineNumber, columnNumber);
 				}
 			}
         }
@@ -62,7 +69,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
         } else {
 			String actualType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, type);
 			if (actualType == null) {
-				throw new SemanticException("variable '" + type + "' has not been defined");
+				throw new SemanticException("variable '" + type + "' has not been defined", lineNumber, columnNumber);
 			}
 			methodParameters.add(actualType);
 		}
@@ -74,10 +81,10 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	    	return;
         }
 	    if (possibleRightClassType == null) {
-			throw new SemanticException("unknown identifier '" + rightType + "'");
+			throw new SemanticException("unknown identifier '" + rightType + "'", lineNumber, columnNumber);
 		}
 	    if (!symbolTable.isClassOrSubclass(possibleRightClassType, leftType)) {
-            throw new SemanticException("cannot assign an expression of type '" + possibleRightClassType + "' to a variable of type '" + leftType + "'");
+            throw new SemanticException("cannot assign an expression of type '" + possibleRightClassType + "' to a variable of type '" + leftType + "'", lineNumber, columnNumber);
         }
     }
 
@@ -87,7 +94,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 			validateAssignment(symbolTable, methodReturnType, returnExprType);
 		} catch (SemanticException se) {
 			throw new SemanticException("returning type '" + returnExprType + "' from '" + currentClassName + "." +
-					currentMethodName + "()' which has return type '" + methodReturnType + "'");
+					currentMethodName + "()' which has return type '" + methodReturnType + "'", lineNumber, columnNumber);
 		}
 	}
 
@@ -188,7 +195,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
     	String f0str = n.f0.accept(this, symbolTable);
         String f0Type = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, f0str);
         if (f0Type == null) {
-        	throw new SemanticException("trying to assign to a variable named '" + f0str + "' which has not previously been defined");
+        	throw new SemanticException("trying to assign to a variable named '" + f0str + "' which has not previously been defined", lineNumber, columnNumber);
 		}
         String f2str = n.f2.accept(this, symbolTable);
         validateAssignment(symbolTable, f0Type, f2str);
@@ -342,12 +349,12 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	public String visit(MessageSend n, SymbolTable symbolTable) throws Exception {
 	    newlyCreatedClass = null;
 		String f0str = n.f0.accept(this, symbolTable);
-		validateClassName(f0str, symbolTable, "tried to call a method of class '" + f0str + "' but a class with that name has not been defined");
 		String f0Type = (symbolTable.classExists(f0str)) ? f0str : (newlyCreatedClass == null) ? symbolTable.getClassMethodVarType(currentClassName, currentMethodName, f0str) : newlyCreatedClass;
+		validateClassName(f0str, symbolTable, "tried to call a method of class '" + f0Type + "' but a class with that name has not been defined");
 		String f2str = n.f2.accept(this, symbolTable);
 		String methodReturnType = symbolTable.getClassMethodReturnType(f0Type, f2str);
 		if (methodReturnType == null) {
-			throw new SemanticException("tried to call '" + f0str + "." + f2str + "()' but class '" + f0str + "' has no method named '" + f2str + "'");
+			throw new SemanticException("tried to call '" + f0Type + "." + f2str + "()' but class '" + f0Type + "' has no method named '" + f2str + "'", lineNumber, columnNumber);
 		}
 		ArrayList<String> previousMethodParameters = null;		// needed for nested method calls
 		if (methodParameters != null) {
@@ -355,7 +362,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 		}
 		methodParameters = new ArrayList<>();
         n.f4.accept(this, symbolTable);
-		symbolTable.validateClassMethodParameters(f0Type, f2str, methodParameters);
+		symbolTable.validateClassMethodParameters(f0Type, f2str, methodParameters, lineNumber, columnNumber);
 		if (previousMethodParameters != null) {
 			methodParameters = previousMethodParameters;
 		}
@@ -409,6 +416,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f0 -> <INTEGER_LITERAL>
 	 */
 	public String visit(IntegerLiteral n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
 		return "INTEGER_LITERAL";
 	}
 
@@ -416,6 +425,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f0 -> "true"
 	 */
 	public String visit(TrueLiteral n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
 		return "BOOLEAN_LITERAL";
 	}
 
@@ -423,6 +434,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f0 -> "false"
 	 */
 	public String visit(FalseLiteral n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
 		return "BOOLEAN_LITERAL";
 	}
 
@@ -430,6 +443,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f0 -> <IDENTIFIER>
 	 */
 	public String visit(Identifier n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
 		return n.f0.toString();
 	}
 
@@ -437,6 +452,8 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f0 -> "this"
 	 */
 	public String visit(ThisExpression n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
 		return "this";
 	}
 
@@ -461,7 +478,7 @@ public class AnalyzerVisitor extends GJDepthFirst<String, SymbolTable>{
 	public String visit(AllocationExpression n, SymbolTable symbolTable) throws Exception {
 		String newClassName = n.f1.accept(this, symbolTable);
 		if (!symbolTable.classExists(newClassName)) {
-			throw new SemanticException("trying to create a new instance of class '" + newClassName + "' but that class has not been defined");
+			throw new SemanticException("trying to create a new instance of class '" + newClassName + "' but that class has not been defined", lineNumber, columnNumber);
 		}
 		newlyCreatedClass = newClassName;
 		return newClassName;

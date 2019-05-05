@@ -1,5 +1,5 @@
 import syntaxtree.*;
-import visitor.*;
+
 import java.io.*;
 
 class Main {
@@ -20,8 +20,8 @@ class Main {
 				FillSTVisitor fSTVisitor = new FillSTVisitor();
 				root.accept(fSTVisitor, symbolTable);
 				symbolTable.validateST();
-				AnalyzerVisitor analyzerVisitor = new AnalyzerVisitor();
-				root.accept(analyzerVisitor, symbolTable);
+				TypeCheckerVisitor typeCheckerVisitor = new TypeCheckerVisitor();
+				root.accept(typeCheckerVisitor, symbolTable);
 				System.out.println(" Semantic analysis completed successfully.");
 				if (symbolTable.offsetsAvailable()) {
 					System.out.println(" Class offsets:");

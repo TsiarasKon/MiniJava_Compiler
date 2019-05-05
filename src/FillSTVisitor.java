@@ -6,6 +6,9 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 	private String currentClassName;
 	private String currentMethodName;
 
+	private int lineNumber;
+	private int columnNumber;
+
 	/**
 	 * f0 -> "class"
 	 * f1 -> Identifier()
@@ -28,7 +31,7 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(MainClass n, SymbolTable symbolTable) throws Exception {
 		String mainClassName = n.f1.accept(this, symbolTable);
-        symbolTable.addClass(mainClassName);
+        symbolTable.addClass(mainClassName, lineNumber, columnNumber);
         currentClassName = mainClassName;
         symbolTable.addClassMethod(mainClassName, "void", "main");
         currentMethodName = "main";
@@ -50,11 +53,7 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 	 */
 	public String visit(ClassDeclaration n, SymbolTable symbolTable) throws Exception {
 		String className = n.f1.accept(this, symbolTable);
-		try {
-			symbolTable.addClass(className);
-		} catch (SemanticException se) {
-			throw new SemanticException("class '" + className + "' is already defined");
-		}
+		symbolTable.addClass(className, lineNumber, columnNumber);
 		currentClassName = className;
 		n.f3.accept(this, symbolTable);
 		n.f4.accept(this, symbolTable);
@@ -75,15 +74,7 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 	public String visit(ClassExtendsDeclaration n, SymbolTable symbolTable) throws Exception {
 		String className = n.f1.accept(this, symbolTable);
 		String parentClassName = n.f3.accept(this, symbolTable);
-		try {
-			symbolTable.addClass(className, parentClassName);
-		} catch (SemanticException se) {
-			if (se.getMessage().endsWith("extends")) {
-				throw new SemanticException("class '" + className + "' extends '" + parentClassName + "' which has not been defined");
-			} else {
-				throw new SemanticException("class '" + className + "' is already defined");
-			}
-		}
+		symbolTable.addClass(className, parentClassName, lineNumber, columnNumber);
 		currentClassName = className;
 		n.f5.accept(this, symbolTable);
 		n.f6.accept(this, symbolTable);
@@ -100,16 +91,12 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 		String varType = n.f0.accept(this, symbolTable);
 		String varName = n.f1.accept(this, symbolTable);
 		if (currentMethodName == null) {        // adding class fields
-			try {
-				symbolTable.addClassField(currentClassName, varType, varName);
-			} catch (SemanticException se) {
-				throw new SemanticException("duplicate field named '" + varName + "' in class '" + currentClassName + "'");
+			if (!symbolTable.addClassField(currentClassName, varType, varName)) {
+				throw new SemanticException("duplicate field named '" + varName + "' in class '" + currentClassName + "'", lineNumber, columnNumber);
 			}
         } else {        // adding method variable
-		    try {
-                symbolTable.addMethodVar(currentClassName, currentMethodName, varType, varName);
-            } catch (SemanticException se) {
-				throw new SemanticException("duplicate variable named '" + varName + "' in '" + currentClassName + "." + currentMethodName + "()'");
+		    if (!symbolTable.addMethodVar(currentClassName, currentMethodName, varType, varName)) {
+				throw new SemanticException("duplicate variable named '" + varName + "' in '" + currentClassName + "." + currentMethodName + "()'", lineNumber, columnNumber);
             }
         }
 		return null;
@@ -133,10 +120,8 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 	public String visit(MethodDeclaration n, SymbolTable symbolTable) throws Exception {
 		String methodType = n.f1.accept(this, symbolTable);
 		String methodName = n.f2.accept(this, symbolTable);
-		try {
-			symbolTable.addClassMethod(currentClassName, methodType, methodName);
-		} catch (SemanticException se) {
-			throw new SemanticException("method '" + methodName + "()' is already defined in class '" + currentClassName + "'");
+		if (!symbolTable.addClassMethod(currentClassName, methodType, methodName)) {
+			throw new SemanticException("method '" + methodName + "()' is already defined in class '" + currentClassName + "'", lineNumber, columnNumber);
 		}
 		currentMethodName = methodName;
 		n.f4.accept(this, symbolTable);
@@ -152,23 +137,27 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 	public String visit(FormalParameter n, SymbolTable symbolTable) throws Exception {
 		String varType = n.f0.accept(this, symbolTable);
 		String varName = n.f1.accept(this, symbolTable);
-		try {
-			symbolTable.addClassMethodParam(currentClassName, currentMethodName, varType, varName);
-		} catch (SemanticException se) {
-			throw new SemanticException("duplicate parameter named '" + varName + "' in '" + currentClassName + "." + currentMethodName + "()'");
+		if (!symbolTable.addClassMethodParam(currentClassName, currentMethodName, varType, varName)) {
+			throw new SemanticException("duplicate parameter named '" + varName + "' in '" + currentClassName + "." + currentMethodName + "()'", lineNumber, columnNumber);
 		}
 		return null;
 	}
 
 	public String visit(ArrayType n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
 		return "int[]";
 	}
 
 	public String visit(BooleanType n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
 		return "boolean";
 	}
 
 	public String visit(IntegerType n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
         return "int";
 	}
 
@@ -176,6 +165,8 @@ public class FillSTVisitor extends GJDepthFirst<String, SymbolTable>{
 	 * f0 -> <IDENTIFIER>
 	 */
 	public String visit(Identifier n, SymbolTable symbolTable) {
+		lineNumber = n.f0.beginLine;
+		columnNumber = n.f0.beginColumn;
 		return n.f0.toString();
 	}
 
