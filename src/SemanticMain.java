@@ -1,21 +1,12 @@
-import syntaxtree.Goal;
+import syntaxtree.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
-class Main {
-	public static String llDirName = "ll_files";
-
-	public static void main (String [] args) {
+class SemanticMain {
+    public static void main (String [] args) {
 		if (args.length < 1) {
 			System.err.println("Usage: java <MainClassName> <file1> [file2] ... [fileN]");
 			System.exit(1);
-		}
-		File llDir = new File(llDirName);
-		if (!llDir.exists()) {
-			llDir.mkdir();
 		}
 		FileInputStream fis = null;
 		for (int i = 0; i < args.length; i++) {
@@ -32,16 +23,18 @@ class Main {
 				TypeCheckerVisitor typeCheckerVisitor = new TypeCheckerVisitor();
 				root.accept(typeCheckerVisitor, symbolTable);
 				System.out.println(" Semantic analysis completed successfully.");
-				String llFileName = llDirName + '/' + args[i].substring(0, args[i].length() - 5) + ".ll";
-				LLVMGeneratorVisitor llvmGeneratorVisitor = new LLVMGeneratorVisitor(llFileName);
-				root.accept(llvmGeneratorVisitor, symbolTable);
-				System.out.println(" Generated LLVM file successfully at: '" + llFileName + "'");
+				if (symbolTable.offsetsAvailable()) {
+					System.out.println(" Class offsets:");
+					symbolTable.printAllOffsets(" ");
+				} else {
+					System.out.println(" (Only Main Class was provided - there are no offsets to be printed)");
+				}
 				System.out.println();
 			} catch (FileNotFoundException | ParseException | SemanticException ex) {
 				System.err.println(ex.getMessage());
 			} catch (Exception ex) {        // should never get here
 				System.err.println(ex.getMessage());
-				System.err.println(" Encountered unexpected error; dumping stack trace:");
+				System.err.println(" Encountered unexpected error while performing semantic analysis; dumping stack trace:");
 				ex.printStackTrace();
 			} finally {
 				try {
@@ -51,5 +44,5 @@ class Main {
 				}
 			}
 		}
-	}
+    }
 }
