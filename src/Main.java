@@ -6,17 +6,17 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 class Main {
-	public static String llDirName = "ll_files";
+//	public static String llDirName = "ll_files";
 
 	public static void main (String [] args) {
 		if (args.length < 1) {
 			System.err.println("Usage: java <MainClassName> <file1> [file2] ... [fileN]");
 			System.exit(1);
 		}
-		File llDir = new File(llDirName);
-		if (!llDir.exists()) {
-			llDir.mkdir();
-		}
+//		File llDir = new File(llDirName);
+//		if (!llDir.exists()) {
+//			llDir.mkdir();
+//		}
 		FileInputStream fis = null;
 		for (int i = 0; i < args.length; i++) {
 			System.out.println("\nFile #" + (i+1) + " - '" + args[i] + "':");
@@ -32,7 +32,8 @@ class Main {
 				TypeCheckerVisitor typeCheckerVisitor = new TypeCheckerVisitor();
 				root.accept(typeCheckerVisitor, symbolTable);
 				System.out.println(" Semantic analysis completed successfully.");
-				String llFileName = llDirName + '/' + args[i].substring(0, args[i].length() - 5) + ".ll";
+//				String llFileName = llDirName + '/' + args[i].substring(0, args[i].length() - 5) + ".ll";   //TODO
+				String llFileName = args[i].substring(0, args[i].length() - 5) + ".ll";
 				LLVMGeneratorVisitor llvmGeneratorVisitor = new LLVMGeneratorVisitor(llFileName);
 				root.accept(llvmGeneratorVisitor, symbolTable);
 				System.out.println(" Generated LLVM file successfully at: '" + llFileName + "'");
