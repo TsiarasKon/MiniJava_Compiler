@@ -32,6 +32,9 @@ class Main {
 				TypeCheckerVisitor typeCheckerVisitor = new TypeCheckerVisitor();
 				root.accept(typeCheckerVisitor, symbolTable);
 				System.out.println(" Semantic analysis completed successfully.");
+				VTables vTables = new VTables();
+				symbolTable.populateVTables(vTables);
+				vTables.printVTables("  ");
 //				String llFileName = llDirName + '/' + args[i].substring(0, args[i].length() - 5) + ".ll";   //TODO
 				String llFileName = args[i].substring(0, args[i].length() - 5) + ".ll";
 				LLVMGeneratorVisitor llvmGeneratorVisitor = new LLVMGeneratorVisitor(llFileName);

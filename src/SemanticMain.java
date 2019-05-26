@@ -25,7 +25,7 @@ class SemanticMain {
 				System.out.println(" Semantic analysis completed successfully.");
 				if (symbolTable.offsetsAvailable()) {
 					System.out.println(" Class offsets:");
-					symbolTable.printAllOffsets(" ");
+//					symbolTable.printAllOffsets(" "); TODO change to print from vtable
 				} else {
 					System.out.println(" (Only Main Class was provided - there are no offsets to be printed)");
 				}

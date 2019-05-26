@@ -6,6 +6,10 @@ import java.io.*;
 public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 
     private File llFileptr;
+    private SymbolTable symbolTable;
+
+    private int currLabelNum;
+    private int currTempRegisterNum;
 
     private String currentClassName;
     private String currentMethodName;
@@ -20,6 +24,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
+        currLabelNum = currTempRegisterNum = 0;
     }
 
     void emit(String buffer) {
@@ -57,6 +62,18 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         emit(buffer);
     }
 
+    void emit_llvm_vtables() {
+
+    }
+
+    String getLabel() {
+        return "label" + currLabelNum++;
+    }
+
+    String getTempReg() {
+        return "%_" + currTempRegisterNum++;
+    }
+
 
     /**
      * f0 -> MainClass()
@@ -64,6 +81,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f2 -> <EOF>
      */
     public String visit(Goal n, SymbolTable symbolTable) throws Exception {
+        // TODO add vtables
         emit_llvm_helper_methods();
         n.f0.accept(this, symbolTable);
         n.f1.accept(this, symbolTable);
@@ -492,7 +510,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 //        n.f3.accept(this, argu);
 //        return _ret;
 //    }
-//
+
 //    /**
 //     * f0 -> PrimaryExpression()
 //     * f1 -> "."
@@ -604,13 +622,13 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         return n.f0.toString();
     }
 
-//    /**
-//     * f0 -> "this"
-//     */
-//    public String visit(ThisExpression n, SymbolTable symbolTable) throws Exception {
-//        return n.f0.accept(this, argu);
-//    }
-//
+    /**
+     * f0 -> "this"
+     */
+    public String visit(ThisExpression n, SymbolTable symbolTable) throws Exception {
+        return "%this";
+    }
+
 //    /**
 //     * f0 -> "new"
 //     * f1 -> "int"

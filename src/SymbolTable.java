@@ -88,16 +88,32 @@ public class SymbolTable {
         return classes.size() > 1;
     }
 
-    public void printAllOffsets(String lPadding) {
-        boolean mainFlag = true;    // used only to ignore main
+//    public void printAllOffsets(String lPadding) {
+//        boolean mainFlag = true;    // used only to ignore main
+//        for (Map.Entry<String, ClassST> entry : classes.entrySet()) {
+//            if (mainFlag) {
+//                mainFlag = false;
+//                continue;
+//            }
+//            ClassST currClass = entry.getValue();
+//            System.out.println('\n' + lPadding + "-----------Class " + currClass.className + "-----------");
+//            currClass.printClassOffsets(lPadding);
+//        }
+//    }
+
+    public void populateVTables(VTables vTables) {
+        boolean mainFlag = true;
         for (Map.Entry<String, ClassST> entry : classes.entrySet()) {
+            ClassST currClass = entry.getValue();
+            VTables.ClassVTable currClassVTable = new VTables.ClassVTable();
             if (mainFlag) {
                 mainFlag = false;
-                continue;
+                currClassVTable.isMainClass = true;
+            } else {
+                currClassVTable.isMainClass = false;
+                currClass.populateClassVTable(currClassVTable, vTables);
             }
-            ClassST currClass = entry.getValue();
-            System.out.println('\n' + lPadding + "-----------Class " + currClass.className + "-----------");
-            currClass.printClassOffsets(lPadding);
+            vTables.classesVTables.put(currClass.className, currClassVTable);
         }
     }
 
@@ -230,14 +246,12 @@ public class SymbolTable {
 
         /* Offset-related functions: */
 
-        private void calculateStartingFieldOffset() {
+        private void initializeOffsetsFromParent(VTables.ClassVTable classVTable, VTables vTables) {
             if (parentClass != null) {
+                // get a copy of parents' VTable
+                classVTable.fieldsTable = new LinkedHashMap<>(vTables.classesVTables.get(parentClass.className).fieldsTable);
+                classVTable.methodsTable = new LinkedHashMap<>(vTables.classesVTables.get(parentClass.className).methodsTable);
                 fieldOffset = parentClass.getFieldOffset();
-            }
-        }
-
-        private void calculateStartingMethodOffset() {
-            if (parentClass != null) {
                 methodOffset = parentClass.getMethodOffset();
             }
         }
@@ -253,11 +267,38 @@ public class SymbolTable {
             return null;
         }
 
-        void printClassOffsets(String lPadding) {
-            calculateStartingFieldOffset();
-            System.out.println(lPadding + "--Variables---");
+//        void printClassOffsets(String lPadding) {
+//            calculateStartingFieldOffset();
+//            System.out.println(lPadding + "--Variables---");
+//            for (Map.Entry<String, String> entry : fields.entrySet()) {
+//                System.out.println(lPadding + className + "." + entry.getKey() + " : " + fieldOffset);
+//                String fieldType = entry.getValue();
+//                switch (fieldType) {
+//                    case "int":
+//                        fieldOffset += 4;
+//                        break;
+//                    case "boolean":
+//                        fieldOffset += 1;
+//                        break;
+//                    default:        // "int[]" and class pointers
+//                        fieldOffset += 8;
+//                }
+//            }
+//            calculateStartingMethodOffset();
+//            System.out.println(lPadding + "---Methods---");
+//            for (Map.Entry<String, MethodST> entry : methods.entrySet()) {
+//                String methodName = entry.getKey();
+//                if (getOverriddenMethod(methodName) == null) {
+//                    System.out.println(lPadding + className + "." + methodName + " : " + methodOffset);
+//                    methodOffset += 8;
+//                }
+//            }
+//        }
+
+        void populateClassVTable(VTables.ClassVTable classVTable, VTables vTables) {
+            initializeOffsetsFromParent(classVTable, vTables);
             for (Map.Entry<String, String> entry : fields.entrySet()) {
-                System.out.println(lPadding + className + "." + entry.getKey() + " : " + fieldOffset);
+                classVTable.fieldsTable.put(entry.getKey(), fieldOffset);
                 String fieldType = entry.getValue();
                 switch (fieldType) {
                     case "int":
@@ -270,15 +311,14 @@ public class SymbolTable {
                         fieldOffset += 8;
                 }
             }
-            calculateStartingMethodOffset();
-            System.out.println(lPadding + "---Methods---");
             for (Map.Entry<String, MethodST> entry : methods.entrySet()) {
                 String methodName = entry.getKey();
                 if (getOverriddenMethod(methodName) == null) {
-                    System.out.println(lPadding + className + "." + methodName + " : " + methodOffset);
+                    classVTable.methodsTable.put(methodName, methodOffset);
                     methodOffset += 8;
                 }
             }
+
         }
 
 

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
+    <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="llvm_helper_methods">
+      <change afterPath="$PROJECT_DIR$/src/VTables.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs3/Factorial.ll" beforeDir="false" afterPath="$PROJECT_DIR$/inputs3/Factorial.ll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SemanticMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolTable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,69 +31,145 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.39079946">
+    <splitter split-orientation="horizontal" split-proportion="0.48949486">
       <split-first>
+        <splitter split-orientation="vertical" split-proportion="0.67887765">
+          <split-first>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/Main.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="420">
+                      <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+                      <folding>
+                        <element signature="imports" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/SemanticMain.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="388">
+                      <caret line="27" column="86" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/TypeCheckerVisitor.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="375">
+                      <caret line="30" selection-start-line="30" selection-end-line="30" />
+                      <folding>
+                        <element signature="e#388#389#0" expanded="true" />
+                        <element signature="e#424#425#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/Factorial.ll">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="20">
+                      <caret line="1" column="85" lean-forward="true" selection-start-line="1" selection-start-column="85" selection-end-line="1" selection-end-column="85" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/TreeVisitor.ll">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="1240">
+                      <caret line="62" column="44" lean-forward="true" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/QuickSort.ll">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state>
+                      <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="-667">
+                      <caret line="316" column="73" selection-start-line="316" selection-start-column="73" selection-end-line="316" selection-end-column="73" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <leaf>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/inputs3/Factorial.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="40">
+                      <caret line="2" column="53" lean-forward="true" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+                      <folding>
+                        <element signature="e#56#57#0" expanded="true" />
+                        <element signature="e#116#117#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/inputs3/TreeVisitor.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="-6996">
+                      <folding>
+                        <element signature="e#0#7140#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/inputs3/QuickSort.java">
+                  <provider selected="true" editor-type-id="text-editor" />
+                </entry>
+              </file>
+            </leaf>
+          </split-second>
+        </splitter>
+      </split-first>
+      <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/VTables.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="9" selection-start-line="9" selection-end-line="9" />
+                <state relative-caret-position="550">
+                  <caret line="37" column="86" selection-start-line="37" selection-start-column="86" selection-end-line="37" selection-end-column="86" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#179#180#0" expanded="true" />
+                    <element signature="e#233#234#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/Factorial.ll">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="440">
-                  <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/inputs3/Factorial.java">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/inputs3/QuickSort.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-300" />
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/QuickSort.ll">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1476" />
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="20">
-                  <caret line="71" selection-start-line="71" selection-end-line="71" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="395">
-                  <caret line="634" column="18" lean-forward="true" selection-start-line="634" selection-start-column="18" selection-end-line="634" selection-end-column="18" />
+                <state relative-caret-position="160">
+                  <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#2024#2025#0" expanded="true" />
+                    <element signature="e#2068#2069#0" expanded="true" />
+                    <element signature="e#2103#2104#0" expanded="true" />
+                    <element signature="e#2151#2152#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -107,8 +188,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>variable</find>
-      <find>List</find>
       <find>parameterListTypeAdd</find>
       <find>tried</find>
       <find>Alloca</find>
@@ -137,6 +216,8 @@
       <find>0, 0</find>
       <find>addClass</find>
       <find>Field</find>
+      <find>QS_vtable</find>
+      <find>offset</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -191,11 +272,12 @@
         <option value="$PROJECT_DIR$/src/FillSTVisitor.java" />
         <option value="$PROJECT_DIR$/src/TypeCheckerVisitor.java" />
         <option value="$PROJECT_DIR$/src/SemanticException.java" />
-        <option value="$PROJECT_DIR$/src/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/makefile" />
-        <option value="$PROJECT_DIR$/src/SemanticMain.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/VTables.java" />
+        <option value="$PROJECT_DIR$/src/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/SemanticMain.java" />
       </list>
     </option>
   </component>
@@ -210,12 +292,30 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="MiniJava_Compiler" type="b2602c69:ProjectViewProjectNode" />
               <item name="MiniJava_Compiler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MiniJava_Compiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiniJava_Compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="inputs2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MiniJava_Compiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiniJava_Compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="inputs2" type="462c0819:PsiDirectoryNode" />
+              <item name="offset-examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MiniJava_Compiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiniJava_Compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="inputs2" type="462c0819:PsiDirectoryNode" />
+              <item name="right" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MiniJava_Compiler" type="b2602c69:ProjectViewProjectNode" />
@@ -237,14 +337,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558641334719" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558877643284" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -281,7 +380,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="jtb-minijava" />
@@ -290,6 +389,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="jtb-minijava" />
+      <option name="PROGRAM_PARAMETERS" value="K:\Documents\GitHub\MiniJava_Compiler\inputs2\right\ManyClasses.java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Main2" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -319,7 +430,8 @@
       <workItem from="1557047976820" duration="4331000" />
       <workItem from="1557055174120" duration="1732000" />
       <workItem from="1558637333065" duration="3935000" />
-      <workItem from="1558641367630" duration="553000" />
+      <workItem from="1558641367630" duration="731000" />
+      <workItem from="1558716385976" duration="9717000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -489,17 +601,24 @@
       <option name="project" value="LOCAL" />
       <updated>1558640530553</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="llvm_helper_methods">
+      <created>1558642074183</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1558642074183</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138017000" />
+    <option name="totallyTimeSpent" value="147912000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2575" height="1415" extended-state="7" />
+    <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10974155" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11053678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -508,7 +627,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969603" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3315047" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33125487" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3998441" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -558,31 +677,10 @@
     <MESSAGE value="Final TODOs and offset examples" />
     <MESSAGE value="Project 3 Main" />
     <MESSAGE value="LLVMGeneratorVisitor.java and input files" />
-    <option name="LAST_COMMIT_MESSAGE" value="LLVMGeneratorVisitor.java and input files" />
+    <MESSAGE value="llvm_helper_methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="llvm_helper_methods" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/inputs/piazza1.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/myErr.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/Classes-error.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/DoubleDeclaration6.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/right/Factorial.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/myCompilation.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/LinearSearch-error.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/LinkedList-error.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/MoreThan4-error.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/NoMethod.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/Overload1.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test18.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/QuickSort-error.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test21.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test35.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test52.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/test68.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/UseArgs.java" />
-    <entry file="file://$PROJECT_DIR$/inputs/offset-examples/Add.txt" />
-    <entry file="file://$PROJECT_DIR$/inputs/offset-examples/ArrayTest.txt" />
-    <entry file="file://$PROJECT_DIR$/inputs/offset-examples/BinaryTree.txt" />
-    <entry file="file://$PROJECT_DIR$/inputs/wrong/BadAssign.java" />
     <entry file="file://$PROJECT_DIR$/inputs/wrong/BadAssign2.java" />
     <entry file="file://$PROJECT_DIR$/inputs/wrong/Factorial-error.java" />
     <entry file="file://$PROJECT_DIR$/inputs/wrong/TreeVisitor-error.java" />
@@ -602,13 +700,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inputs/right/TreeVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/SemanticMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs3/Factorial.ll">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -646,10 +737,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+    <entry file="file://$PROJECT_DIR$/inputs3/MoreThan4.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/MoreThan4.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="-1080" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/Factorial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="53" lean-forward="true" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+          <folding>
+            <element signature="e#56#57#0" expanded="true" />
+            <element signature="e#116#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/TreeVisitor.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1240">
+          <caret line="62" column="44" lean-forward="true" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/TreeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6996">
+          <folding>
+            <element signature="e#0#7140#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/QuickSort.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2024#2025#0" expanded="true" />
+            <element signature="e#2068#2069#0" expanded="true" />
+            <element signature="e#2103#2104#0" expanded="true" />
+            <element signature="e#2151#2152#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/Example1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/CallFromSuper.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/Overload2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/test62.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/FieldAndClassConflict.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/Main.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/test99.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/test93.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/MoreThan4.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/OutOfBounds1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/TreeVisitor.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/VTables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="37" column="86" selection-start-line="37" selection-start-column="86" selection-end-line="37" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#179#180#0" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/ShadowField.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/right/ShadowField.ll">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/right/Example1.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/LinkedList.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/Factorial.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/QuickSort.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -664,52 +879,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/MoreThan4.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/MoreThan4.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1080" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/Factorial.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="634" column="18" lean-forward="true" selection-start-line="634" selection-start-column="18" selection-end-line="634" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/Factorial.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="20">
+          <caret line="1" column="85" lean-forward="true" selection-start-line="1" selection-start-column="85" selection-end-line="1" selection-end-column="85" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/QuickSort.ll">
+    <entry file="file://$PROJECT_DIR$/inputs2/right/CallFromSuper.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/ManyClasses.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs2/right/ManyClasses.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1476" />
+        <state relative-caret-position="-480" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/QuickSort.java">
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300" />
+        <state relative-caret-position="-667">
+          <caret line="316" column="73" selection-start-line="316" selection-start-column="73" selection-end-line="316" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SemanticMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="27" column="86" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
+        </state>
       </provider>
     </entry>
   </component>
