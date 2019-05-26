@@ -25,10 +25,9 @@ public class VTables {
         for (Map.Entry<String, ClassVTable> entry : classesVTables.entrySet()) {
             String className = entry.getKey();
             ClassVTable currClassVTable = entry.getValue();
-//            if (mainFlag) {
-//                mainFlag = false;
-//                continue;
-//            }
+            if (currClassVTable.isMainClass) {
+                continue;
+            }
             System.out.println('\n' + lPadding + "-----------Class " + className + "-----------");
             System.out.println(lPadding + "--Variables---");
             for (Map.Entry<String, Integer> fieldEntry : currClassVTable.fieldsTable.entrySet()) {

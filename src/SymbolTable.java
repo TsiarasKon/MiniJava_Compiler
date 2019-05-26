@@ -70,6 +70,10 @@ public class SymbolTable {
         return (classes.containsKey(parentClassName)) ? classes.get(parentClassName).isSelfOrSubclass(inputClassName) : false;
     }
 
+    public LinkedHashMap<String, String> getClassMethodParameters(String className, String methodName) {
+        return (classes.containsKey(className)) ? classes.get(className).getMethodParameters(methodName) : null;
+    }
+
     private boolean isTypeValid(String type) {
         return (type.equals("int") || type.equals("boolean") || type.equals("int[]") || classes.containsKey(type));
     }
@@ -231,6 +235,17 @@ public class SymbolTable {
             return null;
         }
 
+        LinkedHashMap<String, String> getMethodParameters(String methodName) {
+            ClassST currClass = this;
+            while (currClass != null) {
+                if (currClass.methods.containsKey(methodName)) {
+                    return currClass.methods.get(methodName).getParameters();
+                }
+                currClass = currClass.getParentClass();
+            }
+            return null;
+        }
+
         void validateMethodParameters(String methodName, List<String> methodParameters, int lineNumber, int columnNumber) throws SemanticException {
             ClassST currClass = this;
             while (currClass != null) {
@@ -353,6 +368,10 @@ public class SymbolTable {
 
             String getVarType(String varName) {
                 return variables.getOrDefault(varName, parameters.getOrDefault(varName, fields.getOrDefault(varName, null)));
+            }
+
+            LinkedHashMap<String, String> getParameters() {
+                return parameters;
             }
 
             void validateParameters(List<String> methodParameters, int lineNumber, int columnNumber) throws SemanticException {

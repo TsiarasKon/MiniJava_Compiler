@@ -34,10 +34,9 @@ class Main {
 				System.out.println(" Semantic analysis completed successfully.");
 				VTables vTables = new VTables();
 				symbolTable.populateVTables(vTables);
-				vTables.printVTables("  ");
 //				String llFileName = llDirName + '/' + args[i].substring(0, args[i].length() - 5) + ".ll";   //TODO
 				String llFileName = args[i].substring(0, args[i].length() - 5) + ".ll";
-				LLVMGeneratorVisitor llvmGeneratorVisitor = new LLVMGeneratorVisitor(llFileName);
+				LLVMGeneratorVisitor llvmGeneratorVisitor = new LLVMGeneratorVisitor(llFileName, symbolTable, vTables);
 				root.accept(llvmGeneratorVisitor, symbolTable);
 				System.out.println(" Generated LLVM file successfully at: '" + llFileName + "'");
 				System.out.println();

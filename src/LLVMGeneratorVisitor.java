@@ -2,11 +2,14 @@ import syntaxtree.*;
 import visitor.GJDepthFirst;
 
 import java.io.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 
     private File llFileptr;
     private SymbolTable symbolTable;
+    private VTables vTables;
 
     private int currLabelNum;
     private int currTempRegisterNum;
@@ -14,7 +17,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     private String currentClassName;
     private String currentMethodName;
 
-    LLVMGeneratorVisitor(String llFileName) {
+    LLVMGeneratorVisitor(String llFileName, SymbolTable _symbolTable, VTables _vTables) {
         llFileptr = new File(llFileName);
         try {
             if (!llFileptr.createNewFile()) {
@@ -24,7 +27,22 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
+        symbolTable = _symbolTable;
+        vTables = _vTables;
         currLabelNum = currTempRegisterNum = 0;
+    }
+
+    String getLLVMType(String actualType) {
+        switch (actualType) {
+            case "int":
+                return "i32";
+            case "boolean":
+                return "i1";
+            case "int[]":
+                return "i32*";
+            default:
+                return "i8*";
+        }
     }
 
     void emit(String buffer) {
@@ -39,7 +57,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         }
     }
 
-    void emit_llvm_helper_methods() {
+    void emitLLVMHelperMethods() {
         String buffer = "\n" +
             "declare i8* @calloc(i32, i32)\n" +
             "declare i32 @printf(i8*, ...)\n" +
@@ -62,8 +80,41 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         emit(buffer);
     }
 
-    void emit_llvm_vtables() {
-
+    void emitLLVMVTables() {
+        for (Map.Entry<String, VTables.ClassVTable> classEntry : vTables.classesVTables.entrySet()) {
+            String className = classEntry.getKey();
+            VTables.ClassVTable classVTable = classEntry.getValue();
+            if (classVTable.isMainClass) {
+                emit("@." + className + "_vtable = global [0 x i8*] []\n");
+                continue;
+            }
+            emit("@." + className + "_vtable = global [");
+            int functionsNum = 0;
+            StringBuilder currBuffer = new StringBuilder();
+            for (Map.Entry<String, Integer> methodEntry : classVTable.methodsTable.entrySet()) {
+                String methodName = methodEntry.getKey();
+                if (functionsNum > 0) {
+                    currBuffer.append(", ");
+                }
+                functionsNum++;
+                String methodReturnType = symbolTable.getClassMethodReturnType(className, methodName);
+                currBuffer.append("i8* bitcast (");
+                currBuffer.append(getLLVMType(methodReturnType));
+                currBuffer.append(" (i8*");
+                LinkedHashMap<String, String> methodParameters = symbolTable.getClassMethodParameters(className, methodName);
+                for (Map.Entry<String, String> parameterEntry : methodParameters.entrySet()) {
+                    currBuffer.append(", ");
+                    currBuffer.append(getLLVMType(parameterEntry.getValue()));
+                }
+                currBuffer.append(")* @");
+                currBuffer.append(className);
+                currBuffer.append(".");
+                currBuffer.append(methodName);
+                currBuffer.append(" to i8*)");
+            }
+            emit(functionsNum + " x i8*] [" + currBuffer + "]\n");
+        }
+        emit("\n");
     }
 
     String getLabel() {
@@ -81,8 +132,8 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f2 -> <EOF>
      */
     public String visit(Goal n, SymbolTable symbolTable) throws Exception {
-        // TODO add vtables
-        emit_llvm_helper_methods();
+        emitLLVMVTables();
+        emitLLVMHelperMethods();
         n.f0.accept(this, symbolTable);
         n.f1.accept(this, symbolTable);
         return null;
