@@ -90,29 +90,29 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
             }
             emit("@." + className + "_vtable = global [");
             int functionsNum = 0;
-            StringBuilder currBuffer = new StringBuilder();
+            StringBuilder currBuilder = new StringBuilder();
             for (Map.Entry<String, Integer> methodEntry : classVTable.methodsTable.entrySet()) {
                 String methodName = methodEntry.getKey();
                 if (functionsNum > 0) {
-                    currBuffer.append(", ");
+                    currBuilder.append(", ");
                 }
                 functionsNum++;
                 String methodReturnType = symbolTable.getClassMethodReturnType(className, methodName);
-                currBuffer.append("i8* bitcast (");
-                currBuffer.append(getLLVMType(methodReturnType));
-                currBuffer.append(" (i8*");
+                currBuilder.append("i8* bitcast (");
+                currBuilder.append(getLLVMType(methodReturnType));
+                currBuilder.append(" (i8*");
                 LinkedHashMap<String, String> methodParameters = symbolTable.getClassMethodParameters(className, methodName);
                 for (Map.Entry<String, String> parameterEntry : methodParameters.entrySet()) {
-                    currBuffer.append(", ");
-                    currBuffer.append(getLLVMType(parameterEntry.getValue()));
+                    currBuilder.append(", ");
+                    currBuilder.append(getLLVMType(parameterEntry.getValue()));
                 }
-                currBuffer.append(")* @");
-                currBuffer.append(className);
-                currBuffer.append(".");
-                currBuffer.append(methodName);
-                currBuffer.append(" to i8*)");
+                currBuilder.append(")* @");
+                currBuilder.append(className);
+                currBuilder.append(".");
+                currBuilder.append(methodName);
+                currBuilder.append(" to i8*)");
             }
-            emit(functionsNum + " x i8*] [" + currBuffer + "]\n");
+            emit(functionsNum + " x i8*] [" + currBuilder + "]\n");
         }
         emit("\n");
     }
@@ -139,48 +139,35 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         return null;
     }
 
-//    /**
-//     * f0 -> "class"
-//     * f1 -> Identifier()
-//     * f2 -> "{"
-//     * f3 -> "public"
-//     * f4 -> "static"
-//     * f5 -> "void"
-//     * f6 -> "main"
-//     * f7 -> "("
-//     * f8 -> "String"
-//     * f9 -> "["
-//     * f10 -> "]"
-//     * f11 -> Identifier()
-//     * f12 -> ")"
-//     * f13 -> "{"
-//     * f14 -> ( VarDeclaration() )*
-//     * f15 -> ( Statement() )*
-//     * f16 -> "}"
-//     * f17 -> "}"
-//     */
-//    public String visit(MainClass n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        n.f4.accept(this, argu);
-//        n.f5.accept(this, argu);
-//        n.f6.accept(this, argu);
-//        n.f7.accept(this, argu);
-//        n.f8.accept(this, argu);
-//        n.f9.accept(this, argu);
-//        n.f10.accept(this, argu);
-//        n.f11.accept(this, argu);
-//        n.f12.accept(this, argu);
-//        n.f13.accept(this, argu);
-//        n.f14.accept(this, argu);
-//        n.f15.accept(this, argu);
-//        n.f16.accept(this, argu);
-//        n.f17.accept(this, argu);
-//        return _ret;
-//    }
+    /**
+     * f0 -> "class"
+     * f1 -> Identifier()
+     * f2 -> "{"
+     * f3 -> "public"
+     * f4 -> "static"
+     * f5 -> "void"
+     * f6 -> "main"
+     * f7 -> "("
+     * f8 -> "String"
+     * f9 -> "["
+     * f10 -> "]"
+     * f11 -> Identifier()
+     * f12 -> ")"
+     * f13 -> "{"
+     * f14 -> ( VarDeclaration() )*
+     * f15 -> ( Statement() )*
+     * f16 -> "}"
+     * f17 -> "}"
+     */
+    public String visit(MainClass n, SymbolTable symbolTable) throws Exception {
+        emit("\ndefine i32 @main() {\n");
+        currentClassName = n.f1.accept(this, symbolTable);
+        currentMethodName = "main";
+        n.f14.accept(this, symbolTable);
+        n.f15.accept(this, symbolTable);
+        emit("\tret i32 0\n}\n");
+        return null;
+    }
 //
 //    /**
 //     * f0 -> ClassDeclaration()
@@ -189,49 +176,37 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 //    public String visit(TypeDeclaration n, SymbolTable symbolTable) throws Exception {
 //        return n.f0.accept(this, argu);
 //    }
-//
-//    /**
-//     * f0 -> "class"
-//     * f1 -> Identifier()
-//     * f2 -> "{"
-//     * f3 -> ( VarDeclaration() )*
-//     * f4 -> ( MethodDeclaration() )*
-//     * f5 -> "}"
-//     */
-//    public String visit(ClassDeclaration n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        n.f4.accept(this, argu);
-//        n.f5.accept(this, argu);
-//        return _ret;
-//    }
-//
-//    /**
-//     * f0 -> "class"
-//     * f1 -> Identifier()
-//     * f2 -> "extends"
-//     * f3 -> Identifier()
-//     * f4 -> "{"
-//     * f5 -> ( VarDeclaration() )*
-//     * f6 -> ( MethodDeclaration() )*
-//     * f7 -> "}"
-//     */
-//    public String visit(ClassExtendsDeclaration n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        n.f4.accept(this, argu);
-//        n.f5.accept(this, argu);
-//        n.f6.accept(this, argu);
-//        n.f7.accept(this, argu);
-//        return _ret;
-//    }
-//
+
+    /**
+     * f0 -> "class"
+     * f1 -> Identifier()
+     * f2 -> "{"
+     * f3 -> ( VarDeclaration() )*
+     * f4 -> ( MethodDeclaration() )*
+     * f5 -> "}"
+     */
+    public String visit(ClassDeclaration n, SymbolTable symbolTable) throws Exception {
+        currentClassName = n.f1.accept(this, symbolTable);
+        n.f4.accept(this, symbolTable);
+        return null;
+    }
+
+    /**
+     * f0 -> "class"
+     * f1 -> Identifier()
+     * f2 -> "extends"
+     * f3 -> Identifier()
+     * f4 -> "{"
+     * f5 -> ( VarDeclaration() )*
+     * f6 -> ( MethodDeclaration() )*
+     * f7 -> "}"
+     */
+    public String visit(ClassExtendsDeclaration n, SymbolTable symbolTable) throws Exception {
+        currentClassName = n.f1.accept(this, symbolTable);
+        n.f6.accept(this, symbolTable);
+        return null;
+    }
+
 //    /**
 //     * f0 -> Type()
 //     * f1 -> Identifier()
@@ -244,40 +219,37 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 //        n.f2.accept(this, argu);
 //        return _ret;
 //    }
-//
-//    /**
-//     * f0 -> "public"
-//     * f1 -> Type()
-//     * f2 -> Identifier()
-//     * f3 -> "("
-//     * f4 -> ( FormalParameterList() )?
-//     * f5 -> ")"
-//     * f6 -> "{"
-//     * f7 -> ( VarDeclaration() )*
-//     * f8 -> ( Statement() )*
-//     * f9 -> "return"
-//     * f10 -> Expression()
-//     * f11 -> ";"
-//     * f12 -> "}"
-//     */
-//    public String visit(MethodDeclaration n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        n.f4.accept(this, argu);
-//        n.f5.accept(this, argu);
-//        n.f6.accept(this, argu);
-//        n.f7.accept(this, argu);
-//        n.f8.accept(this, argu);
-//        n.f9.accept(this, argu);
-//        n.f10.accept(this, argu);
-//        n.f11.accept(this, argu);
-//        n.f12.accept(this, argu);
-//        return _ret;
-//    }
-//
+
+    /**
+     * f0 -> "public"
+     * f1 -> Type()
+     * f2 -> Identifier()
+     * f3 -> "("
+     * f4 -> ( FormalParameterList() )?
+     * f5 -> ")"
+     * f6 -> "{"
+     * f7 -> ( VarDeclaration() )*
+     * f8 -> ( Statement() )*
+     * f9 -> "return"
+     * f10 -> Expression()
+     * f11 -> ";"
+     * f12 -> "}"
+     */
+    public String visit(MethodDeclaration n, SymbolTable symbolTable) throws Exception {
+        currentMethodName = n.f2.accept(this, symbolTable);
+        String currBuffer = "define " + getLLVMType(n.f1.accept(this, symbolTable)) +
+                " @" + currentClassName + "." + currentMethodName + "(i8* %this";
+        LinkedHashMap<String, String> methodParameters = symbolTable.getClassMethodParameters(currentClassName, currentMethodName);
+        for (Map.Entry<String, String> parameterEntry : methodParameters.entrySet()) {
+            currBuffer += ", " + getLLVMType(parameterEntry.getValue()) + " %." + parameterEntry.getKey();
+        }
+        emit(currBuffer + ") {\n");
+        n.f7.accept(this, symbolTable);
+        String retRegister = n.f8.accept(this, symbolTable);
+        emit("\tret " + getLLVMType(symbolTable.getClassMethodReturnType(currentClassName, currentMethodName)) + ' ' + retRegister + "\n}\n");
+        return null;
+    }
+
 //    /**
 //     * f0 -> FormalParameter()
 //     * f1 -> FormalParameterTail()

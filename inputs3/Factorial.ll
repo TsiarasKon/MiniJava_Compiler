@@ -1,5 +1,7 @@
 @.Factorial_vtable = global [0 x i8*] []
 @.Fac_vtable = global [1 x i8*] [i8* bitcast (i32 (i8*, i32)* @Fac.ComputeFac to i8*)]
+
+
 declare i8* @calloc(i32, i32)
 declare i32 @printf(i8*, ...)
 declare void @exit(i32)
@@ -17,4 +19,12 @@ define void @throw_oob() {
 	call i32 (i8*, ...) @printf(i8* %_str)
 	call void @exit(i32 1)
 	ret void
+}
+
+define i32 @main() {
+
+	ret i32 0
+}
+define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
+	ret i32 null
 }
