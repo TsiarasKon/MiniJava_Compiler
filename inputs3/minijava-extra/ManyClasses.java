@@ -44,4 +44,9 @@ class C extends B {
         data = false;
         return data;
     }
+
+    public int get(){
+        return 42;
+    }
+
 }

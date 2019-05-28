@@ -223,7 +223,6 @@ public class SymbolTable {
         }
 
         String getMethodVarType(String methodName, String varName) {
-            String varTypeFromParentFields = null;
             ClassST currClass = this;
             while (currClass != null) {
                 if (currClass.methods.containsKey(methodName)) {
@@ -266,6 +265,7 @@ public class SymbolTable {
                 // get a copy of parents' VTable
                 classVTable.fieldsTable = new LinkedHashMap<>(vTables.classesVTables.get(parentClass.className).fieldsTable);
                 classVTable.methodsTable = new LinkedHashMap<>(vTables.classesVTables.get(parentClass.className).methodsTable);
+                classVTable.methodsFromTable = new LinkedHashMap<>(vTables.classesVTables.get(parentClass.className).methodsFromTable);
                 fieldOffset = parentClass.getFieldOffset();
                 methodOffset = parentClass.getMethodOffset();
             }
@@ -330,10 +330,12 @@ public class SymbolTable {
                 String methodName = entry.getKey();
                 if (getOverriddenMethod(methodName) == null) {
                     classVTable.methodsTable.put(methodName, methodOffset);
+                    classVTable.methodsFromTable.put(methodName, className);
                     methodOffset += 8;
+                } else {
+                    classVTable.methodsFromTable.replace(methodName, className);
                 }
             }
-
         }
 
 

@@ -2,6 +2,7 @@ import syntaxtree.*;
 import visitor.GJDepthFirst;
 
 import java.io.*;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -100,6 +101,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
             }
             emit("@." + className + "_vtable = global [");
             int functionsNum = 0;
+            Iterator currIt = classVTable.methodsFromTable.entrySet().iterator();
             StringBuilder currBuilder = new StringBuilder();
             for (Map.Entry<String, Integer> methodEntry : classVTable.methodsTable.entrySet()) {
                 String methodName = methodEntry.getKey();
@@ -117,7 +119,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
                     currBuilder.append(getLLVMType(parameterEntry.getValue()));
                 }
                 currBuilder.append(")* @");
-                currBuilder.append(className);
+                currBuilder.append(((Map.Entry) currIt.next()).getValue());
                 currBuilder.append(".");
                 currBuilder.append(methodName);
                 currBuilder.append(" to i8*)");
