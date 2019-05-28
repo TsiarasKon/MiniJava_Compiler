@@ -118,7 +118,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     }
 
     String getLabel() {
-        return "label" + currLabelNum++;
+        return "%label" + currLabelNum++;
     }
 
     String getTempReg() {
@@ -168,14 +168,6 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         emit("\tret i32 0\n}\n");
         return null;
     }
-//
-//    /**
-//     * f0 -> ClassDeclaration()
-//     *       | ClassExtendsDeclaration()
-//     */
-//    public String visit(TypeDeclaration n, SymbolTable symbolTable) throws Exception {
-//        return n.f0.accept(this, argu);
-//    }
 
     /**
      * f0 -> "class"
@@ -207,18 +199,15 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         return null;
     }
 
-//    /**
-//     * f0 -> Type()
-//     * f1 -> Identifier()
-//     * f2 -> ";"
-//     */
-//    public String visit(VarDeclaration n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        return _ret;
-//    }
+    /**
+     * f0 -> Type()
+     * f1 -> Identifier()
+     * f2 -> ";"
+     */
+    public String visit(VarDeclaration n, SymbolTable symbolTable) throws Exception {
+        emit("\t%" + n.f1.accept(this, symbolTable) + " = alloca " + getLLVMType(n.f0.accept(this, symbolTable)) + '\n');
+        return null;
+    }
 
     /**
      * f0 -> "public"
@@ -240,65 +229,22 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String currBuffer = "define " + getLLVMType(n.f1.accept(this, symbolTable)) +
                 " @" + currentClassName + "." + currentMethodName + "(i8* %this";
         LinkedHashMap<String, String> methodParameters = symbolTable.getClassMethodParameters(currentClassName, currentMethodName);
+        String paramAllocaBuffer = "";
         for (Map.Entry<String, String> parameterEntry : methodParameters.entrySet()) {
-            currBuffer += ", " + getLLVMType(parameterEntry.getValue()) + " %." + parameterEntry.getKey();
+            String llvmParamType = getLLVMType(parameterEntry.getValue());
+            String currParamName = parameterEntry.getKey();
+            currBuffer += ", " + llvmParamType + " %." + currParamName;
+            paramAllocaBuffer += "\t%" + currParamName + " = alloca " + llvmParamType +
+                    "\n\tstore " + llvmParamType + " %." + currParamName + ", " + llvmParamType + "* %" + currParamName + '\n';
         }
         emit(currBuffer + ") {\n");
+        emit(paramAllocaBuffer);
         n.f7.accept(this, symbolTable);
-        String retRegister = n.f8.accept(this, symbolTable);
+        n.f8.accept(this, symbolTable);
+        String retRegister = n.f10.accept(this, symbolTable);
         emit("\tret " + getLLVMType(symbolTable.getClassMethodReturnType(currentClassName, currentMethodName)) + ' ' + retRegister + "\n}\n");
         return null;
     }
-
-//    /**
-//     * f0 -> FormalParameter()
-//     * f1 -> FormalParameterTail()
-//     */
-//    public String visit(FormalParameterList n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        return _ret;
-//    }
-//
-//    /**
-//     * f0 -> Type()
-//     * f1 -> Identifier()
-//     */
-//    public String visit(FormalParameter n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        return _ret;
-//    }
-//
-//    /**
-//     * f0 -> ( FormalParameterTerm() )*
-//     */
-//    public String visit(FormalParameterTail n, SymbolTable symbolTable) throws Exception {
-//        return n.f0.accept(this, argu);
-//    }
-//
-//    /**
-//     * f0 -> ","
-//     * f1 -> FormalParameter()
-//     */
-//    public String visit(FormalParameterTerm n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        return _ret;
-//    }
-//
-//    /**
-//     * f0 -> ArrayType()
-//     *       | BooleanType()
-//     *       | IntegerType()
-//     *       | Identifier()
-//     */
-//    public String visit(Type n, SymbolTable symbolTable) throws Exception {
-//        return n.f0.accept(this, argu);
-//    }
 
     /**
      * f0 -> "int"
@@ -383,45 +329,48 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 //        n.f6.accept(this, argu);
 //        return _ret;
 //    }
-//
-//    /**
-//     * f0 -> "if"
-//     * f1 -> "("
-//     * f2 -> Expression()
-//     * f3 -> ")"
-//     * f4 -> Statement()
-//     * f5 -> "else"
-//     * f6 -> Statement()
-//     */
-//    public String visit(IfStatement n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        n.f4.accept(this, argu);
-//        n.f5.accept(this, argu);
-//        n.f6.accept(this, argu);
-//        return _ret;
-//    }
-//
-//    /**
-//     * f0 -> "while"
-//     * f1 -> "("
-//     * f2 -> Expression()
-//     * f3 -> ")"
-//     * f4 -> Statement()
-//     */
-//    public String visit(WhileStatement n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        n.f4.accept(this, argu);
-//        return _ret;
-//    }
-//
+
+    /**
+     * f0 -> "if"
+     * f1 -> "("
+     * f2 -> Expression()
+     * f3 -> ")"
+     * f4 -> Statement()
+     * f5 -> "else"
+     * f6 -> Statement()
+     */
+    public String visit(IfStatement n, SymbolTable symbolTable) throws Exception {
+        String exprReg = n.f2.accept(this, symbolTable);
+        String ifLabel = getLabel();
+        String elseLabel = getLabel();
+        String endIfLabel = getLabel();
+        emit("\tbr i1 " + exprReg + ", label " + ifLabel + ", label " + elseLabel + '\n' + ifLabel + ":\n");
+        n.f4.accept(this, symbolTable);
+        emit("\tbr label " + endIfLabel + '\n' + elseLabel + ":\n");
+        n.f6.accept(this, symbolTable);
+        emit("\tbr label " + endIfLabel + '\n' + endIfLabel + ":\n");
+        return null;
+    }
+
+    /**
+     * f0 -> "while"
+     * f1 -> "("
+     * f2 -> Expression()
+     * f3 -> ")"
+     * f4 -> Statement()
+     */
+    public String visit(WhileStatement n, SymbolTable symbolTable) throws Exception {
+        String startLabel = getLabel();
+        String contLabel = getLabel();
+        String endLabel = getLabel();
+        emit("\tbr label " + startLabel + '\n' + startLabel + ":\n");
+        String exprReg = n.f2.accept(this, symbolTable);
+        emit("\tbr i1 " + exprReg + ", label " + contLabel + ", label " + endLabel + '\n' + contLabel + ":\n");
+        n.f4.accept(this, symbolTable);
+        emit("\tbr label " + startLabel + '\n' + endLabel + ":\n");
+        return null;
+    }
+
 //    /**
 //     * f0 -> "System.out.println"
 //     * f1 -> "("

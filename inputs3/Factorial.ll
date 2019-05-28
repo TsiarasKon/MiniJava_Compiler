@@ -22,9 +22,17 @@ define void @throw_oob() {
 }
 
 define i32 @main() {
-
 	ret i32 0
 }
 define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
-	ret i32 null
+	%num = alloca i32
+	store i32 %.num, i32* %num
+	%num_aux = alloca i32
+	br i1 null, label %label0, label %label1
+%label0:
+	br label %label2
+%label1:
+	br label %label2
+%label2:
+	ret i32 num_aux
 }
