@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs3/Factorial.ll" beforeDir="false" afterPath="$PROJECT_DIR$/inputs3/Factorial.ll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,11 +56,11 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/Factorial.ll">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="124">
-                      <caret line="56" column="33" lean-forward="true" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+                    <state relative-caret-position="324">
+                      <caret line="66" column="32" lean-forward="true" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
                     </state>
                   </provider>
                 </entry>
@@ -69,17 +68,17 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/LinearSearch.ll">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1339">
-                      <caret line="289" selection-start-line="289" selection-end-line="289" selection-end-column="9" />
+                    <state relative-caret-position="160">
+                      <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/TreeVisitor.ll">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="175">
-                      <caret line="364" column="24" selection-start-line="364" selection-start-column="16" selection-end-line="364" selection-end-column="24" />
+                    <state relative-caret-position="-116">
+                      <caret line="751" column="48" lean-forward="true" selection-start-line="751" selection-start-column="48" selection-end-line="751" selection-end-column="48" />
                     </state>
                   </provider>
                 </entry>
@@ -118,7 +117,7 @@
           </split-first>
           <split-second>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/inputs3/Factorial.java">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="-40">
@@ -134,7 +133,8 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/inputs3/TreeVisitor.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-2100">
+                    <state relative-caret-position="20">
+                      <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
                       <folding>
                         <element signature="e#0#7140#0" expanded="true" />
                       </folding>
@@ -145,15 +145,15 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/inputs3/LinearSearch.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-1680" />
+                    <state relative-caret-position="-1080" />
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/inputs3/Factorial.ll">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="83">
-                      <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+                    <state relative-caret-position="117">
+                      <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
                     </state>
                   </provider>
                 </entry>
@@ -167,11 +167,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="597">
-                  <caret line="495" column="49" lean-forward="true" selection-start-line="495" selection-start-column="49" selection-end-line="495" selection-end-column="49" />
+                <state relative-caret-position="-4404">
+                  <caret line="441" column="103" selection-start-line="441" selection-start-column="103" selection-end-line="441" selection-end-column="103" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#5163#5164#0" expanded="true" />
+                    <element signature="e#5299#5300#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -203,8 +203,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Alloca</find>
-      <find>tried to</find>
       <find>MethodDe</find>
       <find>complex</find>
       <find>a(</find>
@@ -233,6 +231,8 @@
       <find>offset</find>
       <find>getM</find>
       <find>sethas_r</find>
+      <find>xor</find>
+      <find>and</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -342,7 +342,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559044809997" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559047863733" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -440,7 +440,7 @@
       <workItem from="1558637333065" duration="3935000" />
       <workItem from="1558641367630" duration="731000" />
       <workItem from="1558716385976" duration="20640000" />
-      <workItem from="1558977514137" duration="16671000" />
+      <workItem from="1558977514137" duration="19402000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -645,11 +645,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559038251543</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Arithmetic expressions and more">
+      <created>1559044887935</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1559044887935</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175506000" />
+    <option name="totallyTimeSpent" value="178237000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -690,7 +697,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SemanticException added&#10;&#10;and also changed file structure for IntelliJ's sake" />
     <MESSAGE value="Input files added" />
     <MESSAGE value="Completed FillSTVisitor" />
     <MESSAGE value="Adjusted Main for multiple input files" />
@@ -715,7 +721,8 @@
     <MESSAGE value="emitLLVMVTables()" />
     <MESSAGE value="emitting methods (top-down approach)" />
     <MESSAGE value="if and while" />
-    <option name="LAST_COMMIT_MESSAGE" value="if and while" />
+    <MESSAGE value="Arithmetic expressions and more" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arithmetic expressions and more" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/inputs/offset-examples/BubbleSort.txt" />
@@ -896,27 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/TreeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2100">
-          <folding>
-            <element signature="e#0#7140#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/LinearSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1680" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/TreeVisitor.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="364" column="24" selection-start-line="364" selection-start-column="16" selection-end-line="364" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TypeCheckerVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7157">
@@ -942,17 +928,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/LinearSearch.ll">
+    <entry file="file://$PROJECT_DIR$/inputs3/Factorial.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1339">
-          <caret line="289" selection-start-line="289" selection-end-line="289" selection-end-column="9" />
+        <state relative-caret-position="117">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/TreeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#7140#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/LinearSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1080" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/Factorial.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="56" column="33" lean-forward="true" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+        <state relative-caret-position="324">
+          <caret line="66" column="32" lean-forward="true" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/LinearSearch.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/TreeVisitor.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-116">
+          <caret line="751" column="48" lean-forward="true" selection-start-line="751" selection-start-column="48" selection-end-line="751" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4404">
+          <caret line="441" column="103" selection-start-line="441" selection-start-column="103" selection-end-line="441" selection-end-column="103" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5299#5300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -963,24 +989,6 @@
           <folding>
             <element signature="e#56#57#0" expanded="true" />
             <element signature="e#116#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/Factorial.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="495" column="49" lean-forward="true" selection-start-line="495" selection-start-column="49" selection-end-line="495" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5163#5164#0" expanded="true" />
           </folding>
         </state>
       </provider>
