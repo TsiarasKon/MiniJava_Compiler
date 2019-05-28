@@ -11,7 +11,10 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     private SymbolTable symbolTable;
     private VTables vTables;
 
-    private int currLabelNum;
+    private int currLabelNum_if;
+    private int currLabelNum_loop;
+    private int currLabelNum_arr;
+    private int currLabelNum_oob;
     private int currTempRegisterNum;
 
     private String currentClassName;
@@ -29,10 +32,13 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         }
         symbolTable = _symbolTable;
         vTables = _vTables;
-        currLabelNum = currTempRegisterNum = 0;
+        currLabelNum_if = currLabelNum_loop = currLabelNum_arr = currLabelNum_oob = currTempRegisterNum = 0;
     }
 
     String getLLVMType(String actualType) {
+        if (actualType == null) {       // Should never get here
+            System.err.println("Tried to get LLVM type of 'null'. Exiting ...");
+        }
         switch (actualType) {
             case "int":
                 return "i32";
@@ -117,12 +123,40 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         emit("\n");
     }
 
-    String getLabel() {
-        return "%label" + currLabelNum++;
+    String getLabel(String labelType) {
+        switch (labelType) {
+            case "if":
+                return "%if" + currLabelNum_if++;
+            case "loop":
+                return "%loop" + currLabelNum_loop++;
+            case "arr":
+                return "%arr_alloc" + currLabelNum_arr++;
+            default:
+                return "%oob" + currLabelNum_oob++;
+        }
     }
 
     String getTempReg() {
         return "%_" + currTempRegisterNum++;
+    }
+
+    boolean isLiteral(String expr) {
+        try {
+            Integer.parseInt(expr);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    String loadNonLiteral(String expr) {
+        if (isLiteral(expr) || expr == null) {
+            return expr;
+        }
+        String exprReg = getTempReg();
+        String exprLLVMType = getLLVMType(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, expr.substring(1)));
+        emit('\t' + exprReg + " = load " + exprLLVMType + ", " + exprLLVMType + "* " + expr + '\n');
+        return exprReg;
     }
 
 
@@ -293,22 +327,21 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 //        n.f2.accept(this, argu);
 //        return _ret;
 //    }
-//
-//    /**
-//     * f0 -> Identifier()
-//     * f1 -> "="
-//     * f2 -> Expression()
-//     * f3 -> ";"
-//     */
-//    public String visit(AssignmentStatement n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        return _ret;
-//    }
-//
+
+    /**
+     * f0 -> Identifier()
+     * f1 -> "="
+     * f2 -> Expression()
+     * f3 -> ";"
+     */
+    public String visit(AssignmentStatement n, SymbolTable symbolTable) throws Exception {
+        String idName = n.f0.accept(this, symbolTable);
+        String idLLVMType = getLLVMType(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, idName));
+        String expr = n.f2.accept(this, symbolTable);
+        emit("\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* %" + idName + '\n');
+        return null;
+    }
+
 //    /**
 //     * f0 -> Identifier()
 //     * f1 -> "["
@@ -341,9 +374,9 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      */
     public String visit(IfStatement n, SymbolTable symbolTable) throws Exception {
         String exprReg = n.f2.accept(this, symbolTable);
-        String ifLabel = getLabel();
-        String elseLabel = getLabel();
-        String endIfLabel = getLabel();
+        String ifLabel = getLabel("if");
+        String elseLabel = getLabel("if");
+        String endIfLabel = getLabel("if");
         emit("\tbr i1 " + exprReg + ", label " + ifLabel + ", label " + elseLabel + '\n' + ifLabel + ":\n");
         n.f4.accept(this, symbolTable);
         emit("\tbr label " + endIfLabel + '\n' + elseLabel + ":\n");
@@ -360,9 +393,9 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f4 -> Statement()
      */
     public String visit(WhileStatement n, SymbolTable symbolTable) throws Exception {
-        String startLabel = getLabel();
-        String contLabel = getLabel();
-        String endLabel = getLabel();
+        String startLabel = getLabel("loop");
+        String contLabel = getLabel("loop");
+        String endLabel = getLabel("loop");
         emit("\tbr label " + startLabel + '\n' + startLabel + ":\n");
         String exprReg = n.f2.accept(this, symbolTable);
         emit("\tbr i1 " + exprReg + ", label " + contLabel + ", label " + endLabel + '\n' + contLabel + ":\n");
@@ -415,59 +448,59 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 //        n.f2.accept(this, argu);
 //        return _ret;
 //    }
-//
-//    /**
-//     * f0 -> PrimaryExpression()
-//     * f1 -> "<"
-//     * f2 -> PrimaryExpression()
-//     */
-//    public String visit(CompareExpression n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        return _ret;
-//    }
-//
-//    /**
-//     * f0 -> PrimaryExpression()
-//     * f1 -> "+"
-//     * f2 -> PrimaryExpression()
-//     */
-//    public String visit(PlusExpression n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        return _ret;
-//    }
-//
-//    /**
-//     * f0 -> PrimaryExpression()
-//     * f1 -> "-"
-//     * f2 -> PrimaryExpression()
-//     */
-//    public String visit(MinusExpression n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        return _ret;
-//    }
-//
-//    /**
-//     * f0 -> PrimaryExpression()
-//     * f1 -> "*"
-//     * f2 -> PrimaryExpression()
-//     */
-//    public String visit(TimesExpression n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        return _ret;
-//    }
-//
+
+    /**
+     * f0 -> PrimaryExpression()
+     * f1 -> "<"
+     * f2 -> PrimaryExpression()
+     */
+    public String visit(CompareExpression n, SymbolTable symbolTable) throws Exception {
+        String expr1 = loadNonLiteral(n.f0.accept(this, symbolTable));
+        String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
+        String tempReg = getTempReg();
+        emit('\t' + tempReg + " = icmp slt i32 " + expr1 + ", " + expr2 + '\n');
+        return tempReg;
+    }
+
+    /**
+     * f0 -> PrimaryExpression()
+     * f1 -> "+"
+     * f2 -> PrimaryExpression()
+     */
+    public String visit(PlusExpression n, SymbolTable symbolTable) throws Exception {
+        String expr1 = loadNonLiteral(n.f0.accept(this, symbolTable));
+        String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
+        String tempReg = getTempReg();
+        emit('\t' + tempReg + " = add i32 " + expr1 + ", " + expr2 + '\n');
+        return tempReg;
+    }
+
+    /**
+     * f0 -> PrimaryExpression()
+     * f1 -> "-"
+     * f2 -> PrimaryExpression()
+     */
+    public String visit(MinusExpression n, SymbolTable symbolTable) throws Exception {
+        String expr1 = loadNonLiteral(n.f0.accept(this, symbolTable));
+        String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
+        String tempReg = getTempReg();
+        emit('\t' + tempReg + " = sub i32 " + expr1 + ", " + expr2 + '\n');
+        return tempReg;
+    }
+
+    /**
+     * f0 -> PrimaryExpression()
+     * f1 -> "*"
+     * f2 -> PrimaryExpression()
+     */
+    public String visit(TimesExpression n, SymbolTable symbolTable) throws Exception {
+        String expr1 = loadNonLiteral(n.f0.accept(this, symbolTable));
+        String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
+        String tempReg = getTempReg();
+        emit('\t' + tempReg + " = mul i32 " + expr1 + ", " + expr2 + '\n');
+        return tempReg;
+    }
+
 //    /**
 //     * f0 -> PrimaryExpression()
 //     * f1 -> "["
@@ -551,20 +584,32 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 //    public String visit(Clause n, SymbolTable symbolTable) throws Exception {
 //        return n.f0.accept(this, argu);
 //    }
-//
-//    /**
-//     * f0 -> IntegerLiteral()
-//     *       | TrueLiteral()
-//     *       | FalseLiteral()
-//     *       | Identifier()
-//     *       | ThisExpression()
-//     *       | ArrayAllocationExpression()
-//     *       | AllocationExpression()
-//     *       | BracketExpression()
-//     */
-//    public String visit(PrimaryExpression n, SymbolTable symbolTable) throws Exception {
-//        return n.f0.accept(this, argu);
-//    }
+
+    /**
+     * f0 -> IntegerLiteral()
+     *       | TrueLiteral()
+     *       | FalseLiteral()
+     *       | Identifier()
+     *       | ThisExpression()
+     *       | ArrayAllocationExpression()
+     *       | AllocationExpression()
+     *       | BracketExpression()
+     */
+    public String visit(PrimaryExpression n, SymbolTable symbolTable) throws Exception {
+        String expr = n.f0.accept(this, symbolTable);
+        if (expr == null) return null;
+        if (symbolTable.getClassFieldType(currentClassName, expr) != null || symbolTable.getClassMethodVarType(currentClassName, currentMethodName, expr) != null) {
+            return '%' + expr;
+        }
+        switch (expr) {
+            case "true":
+                return "1";
+            case "false":
+                return "0";
+            default:
+                return expr;
+        }
+    }
 
     /**
      * f0 -> <INTEGER_LITERAL>

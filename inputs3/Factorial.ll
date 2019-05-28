@@ -28,11 +28,17 @@ define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
 	%num = alloca i32
 	store i32 %.num, i32* %num
 	%num_aux = alloca i32
-	br i1 null, label %label0, label %label1
-%label0:
-	br label %label2
-%label1:
-	br label %label2
-%label2:
-	ret i32 num_aux
+	%_0 = load i32, i32* %num
+	%_1 = icmp slt i32 %_0, 1
+	br i1 %_1, label %if0, label %if1
+%if0:
+	store i32 1, i32* %num_aux
+	br label %if2
+%if1:
+	%_2 = load i32, i32* %num
+	%_3 = mul i32 %_2, null
+	store i32 %_3, i32* %num_aux
+	br label %if2
+%if2:
+	ret i32 %num_aux
 }
