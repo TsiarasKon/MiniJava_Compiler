@@ -22,6 +22,7 @@ define void @throw_oob() {
 }
 
 define i32 @main() {
+	call void (i32) @print_int(i32 null)
 	ret i32 0
 }
 define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
@@ -36,8 +37,10 @@ define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
 	br label %if2
 %if1:
 	%_2 = load i32, i32* %num
-	%_3 = mul i32 %_2, null
-	store i32 %_3, i32* %num_aux
+	%_3 = load i32, i32* %num
+	%_4 = sub i32 %_3, 1
+	%_5 = mul i32 %_2, null
+	store i32 %_5, i32* %num_aux
 	br label %if2
 %if2:
 	ret i32 %num_aux
