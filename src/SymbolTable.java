@@ -92,6 +92,14 @@ public class SymbolTable {
         return classes.size() > 1;
     }
 
+    public int getClassFieldOffset(String className) {
+        return (classes.containsKey(className)) ? classes.get(className).getFieldOffset() : -1;
+    }
+
+    public int getClassMethodOffset(String className) {
+        return (classes.containsKey(className)) ? classes.get(className).getMethodOffset() : -1;
+    }
+
 //    public void printAllOffsets(String lPadding) {
 //        boolean mainFlag = true;    // used only to ignore main
 //        for (Map.Entry<String, ClassST> entry : classes.entrySet()) {

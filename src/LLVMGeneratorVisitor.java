@@ -56,6 +56,14 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         }
     }
 
+    public int getClassSize(String className) {
+        return symbolTable.getClassFieldOffset(className) + 8;
+    }
+
+    public int getClassMethodsNum(String className) {
+        return symbolTable.getClassMethodOffset(className) / 8;
+    }
+
     void emit(String buffer) {
         try {
             FileWriter fw = new FileWriter(llFileptr, true);
@@ -406,6 +414,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      */
     public String visit(PrintStatement n, SymbolTable symbolTable) throws Exception {
         String expr = loadNonLiteral(n.f2.accept(this, symbolTable));
+        // TODO exprType int or boolean?
         emit("\tcall void (i32) @print_int(i32 " + expr + ")\n");
         return null;
     }
@@ -664,20 +673,26 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         return bitcastReg;
     }
 
-//    /**
-//     * f0 -> "new"
-//     * f1 -> Identifier()
-//     * f2 -> "("
-//     * f3 -> ")"
-//     */
-//    public String visit(AllocationExpression n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        return _ret;
-//    }
+    /**
+     * f0 -> "new"
+     * f1 -> Identifier()
+     * f2 -> "("
+     * f3 -> ")"
+     */
+    public String visit(AllocationExpression n, SymbolTable symbolTable) throws Exception {
+        String className = n.f1.accept(this, symbolTable);
+        int classSize = getClassSize(className);
+        int vTableLength = getClassMethodsNum(className);
+        String callocReg = getTempReg();
+        String bitcastReg = getTempReg();
+        String elemPtrReg = getTempReg();
+        emit('\t' + callocReg + " = call i8* @calloc(i32 1, i32 " + classSize + ")\n" +
+                '\t' + bitcastReg + " = bitcast i8* " + callocReg + " to i8***\n" +
+                '\t' + elemPtrReg + " = getelementptr [" + vTableLength + " x i8*], [" + vTableLength + " x i8*]* @." + className + "_vtable, i32 0, i32 0\n" +
+                "\tstore i8** " + elemPtrReg + ", i8*** " + bitcastReg + '\n');
+        justAllocdType = "i8*";
+        return elemPtrReg;
+    }
 
     /**
      * f0 -> "!"
