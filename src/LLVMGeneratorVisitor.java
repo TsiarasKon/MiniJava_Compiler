@@ -18,7 +18,8 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     private int currLabelNum_arr;
     private int currLabelNum_oob;
     private int currTempRegisterNum;
-    private String justAllocdType;
+    private String justAllocdLLVMType;
+    private String exprClassName;
 
     private String currentClassName;
     private String currentMethodName;
@@ -36,7 +37,8 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         symbolTable = _symbolTable;
         vTables = _vTables;
         currLabelNum_if = currLabelNum_loop = currLabelNum_and = currLabelNum_arr = currLabelNum_oob = currTempRegisterNum = 0;
-        justAllocdType = null;
+        justAllocdLLVMType = null;
+        exprClassName = null;
     }
 
     String getLLVMType(String actualType) {
@@ -332,11 +334,11 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     public String visit(AssignmentStatement n, SymbolTable symbolTable) throws Exception {
         String idName = n.f0.accept(this, symbolTable);
         String idLLVMType;
-        if (justAllocdType == null) {
+        if (justAllocdLLVMType == null) {
             idLLVMType = getLLVMType(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, idName));
         } else {
-            idLLVMType = justAllocdType;
-            justAllocdType = null;
+            idLLVMType = justAllocdLLVMType;
+            justAllocdLLVMType = null;
         }
         String expr = n.f2.accept(this, symbolTable);
         emit("\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* %" + idName + '\n');
@@ -417,6 +419,25 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         // TODO exprType int or boolean?
         emit("\tcall void (i32) @print_int(i32 " + expr + ")\n");
         return null;
+    }
+
+    /**
+     * f0 -> AndExpression()
+     *       | CompareExpression()
+     *       | PlusExpression()
+     *       | MinusExpression()
+     *       | TimesExpression()
+     *       | ArrayLookup()
+     *       | ArrayLength()
+     *       | MessageSend()
+     *       | Clause()
+     */
+    public String visit(Expression n, SymbolTable symbolTable) throws Exception {
+        String previouslyAllocdClassName = exprClassName;
+        exprClassName = null;
+        String expr = n.f0.accept(this, symbolTable);
+        exprClassName = previouslyAllocdClassName;
+        return expr;
     }
 
     /**
@@ -526,32 +547,42 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f2 -> "length"
      */
     public String visit(ArrayLength n, SymbolTable symbolTable) throws Exception {
-        String arr = n.f0.accept(this, null);
+        String arr = loadNonLiteral(n.f0.accept(this, symbolTable));
         String arrSizeReg = getTempReg();
         // TODO: getelementptr?
         emit('\t' + arrSizeReg + " = load i32, i32* " + arr + '\n');
         return arrSizeReg;
     }
 
-//    /**
-//     * f0 -> PrimaryExpression()
-//     * f1 -> "."
-//     * f2 -> Identifier()
-//     * f3 -> "("
-//     * f4 -> ( ExpressionList() )?
-//     * f5 -> ")"
-//     */
-//    public String visit(MessageSend n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        n.f4.accept(this, argu);
-//        n.f5.accept(this, argu);
-//        return _ret;
-//    }
-//
+    /**
+     * f0 -> PrimaryExpression()
+     * f1 -> "."
+     * f2 -> Identifier()
+     * f3 -> "("
+     * f4 -> ( ExpressionList() )?
+     * f5 -> ")"
+     */
+    public String visit(MessageSend n, SymbolTable symbolTable) throws Exception {
+        String classReg = n.f0.accept(this, symbolTable);
+        String methodName = n.f2.accept(this, symbolTable);
+        int methodIndex = vTables.getClassMethodIndex(exprClassName, methodName);
+        String methodLLVMReturnType = getLLVMType(symbolTable.getClassMethodReturnType(exprClassName, methodName));
+        String bitcast1Reg = getTempReg();
+        String load1Reg = getTempReg();
+        String elemPtrReg = getTempReg();
+        String load2Reg = getTempReg();
+        emit('\t' + bitcast1Reg + " = bitcast i8* " + classReg + " to i8***\n" +
+                '\t' + load1Reg + " = load i8**, i8*** " + bitcast1Reg + '\n' +
+                '\t' + elemPtrReg + " = getelementptr i8*, i8** " + load1Reg + ", i32 " + methodIndex + '\n' +
+                '\t' + load2Reg + " = load i8*, i8** " + elemPtrReg + '\n');
+        String bitcast2Reg = getTempReg();
+        n.f4.accept(this, symbolTable);    // TODO
+        String callReg = getTempReg();
+        emit('\t' + bitcast2Reg + " = bitcast i8* " + load2Reg + " to " + methodLLVMReturnType + " (i8*, TODO" + ")*\n" +
+                '\t' + callReg + " = call " + methodLLVMReturnType + ' ' + bitcast2Reg + "(i8* " + classReg + ", TODO)\n");
+        return callReg;
+    }
+
 //    /**
 //     * f0 -> Expression()
 //     * f1 -> ExpressionTail()
@@ -639,6 +670,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f0 -> "this"
      */
     public String visit(ThisExpression n, SymbolTable symbolTable) throws Exception {
+        exprClassName = currentClassName;
         return "%this";
     }
 
@@ -669,8 +701,8 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
                 '\t' + callocReg + " = call i8* @calloc(i32 4, i32 " + increasedArrSizeReg + ")\n" +
                 '\t' + bitcastReg + " = bitcast i8* " + callocReg + " to i32*\n" +
                 "\tstore i32 " + arrSize + ", i32* " + bitcastReg + "\n");
-        justAllocdType = "i32*";
-        return bitcastReg;
+        justAllocdLLVMType = "i32*";
+        return callocReg;
     }
 
     /**
@@ -690,8 +722,9 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
                 '\t' + bitcastReg + " = bitcast i8* " + callocReg + " to i8***\n" +
                 '\t' + elemPtrReg + " = getelementptr [" + vTableLength + " x i8*], [" + vTableLength + " x i8*]* @." + className + "_vtable, i32 0, i32 0\n" +
                 "\tstore i8** " + elemPtrReg + ", i8*** " + bitcastReg + '\n');
-        justAllocdType = "i8*";
-        return elemPtrReg;
+        justAllocdLLVMType = "i8*";
+        exprClassName = className;
+        return callocReg;
     }
 
     /**

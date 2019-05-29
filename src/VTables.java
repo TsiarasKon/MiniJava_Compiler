@@ -10,6 +10,10 @@ public class VTables {
         classesVTables = new LinkedHashMap<>();
     }
 
+    public int getClassMethodIndex(String className, String methodName) {
+        return classesVTables.get(className).getMethodIndex(methodName);
+    }
+
     public static class ClassVTable {
         public boolean isMainClass;
         public LinkedHashMap<String, Integer> fieldsTable;
@@ -20,6 +24,17 @@ public class VTables {
             fieldsTable = new LinkedHashMap<>();
             methodsTable = new LinkedHashMap<>();
             methodsFromTable = new LinkedHashMap<>();
+        }
+
+        public int getMethodIndex(String methodName) {
+            int index = 0;
+            for (Map.Entry<String, Integer> methodEntry : methodsTable.entrySet()) {
+                if (methodEntry.getKey().equals(methodName)) {
+                    return index;
+                }
+                index++;
+            }
+            return -1;      // should never get here
         }
 
     }
