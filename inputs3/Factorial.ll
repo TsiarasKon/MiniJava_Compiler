@@ -44,7 +44,7 @@ define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
 	%_10 = icmp slt i32 %_9, 1
 	br i1 %_10, label %if0, label %if1
 if0:
-	store i8* 1, i8** %num_aux
+	store i32 1, i32* %num_aux
 	br label %if2
 if1:
 	%_11 = load i32, i32* %num

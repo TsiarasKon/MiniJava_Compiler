@@ -17,8 +17,8 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     private int currLabelNum_oob;
     private int currTempRegisterNum;
 
-    private String justAllocdLLVMType;
     private String currExprType;
+    private String currExprRegRval;     // only used in assignment related to method parameters
     private List<String> currMethodParameterRegs;
     private String currentClassName;
     private String currentMethodName;
@@ -36,7 +36,6 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         symbolTable = _symbolTable;
         vTables = _vTables;
         currLabelNum_if = currLabelNum_loop = currLabelNum_and = currLabelNum_arr = currLabelNum_oob = currTempRegisterNum = 0;
-        justAllocdLLVMType = null;
         currExprType = null;
     }
 
@@ -341,15 +340,12 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      */
     public String visit(AssignmentStatement n, SymbolTable symbolTable) throws Exception {
         String idName = n.f0.accept(this, symbolTable);
-        String idLLVMType;
-        if (justAllocdLLVMType == null) {
-            idLLVMType = getLLVMType(symbolTable.getClassMethodVarType(currentClassName, currentMethodName, idName));
-        } else {
-            idLLVMType = justAllocdLLVMType;
-            justAllocdLLVMType = null;
-        }
+        String idLLVMType = getLLVMType(currExprType);
+        currExprRegRval = null;
         String expr = n.f2.accept(this, symbolTable);
-        System.out.println(currentClassName + " | " + currentMethodName + " - " + currExprType + " = " + idLLVMType);
+        if (currExprRegRval != null) {    // use the actual values, not the
+            expr = currExprRegRval;
+        }
         emit("\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* %" + idName + '\n');
         return null;
     }
@@ -448,10 +444,10 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      *       | Clause()
      */
     public String visit(Expression n, SymbolTable symbolTable) throws Exception {
-        String prevExprType = currExprType;
-        currExprType = null;
         String expr = n.f0.accept(this, symbolTable);
-        currExprType = prevExprType;
+        if (symbolTable.getClassMethodParameters(currentClassName, currentMethodName).get(expr.substring(1)) != null) {
+            currExprRegRval = "%." + expr.substring(1);
+        }
         return expr;
     }
 
@@ -589,12 +585,13 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      */
     public String visit(MessageSend n, SymbolTable symbolTable) throws Exception {
         String classReg = n.f0.accept(this, symbolTable);
+        String classType = currExprType;
         String methodName = n.f2.accept(this, symbolTable);
         List<String> previousMethodParameterRegs = currMethodParameterRegs;
         currMethodParameterRegs = new ArrayList<>();
         n.f4.accept(this, symbolTable);
-        int methodIndex = vTables.getClassMethodIndex(currExprType, methodName);
-        String methodReturnType = symbolTable.getClassMethodReturnType(currExprType, methodName);
+        int methodIndex = vTables.getClassMethodIndex(classType, methodName);
+        String methodReturnType = symbolTable.getClassMethodReturnType(classType, methodName);
         String methodLLVMReturnType = getLLVMType(methodReturnType);
         String bitcast1Reg = getTempReg();
         String load1Reg = getTempReg();
@@ -607,7 +604,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
                 '\t' + elemPtrReg + " = getelementptr i8*, i8** " + load1Reg + ", i32 " + methodIndex + '\n' +
                 '\t' + load2Reg + " = load i8*, i8** " + elemPtrReg + '\n' +
                 '\t' + bitcast2Reg + " = bitcast i8* " + load2Reg + " to " + methodLLVMReturnType + " (i8*";
-        List<String> methodParameterLLVMTypes = getClassMethodParameterLLVMTypes(currExprType, methodName);
+        List<String> methodParameterLLVMTypes = getClassMethodParameterLLVMTypes(classType, methodName);
         for (String parameterLLVMType : methodParameterLLVMTypes) {
             currBuffer += ", " + parameterLLVMType;
         }
@@ -696,7 +693,11 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f0 -> <IDENTIFIER>
      */
     public String visit(Identifier n, SymbolTable symbolTable) throws Exception {
-        return n.f0.toString();
+        String idStr = n.f0.toString();
+        if (currentClassName != null && currentMethodName != null) {
+            currExprType = symbolTable.getClassMethodVarType(currentClassName, currentMethodName, idStr);   // could be null, then it won't be needed
+        }
+        return idStr;
     }
 
     /**
@@ -734,7 +735,6 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
                 '\t' + callocReg + " = call i8* @calloc(i32 4, i32 " + increasedArrSizeReg + ")\n" +
                 '\t' + bitcastReg + " = bitcast i8* " + callocReg + " to i32*\n" +
                 "\tstore i32 " + arrSize + ", i32* " + bitcastReg + "\n");
-        justAllocdLLVMType = "i32*";
         currExprType = "int[]";
         return callocReg;
     }
@@ -756,7 +756,6 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
                 '\t' + bitcastReg + " = bitcast i8* " + callocReg + " to i8***\n" +
                 '\t' + elemPtrReg + " = getelementptr [" + vTableLength + " x i8*], [" + vTableLength + " x i8*]* @." + className + "_vtable, i32 0, i32 0\n" +
                 "\tstore i8** " + elemPtrReg + ", i8*** " + bitcastReg + '\n');
-        justAllocdLLVMType = "i8*";
         currExprType = className;
         return callocReg;
     }
