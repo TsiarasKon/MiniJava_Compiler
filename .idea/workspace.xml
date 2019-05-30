@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inputs3/Factorial.ll" beforeDir="false" afterPath="$PROJECT_DIR$/inputs3/Factorial.ll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VTables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VTables.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +27,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.38836688">
+    <splitter split-orientation="horizontal" split-proportion="0.39713132">
       <split-first>
         <splitter split-orientation="vertical" split-proportion="0.66433567">
           <split-first>
@@ -36,7 +35,7 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/Main.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="209">
+                    <state relative-caret-position="600">
                       <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
                       <folding>
                         <element signature="imports" expanded="true" />
@@ -61,7 +60,7 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/Factorial.ll">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1046">
+                    <state relative-caret-position="300">
                       <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
                     </state>
                   </provider>
@@ -75,8 +74,8 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="640">
-                      <caret line="98" column="96" lean-forward="true" selection-start-line="98" selection-start-column="96" selection-end-line="98" selection-end-column="96" />
+                    <state relative-caret-position="1217">
+                      <caret line="248" column="74" selection-start-line="248" selection-start-column="61" selection-end-line="248" selection-end-column="74" />
                     </state>
                   </provider>
                 </entry>
@@ -127,8 +126,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/inputs3/Factorial.ll">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="72">
-                      <caret line="28" selection-start-line="28" selection-end-line="28" />
+                    <state relative-caret-position="3">
+                      <caret line="51" column="26" lean-forward="true" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
                     </state>
                   </provider>
                 </entry>
@@ -136,7 +135,7 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.ll">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="201">
+                    <state relative-caret-position="1220">
                       <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
                     </state>
                   </provider>
@@ -151,14 +150,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="555">
-                  <caret line="581" column="111" selection-start-line="581" selection-start-column="111" selection-end-line="581" selection-end-column="111" />
+                <state relative-caret-position="579">
+                  <caret line="504" column="34" selection-start-line="504" selection-start-column="34" selection-end-line="504" selection-end-column="34" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#1825#1826#0" expanded="true" />
-                    <element signature="e#1894#1895#0" expanded="true" />
-                    <element signature="e#1942#1943#0" expanded="true" />
-                    <element signature="e#2011#2012#0" expanded="true" />
+                    <element signature="e#6375#6376#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -180,7 +176,7 @@
             <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/ManyClasses.ll">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="478">
-                  <caret line="33" column="26" lean-forward="true" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+                  <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -210,8 +206,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>overrides</find>
-      <find>TE</find>
       <find>validateType2</find>
       <find>throws Exception</find>
       <find>validateClassName</find>
@@ -240,6 +234,8 @@
       <find>, nu</find>
       <find>and</find>
       <find>exprClassName</find>
+      <find>getParameters</find>
+      <find>ret</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -316,8 +312,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -357,12 +351,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559162816295" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559162864833" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -470,7 +466,8 @@
       <workItem from="1558641367630" duration="731000" />
       <workItem from="1558716385976" duration="20640000" />
       <workItem from="1558977514137" duration="32483000" />
-      <workItem from="1559150739748" duration="9081000" />
+      <workItem from="1559150739748" duration="9197000" />
+      <workItem from="1559234614412" duration="4329000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -710,17 +707,24 @@
       <option name="project" value="LOCAL" />
       <updated>1559156000036</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="MessageSend first attempt&#10;- parameters not implemented yet">
+      <created>1559162853138</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1559162853138</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200399000" />
+    <option name="totallyTimeSpent" value="204844000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11212724" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11292247" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -755,7 +759,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="More offset work&#10;+ needs care for method overrides" />
     <MESSAGE value="Completed offsets" />
     <MESSAGE value="Symbol Table validation&#10;in-between visitors, for type checking" />
     <MESSAGE value="Expression type checking logic" />
@@ -780,19 +783,10 @@
     <MESSAGE value="Array (all except assignment)" />
     <MESSAGE value="Fixed VTables&#10;Now working correctly for inherited methods" />
     <MESSAGE value="New object" />
-    <option name="LAST_COMMIT_MESSAGE" value="New object" />
+    <MESSAGE value="MessageSend first attempt&#10;- parameters not implemented yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="MessageSend first attempt&#10;- parameters not implemented yet" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java</url>
-          <line>627</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="methodName" language="JAVA" />
@@ -971,9 +965,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/syntaxtree/PrimaryExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="600">
           <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -995,6 +996,24 @@
     <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/ManyClasses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/Factorial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding>
+            <element signature="e#56#57#0" expanded="true" />
+            <element signature="e#116#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/inputs3/TreeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2180">
@@ -1010,47 +1029,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
+        <state relative-caret-position="1220">
           <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/ManyClasses.java">
+    <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/ManyClasses.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="98" column="96" lean-forward="true" selection-start-line="98" selection-start-column="96" selection-end-line="98" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/Factorial.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1046">
-          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/Factorial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding>
-            <element signature="e#56#57#0" expanded="true" />
-            <element signature="e#116#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/syntaxtree/PrimaryExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="478">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1064,13 +1051,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/ManyClasses.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="33" column="26" lean-forward="true" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
@@ -1081,23 +1061,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1217">
+          <caret line="248" column="74" selection-start-line="248" selection-start-column="61" selection-end-line="248" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/Factorial.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/inputs3/Factorial.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="3">
+          <caret line="51" column="26" lean-forward="true" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="581" column="111" selection-start-line="581" selection-start-column="111" selection-end-line="581" selection-end-column="111" />
+        <state relative-caret-position="579">
+          <caret line="504" column="34" selection-start-line="504" selection-start-column="34" selection-end-line="504" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1825#1826#0" expanded="true" />
-            <element signature="e#1894#1895#0" expanded="true" />
-            <element signature="e#1942#1943#0" expanded="true" />
-            <element signature="e#2011#2012#0" expanded="true" />
+            <element signature="e#6375#6376#0" expanded="true" />
           </folding>
         </state>
       </provider>

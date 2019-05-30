@@ -30,8 +30,8 @@ define i32 @main() {
 	%_4 = load i8**, i8*** %_3
 	%_5 = getelementptr i8*, i8** %_4, i32 0
 	%_6 = load i8*, i8** %_5
-	%_7 = bitcast i8* %_6 to i32 (i8*, TODO)*
-	%_8 = call i32 %_7(i8* %_0, TODO)
+	%_7 = bitcast i8* %_6 to i32 (i8*, i32)*
+	%_8 = call i32 %_7(i8* %_0, i32 10)
 	call void (i32) @print_int(i32 %_8)
 	ret i32 0
 }
@@ -48,17 +48,18 @@ define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
 	br label %if2
 %if1:
 	%_11 = load i32, i32* %num
-	%_12 = bitcast i8* %this to i8***
-	%_13 = load i8**, i8*** %_12
-	%_14 = getelementptr i8*, i8** %_13, i32 0
-	%_15 = load i8*, i8** %_14
-	%_17 = load i32, i32* %num
-	%_18 = sub i32 %_17, 1
-	%_16 = bitcast i8* %_15 to i32 (i8*, TODO)*
-	%_19 = call i32 %_16(i8* %this, TODO)
+	%_12 = load i32, i32* %num
+	%_13 = sub i32 %_12, 1
+	%_14 = bitcast i8* %this to i8***
+	%_15 = load i8**, i8*** %_14
+	%_16 = getelementptr i8*, i8** %_15, i32 0
+	%_17 = load i8*, i8** %_16
+	%_18 = bitcast i8* %_17 to i32 (i8*, i32)*
+	%_19 = call i32 %_18(i8* %this, i32 %_13)
 	%_20 = mul i32 %_11, %_19
 	store i32 %_20, i32* %num_aux
 	br label %if2
 %if2:
-	ret i32 %num_aux
+	%_21 = load i32, i32* %num_aux
+	ret i32 %_21
 }
