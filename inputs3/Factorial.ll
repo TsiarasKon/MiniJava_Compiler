@@ -43,10 +43,10 @@ define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
 	%_9 = load i32, i32* %num
 	%_10 = icmp slt i32 %_9, 1
 	br i1 %_10, label %if0, label %if1
-%if0:
+if0:
 	store i8* 1, i8** %num_aux
 	br label %if2
-%if1:
+if1:
 	%_11 = load i32, i32* %num
 	%_12 = load i32, i32* %num
 	%_13 = sub i32 %_12, 1
@@ -59,7 +59,7 @@ define i32 @Fac.ComputeFac(i8* %this, i32 %.num) {
 	%_20 = mul i32 %_11, %_19
 	store i32 %_20, i32* %num_aux
 	br label %if2
-%if2:
+if2:
 	%_21 = load i32, i32* %num_aux
 	ret i32 %_21
 }

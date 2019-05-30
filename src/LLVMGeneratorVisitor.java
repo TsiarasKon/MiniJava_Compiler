@@ -19,7 +19,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
 
     private String justAllocdLLVMType;
     private String currExprType;
-    List<String> currMethodParameterRegs;
+    private List<String> currMethodParameterRegs;
     private String currentClassName;
     private String currentMethodName;
 
@@ -150,15 +150,15 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     private String getLabel(String labelType) {
         switch (labelType) {
             case "if":
-                return "%if" + currLabelNum_if++;
+                return "if" + currLabelNum_if++;
             case "loop":
-                return "%loop" + currLabelNum_loop++;
+                return "loop" + currLabelNum_loop++;
             case "and":
-                return "%andclause" + currLabelNum_and++;
+                return "andclause" + currLabelNum_and++;
             case "arr":
-                return "%arr_alloc" + currLabelNum_arr++;
+                return "arr_alloc" + currLabelNum_arr++;
             default:
-                return "%oob" + currLabelNum_oob++;
+                return "oob" + currLabelNum_oob++;
         }
     }
 
@@ -298,8 +298,8 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
             String llvmParamType = getLLVMType(parameterEntry.getValue());
             String currParamName = parameterEntry.getKey();
             currBuffer += ", " + llvmParamType + " %." + currParamName;
-            paramAllocaBuffer += "\t%" + currParamName + " = alloca " + llvmParamType +
-                    "\n\tstore " + llvmParamType + " %." + currParamName + ", " + llvmParamType + "* %" + currParamName + '\n';
+            paramAllocaBuffer += "\t%" + currParamName + " = alloca " + llvmParamType + '\n' +
+                    "\tstore " + llvmParamType + " %." + currParamName + ", " + llvmParamType + "* %" + currParamName + '\n';
         }
         emit(currBuffer + ") {\n");
         emit(paramAllocaBuffer);
@@ -349,6 +349,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
             justAllocdLLVMType = null;
         }
         String expr = n.f2.accept(this, symbolTable);
+        System.out.println(currentClassName + " | " + currentMethodName + " - " + currExprType + " = " + idLLVMType);
         emit("\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* %" + idName + '\n');
         return null;
     }
@@ -388,11 +389,14 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String ifLabel = getLabel("if");
         String elseLabel = getLabel("if");
         String endIfLabel = getLabel("if");
-        emit("\tbr i1 " + exprReg + ", label " + ifLabel + ", label " + elseLabel + '\n' + ifLabel + ":\n");
+        emit("\tbr i1 " + exprReg + ", label %" + ifLabel + ", label %" + elseLabel + '\n' +
+                ifLabel + ":\n");
         n.f4.accept(this, symbolTable);
-        emit("\tbr label " + endIfLabel + '\n' + elseLabel + ":\n");
+        emit("\tbr label %" + endIfLabel + '\n' +
+                elseLabel + ":\n");
         n.f6.accept(this, symbolTable);
-        emit("\tbr label " + endIfLabel + '\n' + endIfLabel + ":\n");
+        emit("\tbr label %" + endIfLabel + '\n' +
+                endIfLabel + ":\n");
         return null;
     }
 
@@ -407,11 +411,14 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String startLabel = getLabel("loop");
         String contLabel = getLabel("loop");
         String endLabel = getLabel("loop");
-        emit("\tbr label " + startLabel + '\n' + startLabel + ":\n");
+        emit("\tbr label %" + startLabel + '\n' +
+                startLabel + ":\n");
         String exprReg = n.f2.accept(this, symbolTable);
-        emit("\tbr i1 " + exprReg + ", label " + contLabel + ", label " + endLabel + '\n' + contLabel + ":\n");
+        emit("\tbr i1 " + exprReg + ", label %" + contLabel + ", label %" + endLabel + '\n' +
+                contLabel + ":\n");
         n.f4.accept(this, symbolTable);
-        emit("\tbr label " + startLabel + '\n' + endLabel + ":\n");
+        emit("\tbr label %" + startLabel + '\n' +
+                endLabel + ":\n");
         return null;
     }
 
@@ -441,10 +448,10 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      *       | Clause()
      */
     public String visit(Expression n, SymbolTable symbolTable) throws Exception {
-        String previouslyAllocdClassName = currExprType;
+        String prevExprType = currExprType;
         currExprType = null;
         String expr = n.f0.accept(this, symbolTable);
-        currExprType = previouslyAllocdClassName;
+        currExprType = prevExprType;
         return expr;
     }
 
@@ -457,13 +464,16 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String expr1Label = getLabel("and");
         String expr2Label = getLabel("and");
         String contLabel = getLabel("and");
-        emit("\tbr label " + expr1Label + '\n' + expr1Label + ":\n");
+        emit("\tbr label %" + expr1Label + '\n' +
+                expr1Label + ":\n");
         String expr1 = loadNonLiteral(n.f0.accept(this, symbolTable));
-        emit("\tbr i1 " + expr1 + ", label " + expr2Label + ", label " + contLabel + '\n' + expr2Label + ":\n");
+        emit("\tbr i1 " + expr1 + ", label %" + expr2Label + ", label %" + contLabel + '\n'
+                + expr2Label + ":\n");
         String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
-        emit("\tbr label " + contLabel + '\n');
+        emit("\tbr label %" +
+                contLabel + '\n');
         String tempReg = getTempReg();
-        emit('\t' + tempReg + " = phi i1 [0, " + expr1Label + "], [" + expr2 + ", " + expr2Label + "]\n");
+        emit('\t' + tempReg + " = phi i1 [0, %" + expr1Label + "], [" + expr2 + ", %" + expr2Label + "]\n");
         currExprType = "boolean";
         return tempReg;
     }
@@ -543,10 +553,10 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String arrValueReg = getTempReg();
         emit('\t' + arrSizeReg + " = load i32, i32* " + arr + '\n' +
                 '\t' + arrIndexCmpReg + " = icmp ule i32 " + arrSizeReg + ", " + arrIndex + '\n' +
-                "\tbr i1 " + arrIndexCmpReg + ", label " + arrInvalidLabel + ", label " + arrValidLabel + '\n' +
+                "\tbr i1 " + arrIndexCmpReg + ", label %" + arrInvalidLabel + ", label %" + arrValidLabel + '\n' +
                 arrInvalidLabel + ":\n" +
                 "\tcall void @throw_oob()\n" +
-                "\tbr label " + arrValidLabel + '\n' +
+                "\tbr label %" + arrValidLabel + '\n' +
                 arrValidLabel + ":\n" +
                 '\t' + arrIncreasedIndexReg + " = add i32 " + arrIndex + ", 1\n" +
                 '\t' + arrValueRegPtr + " = getelementptr i32, i32* " + arr + ", i32 " + arrIncreasedIndexReg + '\n' +
@@ -711,10 +721,10 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String arrInvalidLabel = getLabel("arr");
         String arrValidLabel = getLabel("arr");
         emit('\t' + arrSizeCmpReg + " = icmp slt i32 " + arrSize + ", 0\n" +
-                "\tbr i1 " + arrSizeCmpReg + ", label " + arrInvalidLabel + ", label " + arrValidLabel + '\n' +
+                "\tbr i1 " + arrSizeCmpReg + ", label %" + arrInvalidLabel + ", label %" + arrValidLabel + '\n' +
                 arrInvalidLabel + ":\n" +
                 "\tcall void @throw_oob()\n" +
-                "\tbr label " + arrValidLabel + '\n' +
+                "\tbr label %" + arrValidLabel + '\n' +
                 arrValidLabel + ":\n");
         String increasedArrSizeReg = getTempReg();
         String callocReg = getTempReg();
