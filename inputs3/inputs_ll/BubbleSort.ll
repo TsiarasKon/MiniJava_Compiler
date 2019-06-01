@@ -376,7 +376,7 @@ arr_alloc8:
 	%_10 = getelementptr i8, i8* %this, i32 8
 	%_11 = bitcast i8* %_10 to i32**
 	store i32* %_5, i32** %_11
-	
+	;;
 	%_20 = getelementptr i8, i8* %this, i32 8
 	%_21 = bitcast i8* %_20 to i32**
 	%_22 = load i32*, i32** %_21

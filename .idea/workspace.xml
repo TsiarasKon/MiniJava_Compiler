@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs3/inputs_ll/BubbleSort.ll" beforeDir="false" afterPath="$PROJECT_DIR$/inputs3/inputs_ll/BubbleSort.ll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java" beforeDir="false" afterPath="$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,7 +28,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3867205">
+    <splitter split-orientation="horizontal" split-proportion="0.35531628">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -53,8 +55,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/BubbleSort.ll">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="460">
-                  <caret line="380" column="36" lean-forward="true" selection-start-line="380" selection-start-column="36" selection-end-line="380" selection-end-column="36" />
+                <state relative-caret-position="180">
+                  <caret line="378" column="6" selection-start-line="378" selection-start-column="6" selection-end-line="378" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -63,25 +65,14 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3919">
-                  <caret line="760" column="18" lean-forward="true" selection-start-line="760" selection-start-column="18" selection-end-line="760" selection-end-column="18" />
+                <state relative-caret-position="439">
+                  <caret line="393" column="45" selection-start-line="393" selection-start-column="45" selection-end-line="393" selection-end-column="45" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#6349#6350#0" expanded="true" />
-                    <element signature="e#6400#6401#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
@@ -89,7 +80,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/inputs3/BubbleSort.ll">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-4387" />
+                <state relative-caret-position="-3727" />
               </provider>
             </entry>
           </file>
@@ -101,6 +92,15 @@
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.ll">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="398">
+                  <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
@@ -118,7 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>QS_vtable</find>
       <find>offset</find>
       <find>getM</find>
       <find>sethas_r</find>
@@ -148,6 +147,7 @@
       <find>getClassFieldType</find>
       <find>%_4</find>
       <find>currExprType</find>
+      <find>arrValueRegPtr</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -166,6 +166,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -209,8 +210,9 @@
         <option value="$PROJECT_DIR$/src/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/VTables.java" />
         <option value="$PROJECT_DIR$/inputs3/test_commands.java" />
-        <option value="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" />
+        <option value="$PROJECT_DIR$/inputs3/inputs_ll/BubbleSort.ll" />
         <option value="$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java" />
+        <option value="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" />
       </list>
     </option>
   </component>
@@ -248,12 +250,6 @@
             <path>
               <item name="MiniJava_Compiler" type="b2602c69:ProjectViewProjectNode" />
               <item name="MiniJava_Compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="inputs3" type="462c0819:PsiDirectoryNode" />
-              <item name="minijava-extra" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MiniJava_Compiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MiniJava_Compiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -271,7 +267,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559249556048" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559428032868" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -281,19 +277,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="K:\Documents\GitHub\jtb-minijava\inputs" />
-      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\sample_inputs" />
-      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="K:\Documents\GitHub\jtb-minijava\inputs" />
       <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\src" />
       <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava" />
       <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\visitor" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="K:\Documents\GitHub\jtb-minijava\inputs" />
+      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava\sample_inputs" />
+      <recent name="K:\Downloads\jtb-javacc-2017\jtb-javacc-2016\jtb-minijava" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -308,7 +304,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.oob">
+  <component name="RunManager" selected="Application.whatevs">
     <configuration name="BinaryTree" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="jtb-minijava" />
@@ -344,7 +340,7 @@
     <configuration name="whatevs" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="jtb-minijava" />
-      <option name="PROGRAM_PARAMETERS" value="K:\Documents\GitHub\MiniJava_Compiler\inputs3\BubbleSort.java" />
+      <option name="PROGRAM_PARAMETERS" value="K:\Documents\GitHub\MiniJava_Compiler\inputs3\QuickSort.java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -390,7 +386,7 @@
       <workItem from="1558977514137" duration="32483000" />
       <workItem from="1559150739748" duration="9197000" />
       <workItem from="1559234614412" duration="10651000" />
-      <workItem from="1559402754452" duration="8461000" />
+      <workItem from="1559402754452" duration="12736000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -672,17 +668,23 @@
       <option name="project" value="LOCAL" />
       <updated>1559411420513</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Array basics tested and working">
+      <created>1559418372588</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1559418372588</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="219627000" />
+    <option name="totallyTimeSpent" value="223902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1137177" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1137177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -691,7 +693,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969603" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33125487" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33125487" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3998441" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -717,7 +719,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Checkpoint&#10;&#10;Most is seemingly complete (except for initialization checks)&#10;but errors have been found" />
     <MESSAGE value="Many bug fixes" />
     <MESSAGE value="Many bug fixes part 2" />
     <MESSAGE value="Many bug fixes part 3&#10;&#10;and also some additions" />
@@ -742,7 +743,8 @@
     <MESSAGE value="currExprType related fixes" />
     <MESSAGE value="Field storing and loading + other minor fixes&#10;LinkedList.ll working correctly" />
     <MESSAGE value="Print boolean type" />
-    <option name="LAST_COMMIT_MESSAGE" value="Print boolean type" />
+    <MESSAGE value="Array basics tested and working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Array basics tested and working" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -754,9 +756,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/FieldAndClassConflict.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/inputs2/offset-examples/Main.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -828,20 +827,6 @@
     <entry file="file://$PROJECT_DIR$/src/visitor/GJDepthFirst.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/QuickSort.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8460">
-          <caret column="40" selection-start-column="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/LinearSearch.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6064">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/syntaxtree/PrimaryExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -901,13 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4142">
           <caret line="81" column="29" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-620">
-          <caret line="46" column="19" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -987,42 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/LinearSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1250" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/QuickSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1510" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/BubbleSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/BubbleSort.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="380" column="36" lean-forward="true" selection-start-line="380" selection-start-column="36" selection-end-line="380" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/BubbleSort.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4387" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/VTables.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1033,22 +975,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
+    <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3919">
-          <caret line="760" column="18" lean-forward="true" selection-start-line="760" selection-start-column="18" selection-end-line="760" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6349#6350#0" expanded="true" />
-            <element signature="e#6400#6401#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="398">
+          <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/BubbleSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/BubbleSort.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="378" column="6" selection-start-line="378" selection-start-column="6" selection-end-line="378" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/BubbleSort.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3727" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/BinaryTree.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3830">
+          <caret line="46" column="19" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/LinearSearch.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-520">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/LinearSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1250" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        <state relative-caret-position="280">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/QuickSort.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/QuickSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1510" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="393" column="45" selection-start-line="393" selection-start-column="45" selection-end-line="393" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

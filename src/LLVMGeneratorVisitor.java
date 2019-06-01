@@ -362,26 +362,49 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         return expr;
     }
 
-//    /**
-//     * f0 -> Identifier()
-//     * f1 -> "["
-//     * f2 -> Expression()
-//     * f3 -> "]"
-//     * f4 -> "="
-//     * f5 -> Expression()
-//     * f6 -> ";"
-//     */
-//    public String visit(ArrayAssignmentStatement n, SymbolTable symbolTable) throws Exception {
-//        String _ret=null;
-//        n.f0.accept(this, argu);
-//        n.f1.accept(this, argu);
-//        n.f2.accept(this, argu);
-//        n.f3.accept(this, argu);
-//        n.f4.accept(this, argu);
-//        n.f5.accept(this, argu);
-//        n.f6.accept(this, argu);
-//        return _ret;
-//    }
+    /**
+     * f0 -> Identifier()
+     * f1 -> "["
+     * f2 -> Expression()
+     * f3 -> "]"
+     * f4 -> "="
+     * f5 -> Expression()
+     * f6 -> ";"
+     */
+    public String visit(ArrayAssignmentStatement n, SymbolTable symbolTable) throws Exception {
+        String idName = n.f0.accept(this, symbolTable);
+        String arrIndex = loadNonLiteral(n.f2.accept(this, symbolTable));
+        String rvalExpr = loadNonLiteral(n.f5.accept(this, symbolTable));
+        String arrReg = getTempReg();
+        if (symbolTable.getClassFieldType(currentClassName, idName) != null) {     // assigning to a class field
+            String elemPtrReg = getTempReg();
+            String bitcastReg = getTempReg();
+            emit('\t' + elemPtrReg + " = getelementptr i8, i8* %this, i32 " + vTables.getClassFieldOffset(currentClassName, idName) + '\n' +
+                    '\t' + bitcastReg + " = bitcast i8* " + elemPtrReg + " to i32**\n" +
+                    '\t' + arrReg + " = load i32*, i32** " + bitcastReg + '\n');
+        } else {
+            emit('\t' + arrReg + " = load i32*, i32** %" + idName + '\n');
+        }
+        String arrSizeReg = getTempReg();
+        // emit check for arrIndex > arrSize (unsigned comparison also catches arrIndex < 0)
+        String arrIndexCmpReg = getTempReg();
+        String arrInvalidLabel = getLabel("oob");
+        String arrValidLabel = getLabel("oob");
+        String arrIncreasedIndexReg = getTempReg();
+        String arrValueRegPtr = getTempReg();
+        emit('\t' + arrSizeReg + " = load i32, i32* " + arrReg + '\n' +
+                '\t' + arrIndexCmpReg + " = icmp ule i32 " + arrSizeReg + ", " + arrIndex + '\n' +
+                "\tbr i1 " + arrIndexCmpReg + ", label %" + arrInvalidLabel + ", label %" + arrValidLabel + '\n' +
+                arrInvalidLabel + ":\n" +
+                "\tcall void @throw_oob()\n" +
+                "\tbr label %" + arrValidLabel + '\n' +
+                arrValidLabel + ":\n" +
+                '\t' + arrIncreasedIndexReg + " = add i32 " + arrIndex + ", 1\n" +
+                '\t' + arrValueRegPtr + " = getelementptr i32, i32* " + arrReg + ", i32 " + arrIncreasedIndexReg + '\n' +
+                "\tstore i32 " + rvalExpr + ", i32* " + arrValueRegPtr + '\n');
+        currExprType = "int";
+        return rvalExpr;
+    }
 
     /**
      * f0 -> "if"
@@ -447,25 +470,6 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
             emit("\tcall void (i32) @print_int(i32 " + expr + ")\n");
         }
         return null;
-    }
-
-    /**
-     * f0 -> AndExpression()
-     *       | CompareExpression()
-     *       | PlusExpression()
-     *       | MinusExpression()
-     *       | TimesExpression()
-     *       | ArrayLookup()
-     *       | ArrayLength()
-     *       | MessageSend()
-     *       | Clause()
-     */
-    public String visit(Expression n, SymbolTable symbolTable) throws Exception {
-        String expr = n.f0.accept(this, symbolTable);
-//        if (symbolTable.getClassMethodParameters(currentClassName, currentMethodName).get(expr.substring(1)) != null) {
-//            currExprRegRval = "%." + expr.substring(1);
-//        }
-        return expr;
     }
 
     /**
