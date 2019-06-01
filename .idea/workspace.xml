@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="currExprType related fixes">
+    <list default="true" id="2b493ccb-b028-4c7c-b570-1d0ccde830c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VTables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VTables.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,15 +64,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/LinkedList.ll">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-4142">
-                  <caret line="81" column="29" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="29" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java">
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
@@ -91,11 +81,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="439">
-                  <caret line="479" column="93" selection-start-line="479" selection-start-column="93" selection-end-line="479" selection-end-column="93" />
+                <state relative-caret-position="279">
+                  <caret line="444" column="69" selection-start-line="444" selection-start-column="69" selection-end-line="444" selection-end-column="69" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#6349#6350#0" expanded="true" />
@@ -106,19 +96,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/inputs3/LinkedList.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-620">
-                  <caret line="46" column="19" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="19" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/inputs3/LinkedList.ll">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="467">
-                  <caret line="325" column="24" lean-forward="true" selection-start-line="325" selection-start-column="24" selection-end-line="325" selection-end-column="24" />
+                <state relative-caret-position="267">
+                  <caret line="324" column="27" lean-forward="true" selection-start-line="324" selection-start-column="27" selection-end-line="324" selection-end-column="27" />
                 </state>
               </provider>
             </entry>
@@ -126,8 +107,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/inputs3/test_commands.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="3" selection-start-column="3" selection-end-column="3" />
+                <state relative-caret-position="40">
+                  <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -135,7 +116,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/inputs3/test_commands.ll">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
+                <state relative-caret-position="458">
                   <caret line="24" selection-start-line="24" selection-end-line="24" />
                 </state>
               </provider>
@@ -178,7 +159,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addClass</find>
       <find>Field</find>
       <find>QS_vtable</find>
       <find>offset</find>
@@ -208,6 +188,7 @@
       <find>br</find>
       <find>br i1</find>
       <find>andex</find>
+      <find>currExprType</find>
     </findStrings>
     <replaceStrings>
       <replace>SymbolTable</replace>
@@ -267,8 +248,8 @@
         <option value="$PROJECT_DIR$/inputs3/minijava-extra/ManyClasses.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/SymbolTable.java" />
-        <option value="$PROJECT_DIR$/inputs3/test_commands.java" />
         <option value="$PROJECT_DIR$/src/VTables.java" />
+        <option value="$PROJECT_DIR$/inputs3/test_commands.java" />
         <option value="$PROJECT_DIR$/src/LLVMGeneratorVisitor.java" />
       </list>
     </option>
@@ -361,7 +342,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TreeVisitor">
+  <component name="RunManager" selected="Application.MINE">
     <configuration name="Factorial" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="jtb-minijava" />
@@ -443,7 +424,7 @@
       <workItem from="1558977514137" duration="32483000" />
       <workItem from="1559150739748" duration="9197000" />
       <workItem from="1559234614412" duration="10651000" />
-      <workItem from="1559402754452" duration="3984000" />
+      <workItem from="1559402754452" duration="4574000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Assignment description + needed files compiled">
       <created>1555850663388</created>
@@ -711,11 +692,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559248611765</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Field storing and loading + other minor fixes&#10;LinkedList.ll working correctly">
+      <created>1559410709999</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1559410709999</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215150000" />
+    <option name="totallyTimeSpent" value="215740000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -756,7 +744,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added parameter check of method calls" />
     <MESSAGE value="If, while and print statements" />
     <MESSAGE value="Checkpoint&#10;&#10;Most is seemingly complete (except for initialization checks)&#10;but errors have been found" />
     <MESSAGE value="Many bug fixes" />
@@ -781,7 +768,8 @@
     <MESSAGE value="Label fix" />
     <MESSAGE value="Label hotfix" />
     <MESSAGE value="currExprType related fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="currExprType related fixes" />
+    <MESSAGE value="Field storing and loading + other minor fixes&#10;LinkedList.ll working correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Field storing and loading + other minor fixes&#10;LinkedList.ll working correctly" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -1004,27 +992,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/test_commands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-start-column="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/test_commands.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="769">
           <caret line="53" column="80" selection-start-line="53" selection-start-column="80" selection-end-line="53" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/LinkedList.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4142">
+          <caret line="81" column="29" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1048,10 +1026,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/inputs_ll/LinkedList.ll">
+    <entry file="file://$PROJECT_DIR$/inputs3/LinkedList.ll">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4142">
-          <caret line="81" column="29" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="29" />
+        <state relative-caret-position="267">
+          <caret line="324" column="27" lean-forward="true" selection-start-line="324" selection-start-column="27" selection-end-line="324" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1062,22 +1040,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/minijava-extra/OutOfBounds1.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/test_commands.ll">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputs3/test_commands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/LLVMGeneratorVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="479" column="93" selection-start-line="479" selection-start-column="93" selection-end-line="479" selection-end-column="93" />
+        <state relative-caret-position="279">
+          <caret line="444" column="69" selection-start-line="444" selection-start-column="69" selection-end-line="444" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6349#6350#0" expanded="true" />
             <element signature="e#6400#6401#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inputs3/LinkedList.ll">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="325" column="24" lean-forward="true" selection-start-line="325" selection-start-column="24" selection-end-line="325" selection-end-column="24" />
         </state>
       </provider>
     </entry>

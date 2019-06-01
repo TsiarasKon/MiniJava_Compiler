@@ -441,8 +441,13 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      */
     public String visit(PrintStatement n, SymbolTable symbolTable) throws Exception {
         String expr = loadNonLiteral(n.f2.accept(this, symbolTable));
-        // TODO exprType int or boolean?
-        emit("\tcall void (i32) @print_int(i32 " + expr + ")\n");
+        if ("boolean".equals(currExprType)) {
+            String zextReg = getTempReg();
+            emit('\t' + zextReg + " = zext i1 " + expr + " to i32\n" +
+                    "\tcall void (i32) @print_int(i32 " + zextReg + ")\n");
+        } else {
+            emit("\tcall void (i32) @print_int(i32 " + expr + ")\n");
+        }
         return null;
     }
 
