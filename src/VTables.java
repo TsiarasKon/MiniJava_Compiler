@@ -14,6 +14,10 @@ public class VTables {
         return classesVTables.get(className).getMethodIndex(methodName);
     }
 
+    public int getClassFieldOffset(String className, String fieldName) {
+        return classesVTables.get(className).fieldsTable.get(fieldName) + 8;
+    }
+
     public static class ClassVTable {
         public boolean isMainClass;
         public LinkedHashMap<String, Integer> fieldsTable;

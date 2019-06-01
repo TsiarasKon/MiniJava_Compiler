@@ -18,7 +18,6 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     private int currTempRegisterNum;
 
     private String currExprType;
-    private String currExprRegRval;     // only used in assignment related to method parameters
     private List<String> currMethodParameterRegs;
     private String currentClassName;
     private String currentMethodName;
@@ -184,7 +183,15 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         }
         String exprLLVMType = getLLVMType(exprType);
         String exprReg = getTempReg();
-        emit('\t' + exprReg + " = load " + exprLLVMType + ", " + exprLLVMType + "* " + expr + '\n');
+        if (symbolTable.getClassFieldType(currentClassName, expr.substring(1)) != null) {     // loading a class field
+            String elemPtrReg = getTempReg();
+            String bitcastReg = getTempReg();
+            emit('\t' + elemPtrReg + " = getelementptr i8, i8* %this, i32 " + vTables.getClassFieldOffset(currentClassName, expr.substring(1)) + '\n' +
+                    '\t' + bitcastReg + " = bitcast i8* " + elemPtrReg + " to " + exprLLVMType + "*\n" +
+                    '\t' + exprReg + " = load " + exprLLVMType + ", " + exprLLVMType + "* " + bitcastReg + '\n');
+        } else {
+            emit('\t' + exprReg + " = load " + exprLLVMType + ", " + exprLLVMType + "* " + expr + '\n');
+        }
         return exprReg;
     }
 
@@ -305,7 +312,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         n.f7.accept(this, symbolTable);
         n.f8.accept(this, symbolTable);
         String retRegister = loadNonLiteral(n.f10.accept(this, symbolTable));
-        emit("\tret " + getLLVMType(symbolTable.getClassMethodReturnType(currentClassName, currentMethodName)) + ' ' + retRegister + "\n}\n");
+        emit("\tret " + getLLVMType(symbolTable.getClassMethodReturnType(currentClassName, currentMethodName)) + ' ' + retRegister + "\n}\n\n");
         return null;
     }
 
@@ -341,12 +348,19 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     public String visit(AssignmentStatement n, SymbolTable symbolTable) throws Exception {
         String idName = n.f0.accept(this, symbolTable);
         String idLLVMType = getLLVMType(currExprType);
-        currExprRegRval = null;
-        String expr = n.f2.accept(this, symbolTable);
-        if (currExprRegRval != null) {    // use the actual values, not the
-            expr = currExprRegRval;
+        String expr = loadNonLiteral(n.f2.accept(this, symbolTable));
+//        if (currExprRegRval != null) {    // use the actual values, not the
+//            expr = currExprRegRval;
+//        }
+        if (symbolTable.getClassFieldType(currentClassName, idName) != null) {     // assigning to a class field
+            String elemPtrReg = getTempReg();
+            String bitcastReg = getTempReg();
+            emit('\t' + elemPtrReg + " = getelementptr i8, i8* %this, i32 " + vTables.getClassFieldOffset(currentClassName, idName) + '\n' +
+                    '\t' + bitcastReg + " = bitcast i8* " + elemPtrReg + " to " + idLLVMType + "*\n" +
+                    "\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* " + bitcastReg + '\n');
+        } else {
+            emit("\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* %" + idName + '\n');
         }
-        emit("\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* %" + idName + '\n');
         return null;
     }
 
@@ -381,7 +395,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f6 -> Statement()
      */
     public String visit(IfStatement n, SymbolTable symbolTable) throws Exception {
-        String exprReg = n.f2.accept(this, symbolTable);
+        String exprReg = loadNonLiteral(n.f2.accept(this, symbolTable));
         String ifLabel = getLabel("if");
         String elseLabel = getLabel("if");
         String endIfLabel = getLabel("if");
@@ -409,7 +423,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String endLabel = getLabel("loop");
         emit("\tbr label %" + startLabel + '\n' +
                 startLabel + ":\n");
-        String exprReg = n.f2.accept(this, symbolTable);
+        String exprReg = loadNonLiteral(n.f2.accept(this, symbolTable));
         emit("\tbr i1 " + exprReg + ", label %" + contLabel + ", label %" + endLabel + '\n' +
                 contLabel + ":\n");
         n.f4.accept(this, symbolTable);
@@ -445,9 +459,9 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      */
     public String visit(Expression n, SymbolTable symbolTable) throws Exception {
         String expr = n.f0.accept(this, symbolTable);
-        if (symbolTable.getClassMethodParameters(currentClassName, currentMethodName).get(expr.substring(1)) != null) {
-            currExprRegRval = "%." + expr.substring(1);
-        }
+//        if (symbolTable.getClassMethodParameters(currentClassName, currentMethodName).get(expr.substring(1)) != null) {
+//            currExprRegRval = "%." + expr.substring(1);
+//        }
         return expr;
     }
 
@@ -463,11 +477,11 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         emit("\tbr label %" + expr1Label + '\n' +
                 expr1Label + ":\n");
         String expr1 = loadNonLiteral(n.f0.accept(this, symbolTable));
-        emit("\tbr i1 " + expr1 + ", label %" + expr2Label + ", label %" + contLabel + '\n'
-                + expr2Label + ":\n");
+        emit("\tbr i1 " + expr1 + ", label %" + expr2Label + ", label %" + contLabel + '\n' +
+                expr2Label + ":\n");
         String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
-        emit("\tbr label %" +
-                contLabel + '\n');
+        emit("\tbr label %" + contLabel + '\n' +
+                contLabel + ":\n");
         String tempReg = getTempReg();
         emit('\t' + tempReg + " = phi i1 [0, %" + expr1Label + "], [" + expr2 + ", %" + expr2Label + "]\n");
         currExprType = "boolean";
@@ -584,7 +598,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f5 -> ")"
      */
     public String visit(MessageSend n, SymbolTable symbolTable) throws Exception {
-        String classReg = n.f0.accept(this, symbolTable);
+        String classReg = loadNonLiteral(n.f0.accept(this, symbolTable));
         String classType = currExprType;
         String methodName = n.f2.accept(this, symbolTable);
         List<String> previousMethodParameterRegs = currMethodParameterRegs;
@@ -625,7 +639,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f1 -> ExpressionTail()
      */
     public String visit(ExpressionList n, SymbolTable symbolTable) throws Exception {
-        currMethodParameterRegs.add(n.f0.accept(this, symbolTable));
+        currMethodParameterRegs.add(loadNonLiteral(n.f0.accept(this, symbolTable)));
         n.f1.accept(this, symbolTable);
         return null;
     }
@@ -635,7 +649,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f1 -> Expression()
      */
     public String visit(ExpressionTerm n, SymbolTable symbolTable) throws Exception {
-        currMethodParameterRegs.add(n.f1.accept(this, symbolTable));
+        currMethodParameterRegs.add(loadNonLiteral(n.f1.accept(this, symbolTable)));
         return null;
     }
 
