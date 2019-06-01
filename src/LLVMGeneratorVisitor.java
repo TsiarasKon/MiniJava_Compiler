@@ -349,19 +349,17 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String idName = n.f0.accept(this, symbolTable);
         String idLLVMType = getLLVMType(currExprType);
         String expr = loadNonLiteral(n.f2.accept(this, symbolTable));
-//        if (currExprRegRval != null) {    // use the actual values, not the
-//            expr = currExprRegRval;
-//        }
+        String exprLLVMType = getLLVMType(currExprType);
         if (symbolTable.getClassFieldType(currentClassName, idName) != null) {     // assigning to a class field
             String elemPtrReg = getTempReg();
             String bitcastReg = getTempReg();
             emit('\t' + elemPtrReg + " = getelementptr i8, i8* %this, i32 " + vTables.getClassFieldOffset(currentClassName, idName) + '\n' +
                     '\t' + bitcastReg + " = bitcast i8* " + elemPtrReg + " to " + idLLVMType + "*\n" +
-                    "\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* " + bitcastReg + '\n');
+                    "\tstore " + exprLLVMType + ' ' + expr + ", " + exprLLVMType + "* " + bitcastReg + '\n');
         } else {
-            emit("\tstore " + idLLVMType + ' ' + expr + ", " + idLLVMType + "* %" + idName + '\n');
+            emit("\tstore " + idLLVMType + ' ' + expr + ", " + exprLLVMType + "* %" + idName + '\n');
         }
-        return null;
+        return expr;
     }
 
 //    /**
@@ -588,7 +586,6 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
     public String visit(ArrayLength n, SymbolTable symbolTable) throws Exception {
         String arr = loadNonLiteral(n.f0.accept(this, symbolTable));
         String arrSizeReg = getTempReg();
-        // TODO: getelementptr?
         emit('\t' + arrSizeReg + " = load i32, i32* " + arr + '\n');
         currExprType = "int";
         return arrSizeReg;
@@ -755,7 +752,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
                 '\t' + bitcastReg + " = bitcast i8* " + callocReg + " to i32*\n" +
                 "\tstore i32 " + arrSize + ", i32* " + bitcastReg + "\n");
         currExprType = "int[]";
-        return callocReg;
+        return bitcastReg;
     }
 
     /**
