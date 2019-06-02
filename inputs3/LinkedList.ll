@@ -315,14 +315,14 @@ define i8* @List.Delete(i8* %this, i8* %.e) {
 	store i8* %_123, i8** %var_elem
 	br label %loop0
 loop0:
-	br label %andclause0
-andclause0:
 	%_126 = load i1, i1* %var_end
 	%_127 = xor i1 1, %_126
-	br i1 %_127, label %andclause1, label %andclause2
-andclause1:
 	%_128 = load i1, i1* %ret_val
 	%_129 = xor i1 1, %_128
+	br label %andclause0
+andclause0:
+	br i1 %_127, label %andclause1, label %andclause2
+andclause1:
 	br label %andclause2
 andclause2:
 	%_130 = phi i1 [0, %andclause0], [%_129, %andclause1]

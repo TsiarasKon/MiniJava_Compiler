@@ -63,3 +63,4 @@ if2:
 	%_21 = load i32, i32* %num_aux
 	ret i32 %_21
 }
+

@@ -78,6 +78,7 @@ define i32 @MT4.Start(i8* %this, i32 %.p1, i32 %.p2, i32 %.p3, i32 %.p4, i32 %.p
 	%_27 = load i32, i32* %aux
 	ret i32 %_27
 }
+
 define i32 @MT4.Change(i8* %this, i32 %.p1, i32 %.p2, i32 %.p3, i32 %.p4, i32 %.p5, i32 %.p6) {
 	%p1 = alloca i32
 	store i32 %.p1, i32* %p1
@@ -105,3 +106,4 @@ define i32 @MT4.Change(i8* %this, i32 %.p1, i32 %.p2, i32 %.p3, i32 %.p4, i32 %.
 	call void (i32) @print_int(i32 %_33)
 	ret i32 0
 }
+

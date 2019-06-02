@@ -1,5 +1,5 @@
-@.Test_vtable = global [0 x i8*] []
-@.Mine_vtable = global [2 x i8*] [i8* bitcast (i32 (i8*)* @Mine.myPrintInt to i8*), i8* bitcast (i1 (i8*)* @Mine.myPrintBool to i8*)]
+@.test62_vtable = global [0 x i8*] []
+@.Test_vtable = global [1 x i8*] [i8* bitcast (i32 (i8*)* @Test.start to i8*)]
 
 
 declare i8* @calloc(i32, i32)
@@ -22,9 +22,9 @@ define void @throw_oob() {
 }
 
 define i32 @main() {
-	%_0 = call i8* @calloc(i32 1, i32 8)
+	%_0 = call i8* @calloc(i32 1, i32 16)
 	%_1 = bitcast i8* %_0 to i8***
-	%_2 = getelementptr [2 x i8*], [2 x i8*]* @.Mine_vtable, i32 0, i32 0
+	%_2 = getelementptr [1 x i8*], [1 x i8*]* @.Test_vtable, i32 0, i32 0
 	store i8** %_2, i8*** %_1
 	%_3 = bitcast i8* %_0 to i8***
 	%_4 = load i8**, i8*** %_3
@@ -36,24 +36,10 @@ define i32 @main() {
 	ret i32 0
 }
 
-define i32 @Mine.myPrintInt(i8* %this) {
-	%x = alloca i32
-	store i32 42, i32* %x
-	%_9 = load i32, i32* %x
-	ret i32 %_9
-}
-
-define i1 @Mine.myPrintBool(i8* %this) {
-	%b = alloca i1
-	store i1 1, i1* %b
-	%_10 = load i1, i1* %b
-	br label %andclause0
-andclause0:
-	br i1 %_10, label %andclause1, label %andclause2
-andclause1:
-	br label %andclause2
-andclause2:
-	%_11 = phi i1 [0, %andclause0], [0, %andclause1]
-	ret i1 %_11
+define i32 @Test.start(i8* %this) {
+	%_9 = getelementptr i8, i8* %this, i32 8
+	%_10 = bitcast i8* %_9 to i8**
+	store i8* %this, i8** %_10
+	ret i32 0
 }
 

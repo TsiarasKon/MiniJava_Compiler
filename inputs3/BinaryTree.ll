@@ -45,7 +45,7 @@ define i32 @BT.Start(i8* %this) {
 	%_10 = bitcast i8* %_9 to i8***
 	%_11 = getelementptr [20 x i8*], [20 x i8*]* @.Tree_vtable, i32 0, i32 0
 	store i8** %_11, i8*** %_10
-	store i8* %_9, Tree* %root
+	store i8* %_9, i8** %root
 	%_12 = load i8*, i8** %root
 	%_13 = bitcast i8* %_12 to i8***
 	%_14 = load i8**, i8*** %_13
@@ -53,7 +53,7 @@ define i32 @BT.Start(i8* %this) {
 	%_16 = load i8*, i8** %_15
 	%_17 = bitcast i8* %_16 to i1 (i8*, i32)*
 	%_18 = call i1 %_17(i8* %_12, i32 16)
-	store i1 %_18, boolean* %ntb
+	store i1 %_18, i1* %ntb
 	%_19 = load i8*, i8** %root
 	%_20 = bitcast i8* %_19 to i8***
 	%_21 = load i8**, i8*** %_20
@@ -61,7 +61,7 @@ define i32 @BT.Start(i8* %this) {
 	%_23 = load i8*, i8** %_22
 	%_24 = bitcast i8* %_23 to i1 (i8*)*
 	%_25 = call i1 %_24(i8* %_19)
-	store i1 %_25, boolean* %ntb
+	store i1 %_25, i1* %ntb
 	call void (i32) @print_int(i32 100000000)
 	%_26 = load i8*, i8** %root
 	%_27 = bitcast i8* %_26 to i8***
@@ -70,7 +70,7 @@ define i32 @BT.Start(i8* %this) {
 	%_30 = load i8*, i8** %_29
 	%_31 = bitcast i8* %_30 to i1 (i8*, i32)*
 	%_32 = call i1 %_31(i8* %_26, i32 8)
-	store i1 %_32, boolean* %ntb
+	store i1 %_32, i1* %ntb
 	%_33 = load i8*, i8** %root
 	%_34 = bitcast i8* %_33 to i8***
 	%_35 = load i8**, i8*** %_34
@@ -78,7 +78,7 @@ define i32 @BT.Start(i8* %this) {
 	%_37 = load i8*, i8** %_36
 	%_38 = bitcast i8* %_37 to i1 (i8*)*
 	%_39 = call i1 %_38(i8* %_33)
-	store i1 %_39, boolean* %ntb
+	store i1 %_39, i1* %ntb
 	%_40 = load i8*, i8** %root
 	%_41 = bitcast i8* %_40 to i8***
 	%_42 = load i8**, i8*** %_41
@@ -86,7 +86,7 @@ define i32 @BT.Start(i8* %this) {
 	%_44 = load i8*, i8** %_43
 	%_45 = bitcast i8* %_44 to i1 (i8*, i32)*
 	%_46 = call i1 %_45(i8* %_40, i32 24)
-	store i1 %_46, boolean* %ntb
+	store i1 %_46, i1* %ntb
 	%_47 = load i8*, i8** %root
 	%_48 = bitcast i8* %_47 to i8***
 	%_49 = load i8**, i8*** %_48
@@ -94,7 +94,7 @@ define i32 @BT.Start(i8* %this) {
 	%_51 = load i8*, i8** %_50
 	%_52 = bitcast i8* %_51 to i1 (i8*, i32)*
 	%_53 = call i1 %_52(i8* %_47, i32 4)
-	store i1 %_53, boolean* %ntb
+	store i1 %_53, i1* %ntb
 	%_54 = load i8*, i8** %root
 	%_55 = bitcast i8* %_54 to i8***
 	%_56 = load i8**, i8*** %_55
@@ -102,7 +102,7 @@ define i32 @BT.Start(i8* %this) {
 	%_58 = load i8*, i8** %_57
 	%_59 = bitcast i8* %_58 to i1 (i8*, i32)*
 	%_60 = call i1 %_59(i8* %_54, i32 12)
-	store i1 %_60, boolean* %ntb
+	store i1 %_60, i1* %ntb
 	%_61 = load i8*, i8** %root
 	%_62 = bitcast i8* %_61 to i8***
 	%_63 = load i8**, i8*** %_62
@@ -110,7 +110,7 @@ define i32 @BT.Start(i8* %this) {
 	%_65 = load i8*, i8** %_64
 	%_66 = bitcast i8* %_65 to i1 (i8*, i32)*
 	%_67 = call i1 %_66(i8* %_61, i32 20)
-	store i1 %_67, boolean* %ntb
+	store i1 %_67, i1* %ntb
 	%_68 = load i8*, i8** %root
 	%_69 = bitcast i8* %_68 to i8***
 	%_70 = load i8**, i8*** %_69
@@ -118,7 +118,7 @@ define i32 @BT.Start(i8* %this) {
 	%_72 = load i8*, i8** %_71
 	%_73 = bitcast i8* %_72 to i1 (i8*, i32)*
 	%_74 = call i1 %_73(i8* %_68, i32 28)
-	store i1 %_74, boolean* %ntb
+	store i1 %_74, i1* %ntb
 	%_75 = load i8*, i8** %root
 	%_76 = bitcast i8* %_75 to i8***
 	%_77 = load i8**, i8*** %_76
@@ -126,7 +126,7 @@ define i32 @BT.Start(i8* %this) {
 	%_79 = load i8*, i8** %_78
 	%_80 = bitcast i8* %_79 to i1 (i8*, i32)*
 	%_81 = call i1 %_80(i8* %_75, i32 14)
-	store i1 %_81, boolean* %ntb
+	store i1 %_81, i1* %ntb
 	%_82 = load i8*, i8** %root
 	%_83 = bitcast i8* %_82 to i8***
 	%_84 = load i8**, i8*** %_83
@@ -134,7 +134,7 @@ define i32 @BT.Start(i8* %this) {
 	%_86 = load i8*, i8** %_85
 	%_87 = bitcast i8* %_86 to i1 (i8*)*
 	%_88 = call i1 %_87(i8* %_82)
-	store i1 %_88, boolean* %ntb
+	store i1 %_88, i1* %ntb
 	%_89 = load i8*, i8** %root
 	%_90 = bitcast i8* %_89 to i8***
 	%_91 = load i8**, i8*** %_90
@@ -182,7 +182,7 @@ define i32 @BT.Start(i8* %this) {
 	%_128 = load i8*, i8** %_127
 	%_129 = bitcast i8* %_128 to i1 (i8*, i32)*
 	%_130 = call i1 %_129(i8* %_124, i32 12)
-	store i1 %_130, boolean* %ntb
+	store i1 %_130, i1* %ntb
 	%_131 = load i8*, i8** %root
 	%_132 = bitcast i8* %_131 to i8***
 	%_133 = load i8**, i8*** %_132
@@ -190,7 +190,7 @@ define i32 @BT.Start(i8* %this) {
 	%_135 = load i8*, i8** %_134
 	%_136 = bitcast i8* %_135 to i1 (i8*)*
 	%_137 = call i1 %_136(i8* %_131)
-	store i1 %_137, boolean* %ntb
+	store i1 %_137, i1* %ntb
 	%_138 = load i8*, i8** %root
 	%_139 = bitcast i8* %_138 to i8***
 	%_140 = load i8**, i8*** %_139
@@ -208,13 +208,13 @@ define i1 @Tree.Init(i8* %this, i32 %.v_key) {
 	%_145 = load i32, i32* %v_key
 	%_146 = getelementptr i8, i8* %this, i32 24
 	%_147 = bitcast i8* %_146 to i32*
-	store int %_145, int* %_147
+	store i32 %_145, i32* %_147
 	%_148 = getelementptr i8, i8* %this, i32 28
 	%_149 = bitcast i8* %_148 to i1*
-	store boolean 0, boolean* %_149
+	store i1 0, i1* %_149
 	%_150 = getelementptr i8, i8* %this, i32 29
 	%_151 = bitcast i8* %_150 to i1*
-	store boolean 0, boolean* %_151
+	store i1 0, i1* %_151
 	ret i1 1
 }
 
@@ -224,7 +224,7 @@ define i1 @Tree.SetRight(i8* %this, i8* %.rn) {
 	%_152 = load i8*, i8** %rn
 	%_153 = getelementptr i8, i8* %this, i32 16
 	%_154 = bitcast i8* %_153 to i8**
-	store Tree %_152, Tree* %_154
+	store i8* %_152, i8** %_154
 	ret i1 1
 }
 
@@ -234,7 +234,7 @@ define i1 @Tree.SetLeft(i8* %this, i8* %.ln) {
 	%_155 = load i8*, i8** %ln
 	%_156 = getelementptr i8, i8* %this, i32 8
 	%_157 = bitcast i8* %_156 to i8**
-	store Tree %_155, Tree* %_157
+	store i8* %_155, i8** %_157
 	ret i1 1
 }
 
@@ -265,7 +265,7 @@ define i1 @Tree.SetKey(i8* %this, i32 %.v_key) {
 	%_167 = load i32, i32* %v_key
 	%_168 = getelementptr i8, i8* %this, i32 24
 	%_169 = bitcast i8* %_168 to i32*
-	store int %_167, int* %_169
+	store i32 %_167, i32* %_169
 	ret i1 1
 }
 
@@ -289,7 +289,7 @@ define i1 @Tree.SetHas_Left(i8* %this, i1 %.val) {
 	%_176 = load i1, i1* %val
 	%_177 = getelementptr i8, i8* %this, i32 28
 	%_178 = bitcast i8* %_177 to i1*
-	store boolean %_176, boolean* %_178
+	store i1 %_176, i1* %_178
 	ret i1 1
 }
 
@@ -299,7 +299,7 @@ define i1 @Tree.SetHas_Right(i8* %this, i1 %.val) {
 	%_179 = load i1, i1* %val
 	%_180 = getelementptr i8, i8* %this, i32 29
 	%_181 = bitcast i8* %_180 to i1*
-	store boolean %_179, boolean* %_181
+	store i1 %_179, i1* %_181
 	ret i1 1
 }
 
@@ -310,16 +310,16 @@ define i1 @Tree.Compare(i8* %this, i32 %.num1, i32 %.num2) {
 	store i32 %.num2, i32* %num2
 	%ntb = alloca i1
 	%nti = alloca i32
-	store i1 0, boolean* %ntb
+	store i1 0, i1* %ntb
 	%_182 = load i32, i32* %num2
 	%_183 = add i32 %_182, 1
-	store i32 %_183, int* %nti
+	store i32 %_183, i32* %nti
 	%_184 = load i32, i32* %num1
 	%_185 = load i32, i32* %num2
 	%_186 = icmp slt i32 %_184, %_185
 	br i1 %_186, label %if0, label %if1
 if0:
-	store i1 0, boolean* %ntb
+	store i1 0, i1* %ntb
 	br label %if2
 if1:
 	%_187 = load i32, i32* %num1
@@ -328,10 +328,10 @@ if1:
 	%_190 = xor i1 1, %_189
 	br i1 %_190, label %if3, label %if4
 if3:
-	store i1 0, boolean* %ntb
+	store i1 0, i1* %ntb
 	br label %if5
 if4:
-	store i1 1, boolean* %ntb
+	store i1 1, i1* %ntb
 	br label %if5
 if5:
 	br label %if2
@@ -352,7 +352,7 @@ define i1 @Tree.Insert(i8* %this, i32 %.v_key) {
 	%_193 = bitcast i8* %_192 to i8***
 	%_194 = getelementptr [20 x i8*], [20 x i8*]* @.Tree_vtable, i32 0, i32 0
 	store i8** %_194, i8*** %_193
-	store i8* %_192, Tree* %new_node
+	store i8* %_192, i8** %new_node
 	%_195 = load i8*, i8** %new_node
 	%_196 = load i32, i32* %v_key
 	%_197 = bitcast i8* %_195 to i8***
@@ -361,9 +361,9 @@ define i1 @Tree.Insert(i8* %this, i32 %.v_key) {
 	%_200 = load i8*, i8** %_199
 	%_201 = bitcast i8* %_200 to i1 (i8*, i32)*
 	%_202 = call i1 %_201(i8* %_195, i32 %_196)
-	store i1 %_202, boolean* %ntb
-	store i8* %this, Tree* %current_node
-	store i1 1, boolean* %cont
+	store i1 %_202, i1* %ntb
+	store i8* %this, i8** %current_node
+	store i1 1, i1* %cont
 	br label %loop0
 loop0:
 	%_203 = load i1, i1* %cont
@@ -376,7 +376,7 @@ loop1:
 	%_208 = load i8*, i8** %_207
 	%_209 = bitcast i8* %_208 to i32 (i8*)*
 	%_210 = call i32 %_209(i8* %_204)
-	store i32 %_210, int* %key_aux
+	store i32 %_210, i32* %key_aux
 	%_211 = load i32, i32* %v_key
 	%_212 = load i32, i32* %key_aux
 	%_213 = icmp slt i32 %_211, %_212
@@ -398,10 +398,10 @@ if9:
 	%_225 = load i8*, i8** %_224
 	%_226 = bitcast i8* %_225 to i8* (i8*)*
 	%_227 = call i8* %_226(i8* %_221)
-	store i8* %_227, Tree* %current_node
+	store i8* %_227, i8** %current_node
 	br label %if11
 if10:
-	store i1 0, boolean* %cont
+	store i1 0, i1* %cont
 	%_228 = load i8*, i8** %current_node
 	%_229 = bitcast i8* %_228 to i8***
 	%_230 = load i8**, i8*** %_229
@@ -409,7 +409,7 @@ if10:
 	%_232 = load i8*, i8** %_231
 	%_233 = bitcast i8* %_232 to i1 (i8*, i1)*
 	%_234 = call i1 %_233(i8* %_228, i1 1)
-	store i1 %_234, boolean* %ntb
+	store i1 %_234, i1* %ntb
 	%_235 = load i8*, i8** %current_node
 	%_236 = load i8*, i8** %new_node
 	%_237 = bitcast i8* %_235 to i8***
@@ -418,7 +418,7 @@ if10:
 	%_240 = load i8*, i8** %_239
 	%_241 = bitcast i8* %_240 to i1 (i8*, i8*)*
 	%_242 = call i1 %_241(i8* %_235, i8* %_236)
-	store i1 %_242, boolean* %ntb
+	store i1 %_242, i1* %ntb
 	br label %if11
 if11:
 	br label %if8
@@ -439,10 +439,10 @@ if12:
 	%_254 = load i8*, i8** %_253
 	%_255 = bitcast i8* %_254 to i8* (i8*)*
 	%_256 = call i8* %_255(i8* %_250)
-	store i8* %_256, Tree* %current_node
+	store i8* %_256, i8** %current_node
 	br label %if14
 if13:
-	store i1 0, boolean* %cont
+	store i1 0, i1* %cont
 	%_257 = load i8*, i8** %current_node
 	%_258 = bitcast i8* %_257 to i8***
 	%_259 = load i8**, i8*** %_258
@@ -450,7 +450,7 @@ if13:
 	%_261 = load i8*, i8** %_260
 	%_262 = bitcast i8* %_261 to i1 (i8*, i1)*
 	%_263 = call i1 %_262(i8* %_257, i1 1)
-	store i1 %_263, boolean* %ntb
+	store i1 %_263, i1* %ntb
 	%_264 = load i8*, i8** %current_node
 	%_265 = load i8*, i8** %new_node
 	%_266 = bitcast i8* %_264 to i8***
@@ -459,7 +459,7 @@ if13:
 	%_269 = load i8*, i8** %_268
 	%_270 = bitcast i8* %_269 to i1 (i8*, i8*)*
 	%_271 = call i1 %_270(i8* %_264, i8* %_265)
-	store i1 %_271, boolean* %ntb
+	store i1 %_271, i1* %ntb
 	br label %if14
 if14:
 	br label %if8
@@ -479,11 +479,11 @@ define i1 @Tree.Delete(i8* %this, i32 %.v_key) {
 	%is_root = alloca i1
 	%key_aux = alloca i32
 	%ntb = alloca i1
-	store i8* %this, Tree* %current_node
-	store i8* %this, Tree* %parent_node
-	store i1 1, boolean* %cont
-	store i1 0, boolean* %found
-	store i1 1, boolean* %is_root
+	store i8* %this, i8** %current_node
+	store i8* %this, i8** %parent_node
+	store i1 1, i1* %cont
+	store i1 0, i1* %found
+	store i1 1, i1* %is_root
 	br label %loop3
 loop3:
 	%_272 = load i1, i1* %cont
@@ -496,7 +496,7 @@ loop4:
 	%_277 = load i8*, i8** %_276
 	%_278 = bitcast i8* %_277 to i32 (i8*)*
 	%_279 = call i32 %_278(i8* %_273)
-	store i32 %_279, int* %key_aux
+	store i32 %_279, i32* %key_aux
 	%_280 = load i32, i32* %v_key
 	%_281 = load i32, i32* %key_aux
 	%_282 = icmp slt i32 %_280, %_281
@@ -512,7 +512,7 @@ if15:
 	br i1 %_289, label %if18, label %if19
 if18:
 	%_290 = load i8*, i8** %current_node
-	store i8* %_290, Tree* %parent_node
+	store i8* %_290, i8** %parent_node
 	%_291 = load i8*, i8** %current_node
 	%_292 = bitcast i8* %_291 to i8***
 	%_293 = load i8**, i8*** %_292
@@ -520,10 +520,10 @@ if18:
 	%_295 = load i8*, i8** %_294
 	%_296 = bitcast i8* %_295 to i8* (i8*)*
 	%_297 = call i8* %_296(i8* %_291)
-	store i8* %_297, Tree* %current_node
+	store i8* %_297, i8** %current_node
 	br label %if20
 if19:
-	store i1 0, boolean* %cont
+	store i1 0, i1* %cont
 	br label %if20
 if20:
 	br label %if17
@@ -543,7 +543,7 @@ if21:
 	br i1 %_307, label %if24, label %if25
 if24:
 	%_308 = load i8*, i8** %current_node
-	store i8* %_308, Tree* %parent_node
+	store i8* %_308, i8** %parent_node
 	%_309 = load i8*, i8** %current_node
 	%_310 = bitcast i8* %_309 to i8***
 	%_311 = load i8**, i8*** %_310
@@ -551,10 +551,10 @@ if24:
 	%_313 = load i8*, i8** %_312
 	%_314 = bitcast i8* %_313 to i8* (i8*)*
 	%_315 = call i8* %_314(i8* %_309)
-	store i8* %_315, Tree* %current_node
+	store i8* %_315, i8** %current_node
 	br label %if26
 if25:
-	store i1 0, boolean* %cont
+	store i1 0, i1* %cont
 	br label %if26
 if26:
 	br label %if23
@@ -562,8 +562,6 @@ if22:
 	%_316 = load i1, i1* %is_root
 	br i1 %_316, label %if27, label %if28
 if27:
-	br label %andclause0
-andclause0:
 	%_317 = load i8*, i8** %current_node
 	%_318 = bitcast i8* %_317 to i8***
 	%_319 = load i8**, i8*** %_318
@@ -572,8 +570,6 @@ andclause0:
 	%_322 = bitcast i8* %_321 to i1 (i8*)*
 	%_323 = call i1 %_322(i8* %_317)
 	%_324 = xor i1 1, %_323
-	br i1 %_324, label %andclause1, label %andclause2
-andclause1:
 	%_325 = load i8*, i8** %current_node
 	%_326 = bitcast i8* %_325 to i8***
 	%_327 = load i8**, i8*** %_326
@@ -582,12 +578,16 @@ andclause1:
 	%_330 = bitcast i8* %_329 to i1 (i8*)*
 	%_331 = call i1 %_330(i8* %_325)
 	%_332 = xor i1 1, %_331
+	br label %andclause0
+andclause0:
+	br i1 %_324, label %andclause1, label %andclause2
+andclause1:
 	br label %andclause2
 andclause2:
 	%_333 = phi i1 [0, %andclause0], [%_332, %andclause1]
 	br i1 %_333, label %if30, label %if31
 if30:
-	store i1 1, boolean* %ntb
+	store i1 1, i1* %ntb
 	br label %if32
 if31:
 	%_334 = load i8*, i8** %parent_node
@@ -598,7 +598,7 @@ if31:
 	%_339 = load i8*, i8** %_338
 	%_340 = bitcast i8* %_339 to i1 (i8*, i8*, i8*)*
 	%_341 = call i1 %_340(i8* %this, i8* %_334, i8* %_335)
-	store i1 %_341, boolean* %ntb
+	store i1 %_341, i1* %ntb
 	br label %if32
 if32:
 	br label %if29
@@ -611,16 +611,16 @@ if28:
 	%_347 = load i8*, i8** %_346
 	%_348 = bitcast i8* %_347 to i1 (i8*, i8*, i8*)*
 	%_349 = call i1 %_348(i8* %this, i8* %_342, i8* %_343)
-	store i1 %_349, boolean* %ntb
+	store i1 %_349, i1* %ntb
 	br label %if29
 if29:
-	store i1 1, boolean* %found
-	store i1 0, boolean* %cont
+	store i1 1, i1* %found
+	store i1 0, i1* %cont
 	br label %if23
 if23:
 	br label %if17
 if17:
-	store i1 0, boolean* %is_root
+	store i1 0, i1* %is_root
 	br label %loop3
 loop5:
 	%_350 = load i1, i1* %found
@@ -652,7 +652,7 @@ if33:
 	%_363 = load i8*, i8** %_362
 	%_364 = bitcast i8* %_363 to i1 (i8*, i8*, i8*)*
 	%_365 = call i1 %_364(i8* %this, i8* %_358, i8* %_359)
-	store i1 %_365, boolean* %ntb
+	store i1 %_365, i1* %ntb
 	br label %if35
 if34:
 	%_366 = load i8*, i8** %c_node
@@ -672,7 +672,7 @@ if36:
 	%_378 = load i8*, i8** %_377
 	%_379 = bitcast i8* %_378 to i1 (i8*, i8*, i8*)*
 	%_380 = call i1 %_379(i8* %this, i8* %_373, i8* %_374)
-	store i1 %_380, boolean* %ntb
+	store i1 %_380, i1* %ntb
 	br label %if38
 if37:
 	%_381 = load i8*, i8** %c_node
@@ -682,7 +682,7 @@ if37:
 	%_385 = load i8*, i8** %_384
 	%_386 = bitcast i8* %_385 to i32 (i8*)*
 	%_387 = call i32 %_386(i8* %_381)
-	store i32 %_387, int* %auxkey1
+	store i32 %_387, i32* %auxkey1
 	%_388 = load i8*, i8** %p_node
 	%_389 = bitcast i8* %_388 to i8***
 	%_390 = load i8**, i8*** %_389
@@ -696,7 +696,7 @@ if37:
 	%_398 = load i8*, i8** %_397
 	%_399 = bitcast i8* %_398 to i32 (i8*)*
 	%_400 = call i32 %_399(i8* %_394)
-	store i32 %_400, int* %auxkey2
+	store i32 %_400, i32* %auxkey2
 	%_401 = load i32, i32* %auxkey1
 	%_402 = load i32, i32* %auxkey2
 	%_403 = bitcast i8* %this to i8***
@@ -717,7 +717,7 @@ if39:
 	%_416 = load i8*, i8** %_415
 	%_417 = bitcast i8* %_416 to i1 (i8*, i8*)*
 	%_418 = call i1 %_417(i8* %_409, i8* %_410)
-	store i1 %_418, boolean* %ntb
+	store i1 %_418, i1* %ntb
 	%_419 = load i8*, i8** %p_node
 	%_420 = bitcast i8* %_419 to i8***
 	%_421 = load i8**, i8*** %_420
@@ -725,7 +725,7 @@ if39:
 	%_423 = load i8*, i8** %_422
 	%_424 = bitcast i8* %_423 to i1 (i8*, i1)*
 	%_425 = call i1 %_424(i8* %_419, i1 0)
-	store i1 %_425, boolean* %ntb
+	store i1 %_425, i1* %ntb
 	br label %if41
 if40:
 	%_426 = load i8*, i8** %p_node
@@ -738,7 +738,7 @@ if40:
 	%_433 = load i8*, i8** %_432
 	%_434 = bitcast i8* %_433 to i1 (i8*, i8*)*
 	%_435 = call i1 %_434(i8* %_426, i8* %_427)
-	store i1 %_435, boolean* %ntb
+	store i1 %_435, i1* %ntb
 	%_436 = load i8*, i8** %p_node
 	%_437 = bitcast i8* %_436 to i8***
 	%_438 = load i8**, i8*** %_437
@@ -746,7 +746,7 @@ if40:
 	%_440 = load i8*, i8** %_439
 	%_441 = bitcast i8* %_440 to i1 (i8*, i1)*
 	%_442 = call i1 %_441(i8* %_436, i1 0)
-	store i1 %_442, boolean* %ntb
+	store i1 %_442, i1* %ntb
 	br label %if41
 if41:
 	br label %if38
@@ -793,9 +793,9 @@ loop7:
 	%_467 = load i8*, i8** %_466
 	%_468 = bitcast i8* %_467 to i1 (i8*, i32)*
 	%_469 = call i1 %_468(i8* %_450, i32 %_463)
-	store i1 %_469, boolean* %ntb
+	store i1 %_469, i1* %ntb
 	%_470 = load i8*, i8** %c_node
-	store i8* %_470, Tree* %p_node
+	store i8* %_470, i8** %p_node
 	%_471 = load i8*, i8** %c_node
 	%_472 = bitcast i8* %_471 to i8***
 	%_473 = load i8**, i8*** %_472
@@ -803,7 +803,7 @@ loop7:
 	%_475 = load i8*, i8** %_474
 	%_476 = bitcast i8* %_475 to i8* (i8*)*
 	%_477 = call i8* %_476(i8* %_471)
-	store i8* %_477, Tree* %c_node
+	store i8* %_477, i8** %c_node
 	br label %loop6
 loop8:
 	%_478 = load i8*, i8** %p_node
@@ -816,7 +816,7 @@ loop8:
 	%_485 = load i8*, i8** %_484
 	%_486 = bitcast i8* %_485 to i1 (i8*, i8*)*
 	%_487 = call i1 %_486(i8* %_478, i8* %_479)
-	store i1 %_487, boolean* %ntb
+	store i1 %_487, i1* %ntb
 	%_488 = load i8*, i8** %p_node
 	%_489 = bitcast i8* %_488 to i8***
 	%_490 = load i8**, i8*** %_489
@@ -824,7 +824,7 @@ loop8:
 	%_492 = load i8*, i8** %_491
 	%_493 = bitcast i8* %_492 to i1 (i8*, i1)*
 	%_494 = call i1 %_493(i8* %_488, i1 0)
-	store i1 %_494, boolean* %ntb
+	store i1 %_494, i1* %ntb
 	ret i1 1
 }
 
@@ -865,9 +865,9 @@ loop10:
 	%_519 = load i8*, i8** %_518
 	%_520 = bitcast i8* %_519 to i1 (i8*, i32)*
 	%_521 = call i1 %_520(i8* %_502, i32 %_515)
-	store i1 %_521, boolean* %ntb
+	store i1 %_521, i1* %ntb
 	%_522 = load i8*, i8** %c_node
-	store i8* %_522, Tree* %p_node
+	store i8* %_522, i8** %p_node
 	%_523 = load i8*, i8** %c_node
 	%_524 = bitcast i8* %_523 to i8***
 	%_525 = load i8**, i8*** %_524
@@ -875,7 +875,7 @@ loop10:
 	%_527 = load i8*, i8** %_526
 	%_528 = bitcast i8* %_527 to i8* (i8*)*
 	%_529 = call i8* %_528(i8* %_523)
-	store i8* %_529, Tree* %c_node
+	store i8* %_529, i8** %c_node
 	br label %loop9
 loop11:
 	%_530 = load i8*, i8** %p_node
@@ -888,7 +888,7 @@ loop11:
 	%_537 = load i8*, i8** %_536
 	%_538 = bitcast i8* %_537 to i1 (i8*, i8*)*
 	%_539 = call i1 %_538(i8* %_530, i8* %_531)
-	store i1 %_539, boolean* %ntb
+	store i1 %_539, i1* %ntb
 	%_540 = load i8*, i8** %p_node
 	%_541 = bitcast i8* %_540 to i8***
 	%_542 = load i8**, i8*** %_541
@@ -896,7 +896,7 @@ loop11:
 	%_544 = load i8*, i8** %_543
 	%_545 = bitcast i8* %_544 to i1 (i8*, i1)*
 	%_546 = call i1 %_545(i8* %_540, i1 0)
-	store i1 %_546, boolean* %ntb
+	store i1 %_546, i1* %ntb
 	ret i1 1
 }
 
@@ -907,9 +907,9 @@ define i32 @Tree.Search(i8* %this, i32 %.v_key) {
 	%ifound = alloca i32
 	%current_node = alloca i8*
 	%key_aux = alloca i32
-	store i8* %this, Tree* %current_node
-	store i1 1, boolean* %cont
-	store i32 0, int* %ifound
+	store i8* %this, i8** %current_node
+	store i1 1, i1* %cont
+	store i32 0, i32* %ifound
 	br label %loop12
 loop12:
 	%_547 = load i1, i1* %cont
@@ -922,7 +922,7 @@ loop13:
 	%_552 = load i8*, i8** %_551
 	%_553 = bitcast i8* %_552 to i32 (i8*)*
 	%_554 = call i32 %_553(i8* %_548)
-	store i32 %_554, int* %key_aux
+	store i32 %_554, i32* %key_aux
 	%_555 = load i32, i32* %v_key
 	%_556 = load i32, i32* %key_aux
 	%_557 = icmp slt i32 %_555, %_556
@@ -944,10 +944,10 @@ if45:
 	%_569 = load i8*, i8** %_568
 	%_570 = bitcast i8* %_569 to i8* (i8*)*
 	%_571 = call i8* %_570(i8* %_565)
-	store i8* %_571, Tree* %current_node
+	store i8* %_571, i8** %current_node
 	br label %if47
 if46:
-	store i1 0, boolean* %cont
+	store i1 0, i1* %cont
 	br label %if47
 if47:
 	br label %if44
@@ -973,16 +973,16 @@ if51:
 	%_586 = load i8*, i8** %_585
 	%_587 = bitcast i8* %_586 to i8* (i8*)*
 	%_588 = call i8* %_587(i8* %_582)
-	store i8* %_588, Tree* %current_node
+	store i8* %_588, i8** %current_node
 	br label %if53
 if52:
-	store i1 0, boolean* %cont
+	store i1 0, i1* %cont
 	br label %if53
 if53:
 	br label %if50
 if49:
-	store i32 1, int* %ifound
-	store i1 0, boolean* %cont
+	store i32 1, i32* %ifound
+	store i1 0, i1* %cont
 	br label %if50
 if50:
 	br label %if44
@@ -996,7 +996,7 @@ loop14:
 define i1 @Tree.Print(i8* %this) {
 	%current_node = alloca i8*
 	%ntb = alloca i1
-	store i8* %this, Tree* %current_node
+	store i8* %this, i8** %current_node
 	%_590 = load i8*, i8** %current_node
 	%_591 = bitcast i8* %this to i8***
 	%_592 = load i8**, i8*** %_591
@@ -1004,7 +1004,7 @@ define i1 @Tree.Print(i8* %this) {
 	%_594 = load i8*, i8** %_593
 	%_595 = bitcast i8* %_594 to i1 (i8*, i8*)*
 	%_596 = call i1 %_595(i8* %this, i8* %_590)
-	store i1 %_596, boolean* %ntb
+	store i1 %_596, i1* %ntb
 	ret i1 1
 }
 
@@ -1034,10 +1034,10 @@ if54:
 	%_614 = load i8*, i8** %_613
 	%_615 = bitcast i8* %_614 to i1 (i8*, i8*)*
 	%_616 = call i1 %_615(i8* %this, i8* %_610)
-	store i1 %_616, boolean* %ntb
+	store i1 %_616, i1* %ntb
 	br label %if56
 if55:
-	store i1 1, boolean* %ntb
+	store i1 1, i1* %ntb
 	br label %if56
 if56:
 	%_617 = load i8*, i8** %node
@@ -1070,10 +1070,10 @@ if57:
 	%_641 = load i8*, i8** %_640
 	%_642 = bitcast i8* %_641 to i1 (i8*, i8*)*
 	%_643 = call i1 %_642(i8* %this, i8* %_637)
-	store i1 %_643, boolean* %ntb
+	store i1 %_643, i1* %ntb
 	br label %if59
 if58:
-	store i1 1, boolean* %ntb
+	store i1 1, i1* %ntb
 	br label %if59
 if59:
 	ret i1 1

@@ -478,15 +478,15 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
      * f2 -> Clause()
      */
     public String visit(AndExpression n, SymbolTable symbolTable) throws Exception {
+        String expr1 = loadNonLiteral(n.f0.accept(this, symbolTable));
+        String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
         String expr1Label = getLabel("and");
         String expr2Label = getLabel("and");
         String contLabel = getLabel("and");
         emit("\tbr label %" + expr1Label + '\n' +
                 expr1Label + ":\n");
-        String expr1 = loadNonLiteral(n.f0.accept(this, symbolTable));
         emit("\tbr i1 " + expr1 + ", label %" + expr2Label + ", label %" + contLabel + '\n' +
                 expr2Label + ":\n");
-        String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
         emit("\tbr label %" + contLabel + '\n' +
                 contLabel + ":\n");
         String tempReg = getTempReg();
@@ -505,7 +505,7 @@ public class LLVMGeneratorVisitor extends GJDepthFirst<String, SymbolTable>{
         String expr2 = loadNonLiteral(n.f2.accept(this, symbolTable));
         String tempReg = getTempReg();
         emit('\t' + tempReg + " = icmp slt i32 " + expr1 + ", " + expr2 + '\n');
-        currExprType = "int";
+        currExprType = "boolean";
         return tempReg;
     }
 

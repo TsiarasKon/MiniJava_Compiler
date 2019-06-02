@@ -39,7 +39,6 @@ class Main {
 				LLVMGeneratorVisitor llvmGeneratorVisitor = new LLVMGeneratorVisitor(llFileName, symbolTable, vTables);
 				root.accept(llvmGeneratorVisitor, symbolTable);
 				System.out.println(" Generated LLVM file successfully at: '" + llFileName + "'");
-				System.out.println();
 			} catch (FileNotFoundException | ParseException | SemanticException ex) {
 				System.err.println(ex.getMessage());
 			} catch (Exception ex) {        // should never get here
